@@ -1,7 +1,0 @@
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WPFUtilities\bin\Debug\WPFUtilities.dll
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WPFUtilities\bin\Debug\WPFUtilities.pdb
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WPFUtilities\obj\Debug\WPFUtilities.Properties.Resources.resources
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WPFUtilities\obj\Debug\WPFUtilities.csproj.GenerateResource.cache
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WPFUtilities\obj\Debug\WPFUtilities.csproj.CoreCompileInputs.cache
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WPFUtilities\obj\Debug\WPFUtilities.dll
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WPFUtilities\obj\Debug\WPFUtilities.pdb
