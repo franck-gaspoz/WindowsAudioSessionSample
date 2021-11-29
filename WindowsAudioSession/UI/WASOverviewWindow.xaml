@@ -49,7 +49,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="fft bars:" Width="64"/>
-                    <TextBox Text="{Binding BarCount,FallbackValue=512}" VerticalAlignment="Center" Width="50" IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}"/>
+                    <TextBox Text="{Binding BarCount,FallbackValue=512}" VerticalAlignment="Center" Width="64" IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
