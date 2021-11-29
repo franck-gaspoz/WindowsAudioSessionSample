@@ -1,0 +1,11 @@
+﻿<Application x:Class="WindowsAudioSession.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WindowsAudioSession"             
+             StartupUri="UI/WASOverviewWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="Window">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+        </Style>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,75 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\franc\\Documents\\Visual Studio 2019\\Projects\\Audio\\WindowsAudioSession\\WindowsAudioSession\\WindowsAudioSession.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\franc\\Documents\\Visual Studio 2019\\Projects\\Audio\\WindowsAudioSession\\WindowsAudioSession\\WindowsAudioSession.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\franc\\Documents\\Visual Studio 2019\\Projects\\Audio\\WindowsAudioSession\\WindowsAudioSession\\WindowsAudioSession.csproj",
+        "projectName": "WindowsAudioSession",
+        "projectPath": "C:\\Users\\franc\\Documents\\Visual Studio 2019\\Projects\\Audio\\WindowsAudioSession\\WindowsAudioSession\\WindowsAudioSession.csproj",
+        "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\franc\\Documents\\Visual Studio 2019\\Projects\\Audio\\WindowsAudioSession\\WindowsAudioSession\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\franc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "C:\\Users\\franc\\Documents\\Visual Studio 2019\\Projects\\Audio\\WindowsAudioSession\\WPFUtilities\\WPFUtilities.csproj": {
+                "projectPath": "C:\\Users\\franc\\Documents\\Visual Studio 2019\\Projects\\Audio\\WindowsAudioSession\\WPFUtilities\\WPFUtilities.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\franc\\Documents\\Visual Studio 2019\\Projects\\Audio\\WindowsAudioSession\\WPFUtilities\\WPFUtilities.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\franc\\Documents\\Visual Studio 2019\\Projects\\Audio\\WindowsAudioSession\\WPFUtilities\\WPFUtilities.csproj",
+        "projectName": "WPFUtilities",
+        "projectPath": "C:\\Users\\franc\\Documents\\Visual Studio 2019\\Projects\\Audio\\WindowsAudioSession\\WPFUtilities\\WPFUtilities.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    }
+  }
+}

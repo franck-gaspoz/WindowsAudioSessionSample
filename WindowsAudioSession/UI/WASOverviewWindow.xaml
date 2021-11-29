@@ -1,0 +1,51 @@
+﻿<Window x:Class="WindowsAudioSession.UI.WASOverviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowsAudioSession.UI"
+        xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities" 
+        d:DataContext="{d:DesignInstance Type=local:WASOverviewWindowViewModel}"
+        Topmost="True"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="Windows Audio Session Samples" 
+		Height="414" 
+		Width="891"		
+		>
+    
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Margin="8">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+            <ListBox ItemsSource="{Binding ListenableDevices}" SelectedItem="{Binding SelectedDevice,Mode=TwoWay}" Width="199" Height="92" Canvas.Left="10" Canvas.Top="10"/>
+
+            <StackPanel Orientation="Vertical">
+            
+                <Button Grid.Column="1" Content="Start" IsEnabled="{Binding CanStart}"
+				    Canvas.Left="223" Canvas.Top="10" Name="BTStart" Click="BTStart_Click" RenderTransformOrigin="7.679,-3.8" Width="43"/>
+
+                <Button Content="Stop" IsEnabled="{Binding IsStarted}"
+				    Canvas.Left="223" Canvas.Top="35" Name="BTStop" Click="BTStop_Click" Width="43" />
+
+                <CheckBox Content="Topmost" IsChecked="{Binding IsTopmost}"
+				    Canvas.Left="223" Canvas.Top="69" Width="69" />
+
+            </StackPanel>
+
+        </Grid>
+    
+        <Canvas Margin="8" Grid.Row="1" x:Name="BarGraph" Background="Black" Width="auto" Height="auto" Canvas.Left="10" Canvas.Top="107"/>
+
+    </Grid>
+</Window>
