@@ -1,6 +1,0 @@
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WindowsAudioSession\obj\Release\WindowsAudioSession.csproj.AssemblyReference.cache
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WindowsAudioSession\obj\Release\UI\WASOverviewWindow.g.cs
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WindowsAudioSession\obj\Release\App.g.cs
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WindowsAudioSession\obj\Release\WindowsAudioSession_Content.g.cs
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WindowsAudioSession\obj\Release\WindowsAudioSession_MarkupCompile.cache
-C:\Users\franc\Documents\Visual Studio 2019\Projects\Audio\WindowsAudioSession\WindowsAudioSession\obj\Release\WindowsAudioSession_MarkupCompile.lref
