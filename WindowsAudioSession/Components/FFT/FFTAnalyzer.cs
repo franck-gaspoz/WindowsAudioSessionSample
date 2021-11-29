@@ -13,14 +13,14 @@ namespace WindowsAudioSession.Components.FFT
         readonly SampleLength _sampleLength;
         readonly int _linesCount;
 
-        public int[] Spectrumdata;
+        public double[] Spectrumdata;
 
         public FFTAnalyzer(
             SampleLength sampleLength,
             int linesCount)
         {
             _linesCount = linesCount;
-            Spectrumdata = new int[_linesCount];
+            Spectrumdata = new double[_linesCount];
             _sampleLength = sampleLength;
             _fft = new float[GetBufferSize(sampleLength)];
         }
@@ -50,21 +50,23 @@ namespace WindowsAudioSession.Components.FFT
                 (int)GetFFTBassData(_sampleLength));
 
             if (ret < -1) return;
-            int x, y;
+            int x;
+            double y;
             var b0 = 0;
+            var _bufferLastIndex = GetBufferSize(_sampleLength) - 1;
 
             //computes the spectrum data, the code is taken from a bass_wasapi sample.
             for (x = 0; x < _linesCount; x++)
             {
-                float peak = 0;
+                double peak = 0;
                 var b1 = (int)Math.Pow(2, x * 10.0 / (_linesCount - 1));
-                if (b1 > 1023) b1 = 1023;
+                if (b1 > _bufferLastIndex) b1 = _bufferLastIndex;
                 if (b1 <= b0) b1 = b0 + 1;
                 for (; b0 < b1; b0++)
                 {
                     if (peak < _fft[1 + b0]) peak = _fft[1 + b0];
                 }
-                y = (int)((Math.Sqrt(peak) * 3 * 255) - 4);
+                y = (Math.Sqrt(peak) * 3 * 255) - 4;
                 if (y > 255) y = 255;
                 if (y < 0) y = 0;
 

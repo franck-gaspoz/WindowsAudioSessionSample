@@ -48,11 +48,11 @@ namespace WindowsAudioSession.UI.FFT
             double y0,
             double width,
             double height,
-            ref int[] barSizes
+            ref double[] barSizes
             )
         {
             var barCount = barSizes.Length;
-            var barWidth = width / barCount;
+            var barWidth = (width -2 * Margin) / barCount;
 
             if (_lastBarSizes == null)
             {
@@ -60,11 +60,9 @@ namespace WindowsAudioSession.UI.FFT
                 _bars = new Rectangle[barCount];
                 for (var i = 0; i < barCount; i++)
                 {
-                    var bar = new Rectangle(); ;
+                    var bar = new Rectangle();
                     _bars[i] = bar;
                     bar.Fill = BarBrush;
-                    //bar.Width = barWidth * WidthPercent / 100d;
-                    bar.Width = Math.Ceiling(barWidth * WidthPercent / 100d);
                     _ = _canvas.Children.Add(bar);
                 }
             }
@@ -73,12 +71,19 @@ namespace WindowsAudioSession.UI.FFT
 
             for (var i = 0; i < barCount; i++)
             {
-                var y_top = y0 + height - barSizes[i];
+                var barHeight = Math.Max(0,barSizes[i] * (height -2 * Margin) / 255d);
+                var y_top = y0 + height - Margin - barHeight;
 
-                Canvas.SetLeft(_bars[i], x);
+                var bar = _bars[i];
+
+                Canvas.SetLeft(bar, x);
                 //Canvas.SetLeft(_bars[i], Math.Ceiling(x));
-                Canvas.SetTop(_bars[i], y_top);
-                _bars[i].Height = barSizes[i];
+
+                //bar.Width = barWidth * WidthPercent / 100d;
+                bar.Width = Math.Ceiling(barWidth * WidthPercent / 100d);
+
+                Canvas.SetTop(bar, y_top);
+                bar.Height = barHeight;
 
                 x += barWidth;
             }
@@ -88,8 +93,8 @@ namespace WindowsAudioSession.UI.FFT
         {
             var x0 = Margin;
             var y0 = Margin;
-            var width = _canvas.Width - Margin;
-            var height = _canvas.Height - Margin;
+            var width = _canvas.ActualWidth - Margin;
+            var height = _canvas.ActualHeight - Margin;
 
             Draw(x0, y0, width, height, ref _fftAnalyser.Spectrumdata);
         }
