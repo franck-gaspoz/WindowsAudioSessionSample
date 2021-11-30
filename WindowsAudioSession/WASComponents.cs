@@ -11,8 +11,6 @@ namespace WindowsAudioSession
 
         public SoundListener SoundListener { get; set; }
 
-        public FFTDrawer FFTDrawer { get; set; }
-
         public void BuildComponents(
             SampleLength sampleLength,
             int barCount)
@@ -22,13 +20,11 @@ namespace WindowsAudioSession
                 sampleLength,
                 barCount);
 
-            FFTDrawer = new FFTDrawer(
-                App.WASOverviewWindow.BarGraph,
-                FFTAnalyser);
+            App.WASOverviewWindow.FFTControl1.ViewModel.AttachTo(FFTAnalyser);
 
             _ = SoundListener
                 .AddSoundCaptureHandler(FFTAnalyser)
-                .AddSoundCaptureHandler(FFTDrawer);
+                .AddSoundCaptureHandler(App.WASOverviewWindow.FFTControl1.ViewModel);
         }
     }
 }

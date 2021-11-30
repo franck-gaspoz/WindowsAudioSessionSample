@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WindowsAudioSession.UI"
         xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
         xmlns:commands="clr-namespace:WindowsAudioSession.Commands"
+        xmlns:fftControls="clr-namespace:WindowsAudioSession.UI.FFT"
         d:DataContext="{d:DesignInstance Type=local:WASOverviewWindowViewModel}"
         Topmost="True"
         WindowStartupLocation="CenterScreen"
@@ -91,8 +92,8 @@
             </StackPanel>
 
         </Grid>
-    
-        <Canvas Margin="8" Grid.Row="1" x:Name="BarGraph" Background="Black"/>
+
+        <fftControls:FFTControl Grid.Row="1" x:Name="FFTControl1"/>
 
     </Grid>
 </Window>

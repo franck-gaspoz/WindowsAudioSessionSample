@@ -12,7 +12,7 @@ namespace WindowsAudioSession.UI.FFT
     public class FFTDrawer : ISoundCaptureHandler
     {
         readonly Canvas _canvas;
-        readonly FFTAnalyzer _fftAnalyser;
+        FFTAnalyzer _fftAnalyser;
 
         public double Margin { get; set; } = 8;
 
@@ -23,12 +23,9 @@ namespace WindowsAudioSession.UI.FFT
 
         readonly GradientBrush BarBrush;
 
-        public FFTDrawer(
-            Canvas canvas,
-            FFTAnalyzer fftAnalyser)
+        public FFTDrawer( Canvas canvas )
         {
             _canvas = canvas;
-            _fftAnalyser = fftAnalyser;
 
             var gradients = new GradientStopCollection(new List<GradientStop>()
             {
@@ -41,6 +38,11 @@ namespace WindowsAudioSession.UI.FFT
                 new GradientStop(Colors.Cyan,0.90),
             });
             BarBrush = new LinearGradientBrush(gradients);
+        }
+
+        public void AttachTo(FFTAnalyzer fftAnalyzer)
+        {
+            _fftAnalyser = fftAnalyzer;
         }
 
         public void Draw(
@@ -91,6 +93,8 @@ namespace WindowsAudioSession.UI.FFT
 
         public void HandleTick()
         {
+            if (_fftAnalyser == null) return;
+
             var x0 = Margin;
             var y0 = Margin;
             var width = _canvas.ActualWidth - Margin;
@@ -107,6 +111,7 @@ namespace WindowsAudioSession.UI.FFT
         public void Stop()
         {
             _canvas.Children.Clear();
+            _lastBarSizes = null;
         }
 
     }
