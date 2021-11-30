@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 using WindowsAudioSession.Components.AudioCapture;
 using WindowsAudioSession.Components.FFT;
 
@@ -9,6 +11,57 @@ namespace WindowsAudioSession.UI.FFT
     public class FFTControlViewModel : ModelBase, ISoundCaptureHandler
     {
         readonly FFTDrawer _fftDrawer;
+
+        int _barCount = 512;
+
+        /// <summary>
+        /// bar count
+        /// </summary>
+        [Range(1, 5)]
+        public int BarCount
+        {
+            get => _barCount;
+
+            set
+            {
+                _barCount = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        int _barWidthPercent = 100;
+
+        /// <summary>
+        /// bar width percent
+        /// </summary>
+        public int BarWidthPercent
+        {
+            get
+            {
+                return _barWidthPercent;
+            }
+            set
+            {
+                _barWidthPercent = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        bool _isStarted = false;
+
+        /// <summary>
+        /// is started
+        /// </summary>
+        public bool IsStarted
+        {
+            get => _isStarted;
+
+            set
+            {
+                _isStarted = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         public FFTControlViewModel(FFTControl fftControl)
         {
@@ -28,11 +81,13 @@ namespace WindowsAudioSession.UI.FFT
         public void Start()
         {
             _fftDrawer.Start();
+            IsStarted = true;
         }
 
         public void Stop()
         {
             _fftDrawer.Stop();
+            IsStarted = false;
         }
     }
 }

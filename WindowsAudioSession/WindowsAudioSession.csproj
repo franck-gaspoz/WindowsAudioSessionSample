@@ -82,6 +82,7 @@
     <Compile Include="Commands\Commands.cs" />
     <Compile Include="Commands\StopCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
+    <Compile Include="Components\FFT\FFTProvider.cs" />
     <Compile Include="Components\FFT\SampleLengthExt.cs" />
     <Compile Include="UI\FFT\FFTControl.xaml.cs">
       <DependentUpon>FFTControl.xaml</DependentUpon>

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Windows;
 
 using Un4seen.BassWasapi;
@@ -12,24 +11,6 @@ namespace WindowsAudioSession.UI
 {
     public class WASOverviewWindowViewModel : ModelBase
     {
-        int _barCount = 512;
-        /// <summary>
-        /// bar count
-        /// </summary>
-        [Range(1, 5)]
-        public int BarCount
-        {
-            get
-            {
-                return _barCount;
-            }
-            set
-            {
-                _barCount = value;
-                NotifyPropertyChanged();
-            }
-        }
-
         public BindingList<BASS_WASAPI_DEVICEINFO> ListenableDevices { get; protected set; } = new BindingList<BASS_WASAPI_DEVICEINFO>();
 
         BASS_WASAPI_DEVICEINFO _selectedDevice = null;

@@ -8,52 +8,43 @@ namespace WindowsAudioSession.Components.FFT
 {
     public class FFTAnalyzer : ISoundCaptureHandler
     {
-        readonly float[] _fft;
-        readonly SampleLength _sampleLength;
-        readonly int _linesCount;
+        readonly int _barsCount;
+        readonly FFTProvider _fftProvider;
 
-        public double[] Spectrumdata;
+        public double[] SpectrumData;
 
         public FFTAnalyzer(
-            SampleLength sampleLength,
-            int linesCount)
+            FFTProvider fftProvider,
+            int barsCount)
         {
-            _linesCount = linesCount;
-            Spectrumdata = new double[_linesCount];
-            _sampleLength = sampleLength;
-            _fft = new float[sampleLength.ToBufferSize()];
+            _fftProvider = fftProvider;
+            _barsCount = barsCount;
+            SpectrumData = new double[_barsCount];
         }
 
         public void HandleTick()
         {
-            var ret = BassWasapi.BASS_WASAPI_GetData(
-                _fft,
-                (int)_sampleLength.ToBassData());
+            if (!_fftProvider.IsFFTAvailable) return;
 
-            if (ret < -1) return;
-            int x;
-            double y;
             var b0 = 0;
-            var _bufferLastIndex = _sampleLength.ToBufferSize() - 1;
+            var _bufferLastIndex = _fftProvider.SampleLength.ToBufferSize() - 1;
 
-            //computes the spectrum data, the code is taken from a bass_wasapi sample.
-            for (x = 0; x < _linesCount; x++)
-            {
+            for (var x = 0; x < _barsCount; x++)
+            {   
                 double peak = 0;
-                var b1 = (int)Math.Pow(2, x * 10.0 / (_linesCount - 1));
+                var b1 = (int)Math.Pow(2, x * 10.0 / (_barsCount - 1));
                 if (b1 > _bufferLastIndex) b1 = _bufferLastIndex;
                 if (b1 <= b0) b1 = b0 + 1;
                 for (; b0 < b1; b0++)
                 {
-                    if (peak < _fft[1 + b0]) peak = _fft[1 + b0];
+                    if (peak < _fftProvider.FFT[1 + b0]) 
+                        peak = _fftProvider.FFT[1 + b0];
                 }
-                y = (Math.Sqrt(peak) * 3 * 255) - 4;
+                var y = (Math.Sqrt(peak) * 3 * 255) - 4;
                 if (y > 255) y = 255;
                 if (y < 0) y = 0;
 
-                Spectrumdata[x] = y;
-
-                //Console.Write("{0, 3} ", y);
+                SpectrumData[x] = y;
             }
 
             //if (DisplayEnable) _spectrum.Set(_spectrumdata);
@@ -90,7 +81,7 @@ namespace WindowsAudioSession.Components.FFT
 
         public void Stop()
         {
-            for (var x = 0; x < _linesCount; x++) Spectrumdata[x] = 0;
+            for (var x = 0; x < _barsCount; x++) SpectrumData[x] = 0;
         }
     }
 }

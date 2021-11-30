@@ -23,7 +23,7 @@ namespace WindowsAudioSession.UI.FFT
 
         readonly GradientBrush BarBrush;
 
-        public FFTDrawer( Canvas canvas )
+        public FFTDrawer(Canvas canvas)
         {
             _canvas = canvas;
 
@@ -100,7 +100,7 @@ namespace WindowsAudioSession.UI.FFT
             var width = _canvas.ActualWidth - Margin;
             var height = _canvas.ActualHeight - Margin;
 
-            Draw(x0, y0, width, height, ref _fftAnalyser.Spectrumdata);
+            Draw(x0, y0, width, height, ref _fftAnalyser.SpectrumData);
         }
 
         public void Start()
