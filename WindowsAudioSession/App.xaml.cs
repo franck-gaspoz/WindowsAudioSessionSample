@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 
+using WindowsAudioSession.UI;
+
 namespace WindowsAudioSession
 {
     /// <summary>
@@ -7,5 +9,23 @@ namespace WindowsAudioSession
     /// </summary>
     public partial class App : Application
     {
+        public static WASOverviewWindow WASOverviewWindow { get; set; }
+
+        public static WASOverviewWindowViewModel WASOverviewWindowViewModel { get; set; }
+
+        public static WASComponents WASComponents { get; set; }
+
+        public App()
+        {
+            WASOverviewWindowViewModel = new WASOverviewWindowViewModel();
+            WASOverviewWindow = new WASOverviewWindow
+            {
+                DataContext = WASOverviewWindowViewModel
+            };
+
+            WASComponents = new WASComponents();
+
+            _ = WASOverviewWindow.ShowDialog();
+        }
     }
 }

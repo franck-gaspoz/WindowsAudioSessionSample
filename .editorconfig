@@ -2,3 +2,9 @@
 
 # IDE0040: Ajouter des modificateurs d'accessibilité
 dotnet_style_require_accessibility_modifiers = never
+
+# IDE0022: Utiliser un corps de bloc pour les méthodes
+csharp_style_expression_bodied_methods = false
+
+# IDE0022: Utiliser un corps de bloc pour les méthodes
+dotnet_diagnostic.IDE0022.severity = none

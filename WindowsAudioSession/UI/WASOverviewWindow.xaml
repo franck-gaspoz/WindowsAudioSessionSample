@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowsAudioSession.UI"
-        xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities" 
+        xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
+        xmlns:commands="clr-namespace:WindowsAudioSession.Commands"
         d:DataContext="{d:DesignInstance Type=local:WASOverviewWindowViewModel}"
         Topmost="True"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="Windows Audio Session Samples" 
 		Height="414" 
-		Width="891"		
+		Width="891"	
 		>
     
     <Grid>
@@ -33,11 +34,11 @@
 
             <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left" Margin="8,0,0,8">
 
-                <Button Grid.Column="1" Content="Start" IsEnabled="{Binding CanStart}" HorizontalAlignment="Left" Name="BTStart" Click="BTStart_Click" Width="43"/>
+                <Button Grid.Column="1" Content="Start" Command="{x:Static commands:Commands.Start}" HorizontalAlignment="Left" Width="43"/>
 
                 <Rectangle Height="8"/>
 
-                <Button Content="Stop" IsEnabled="{Binding IsStarted}" HorizontalAlignment="Left" Name="BTStop" Click="BTStop_Click" Width="43" />
+                <Button Content="Stop" Command="{x:Static commands:Commands.Stop}" HorizontalAlignment="Left" Width="43" />
 
                 <Rectangle Height="8"/>
 
@@ -49,7 +50,23 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="fft bars:" Width="64"/>
-                    <TextBox Text="{Binding BarCount,FallbackValue=512}" VerticalAlignment="Center" Width="64" IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}"/>
+                    <TextBox Text="{Binding BarCount,FallbackValue=512,
+                        Mode=TwoWay,
+                        UpdateSourceTrigger=PropertyChanged,
+                        NotifyOnValidationError=True}" 
+                             VerticalAlignment="Center" Width="64" 
+                             IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}">
+                        <Validation.ErrorTemplate>
+                            <ControlTemplate>
+                                <StackPanel>
+                                    <AdornedElementPlaceholder/>
+                                    <Border BorderBrush="DarkGray" BorderThickness="1" Padding="4" Background="White">
+                                        <TextBlock Text="{Binding [0].ErrorContent,FallbackValue=?}" Background="White" Foreground="Red"/>
+                                    </Border>
+                                </StackPanel>
+                            </ControlTemplate>
+                        </Validation.ErrorTemplate>
+                    </TextBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">

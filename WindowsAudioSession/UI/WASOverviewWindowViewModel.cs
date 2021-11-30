@@ -1,13 +1,10 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Windows;
-using System.Windows.Controls;
 
 using Un4seen.BassWasapi;
 
 using WindowsAudioSession.Components.AudioCapture;
-using WindowsAudioSession.Components.FFT;
-using WindowsAudioSession.UI.FFT;
 
 using WPFUtilities.ComponentModel;
 
@@ -15,15 +12,11 @@ namespace WindowsAudioSession.UI
 {
     public class WASOverviewWindowViewModel : ModelBase
     {
-        FFTAnalyzer _fftAnalyser;
-        SoundListener _soundListener;
-        FFTDrawer _fftDrawer;
-        readonly Canvas _canvas;
-
         int _barCount = 512;
         /// <summary>
         /// bar count
         /// </summary>
+        [Range(1, 5)]
         public int BarCount
         {
             get
@@ -55,8 +48,6 @@ namespace WindowsAudioSession.UI
                 CanStart = !IsStarted && _selectedDevice != null;
             }
         }
-
-        //public BASS_WASAPI_DEVICEINFO SelectedDevice { get; set; }
 
         bool _isStarted = false;
         /// <summary>
@@ -104,39 +95,11 @@ namespace WindowsAudioSession.UI
             }
         }
 
-        public WASOverviewWindowViewModel(Canvas canvas)
+        public WASOverviewWindowViewModel()
         {
-            _canvas = canvas;
-
             var devices = new ListenableSoundDevices().DevicesList;
             foreach (var device in devices)
                 ListenableDevices.Add(device);
-        }
-
-        internal void Start()
-        {
-            _soundListener = new SoundListener();
-            _fftAnalyser = new FFTAnalyzer(SampleLength.FFT1024, BarCount);
-
-            _fftDrawer = new FFTDrawer(_canvas, _fftAnalyser);
-
-            _ = _soundListener
-                .AddSoundCaptureHandler(_fftAnalyser)
-                .AddSoundCaptureHandler(_fftDrawer);
-
-            var deviceId = Convert.ToInt32(SelectedDevice.id);
-
-            _soundListener.Start(deviceId);
-
-            IsStarted = true;
-        }
-
-        internal void Stop()
-        {
-            _soundListener.Stop();
-
-            IsStarted = false;
-            CanStart = true;
         }
     }
 }

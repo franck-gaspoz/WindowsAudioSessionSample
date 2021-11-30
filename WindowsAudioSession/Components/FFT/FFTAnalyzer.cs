@@ -1,6 +1,5 @@
 ﻿using System;
 
-using Un4seen.Bass;
 using Un4seen.BassWasapi;
 
 using WindowsAudioSession.Components.AudioCapture;
@@ -22,38 +21,20 @@ namespace WindowsAudioSession.Components.FFT
             _linesCount = linesCount;
             Spectrumdata = new double[_linesCount];
             _sampleLength = sampleLength;
-            _fft = new float[GetBufferSize(sampleLength)];
-        }
-
-        public static int GetBufferSize(SampleLength sampleLength)
-        {
-            switch (sampleLength)
-            {
-                case SampleLength.FFT1024: return 1024;
-                default: return 1024;
-            }
-        }
-
-        public static BASSData GetFFTBassData(SampleLength sampleLength)
-        {
-            switch (sampleLength)
-            {
-                case SampleLength.FFT1024: return BASSData.BASS_DATA_FFT2048;
-                default: return BASSData.BASS_DATA_FFT2048;
-            }
+            _fft = new float[sampleLength.ToBufferSize()];
         }
 
         public void HandleTick()
         {
             var ret = BassWasapi.BASS_WASAPI_GetData(
                 _fft,
-                (int)GetFFTBassData(_sampleLength));
+                (int)_sampleLength.ToBassData());
 
             if (ret < -1) return;
             int x;
             double y;
             var b0 = 0;
-            var _bufferLastIndex = GetBufferSize(_sampleLength) - 1;
+            var _bufferLastIndex = _sampleLength.ToBufferSize() - 1;
 
             //computes the spectrum data, the code is taken from a bass_wasapi sample.
             for (x = 0; x < _linesCount; x++)

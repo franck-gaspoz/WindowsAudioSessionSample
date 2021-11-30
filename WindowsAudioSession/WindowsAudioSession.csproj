@@ -78,6 +78,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AbstractCommand.cs" />
+    <Compile Include="Commands\Commands.cs" />
+    <Compile Include="Commands\StopCommand.cs" />
+    <Compile Include="Commands\StartCommand.cs" />
+    <Compile Include="Components\FFT\SampleLengthExt.cs" />
+    <Compile Include="WASComponents.cs" />
     <Compile Include="UI\FFT\FFTDrawer.cs" />
     <Compile Include="UI\WASOverviewWindow.xaml.cs">
       <DependentUpon>WASOverviewWindow.xaml</DependentUpon>
@@ -155,6 +161,11 @@
       <Project>{c9664583-0898-4fed-a1a3-d6beb7f61036}</Project>
       <Name>WPFUtilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations">
+      <Version>5.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
