@@ -6,7 +6,11 @@ using System.Windows.Threading;
 using Un4seen.Bass;
 using Un4seen.BassWasapi;
 
+using WindowsAudioSession.UI;
+
 using static WindowsAudioSession.Components.WindowsAudioSessionHelper;
+
+using commands = WindowsAudioSession.Commands.Commands;
 
 namespace WindowsAudioSession.Components.AudioCapture
 {
@@ -95,8 +99,16 @@ namespace WindowsAudioSession.Components.AudioCapture
 
         void DispatcherTimerEventHandler(object sender, EventArgs e)
         {
-            foreach (var soundCaptureHandler in _soundCaptureHandlers)
-                soundCaptureHandler.HandleTick();
+            try
+            {
+                foreach (var soundCaptureHandler in _soundCaptureHandlers)
+                    soundCaptureHandler.HandleTick();
+            }
+            catch (Exception ex)
+            {
+                UIHelper.ShowError(ex);
+                commands.Stop.Execute(null);
+            }
         }
 
         public void Start(int soundDeviceIndex, int sampleRate = 44100)

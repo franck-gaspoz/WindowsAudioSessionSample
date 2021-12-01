@@ -1,6 +1,7 @@
 ﻿using System;
 
 using WindowsAudioSession.Components.FFT;
+using WindowsAudioSession.UI;
 
 namespace WindowsAudioSession.Commands
 {
@@ -11,17 +12,25 @@ namespace WindowsAudioSession.Commands
 
         public override void Execute(object parameter)
         {
-            var components = App.WASComponents;
+            try
+            {
+                var components = App.WASComponents;
 
-            components.BuildComponents(
-                SampleLength.FFT1024
-                );
+                components.BuildComponents(
+                    App.WASOverviewWindowViewModel.FFTResolution.ToSampleLength()
+                    );
 
-            var deviceId = Convert.ToInt32(App.WASOverviewWindowViewModel.SelectedDevice.id);
+                var deviceId = Convert.ToInt32(App.WASOverviewWindowViewModel.SelectedDevice.id);
 
-            components.SoundListener.Start(deviceId);
+                components.SoundListener.Start(deviceId);
 
-            App.WASOverviewWindowViewModel.IsStarted = true;
+                App.WASOverviewWindowViewModel.IsStarted = true;
+
+            }
+            catch (Exception ex)
+            {
+                UIHelper.ShowError(ex);
+            }
         }
     }
 }

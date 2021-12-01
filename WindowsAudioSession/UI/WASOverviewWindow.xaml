@@ -19,14 +19,14 @@
     <Grid>
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
         <Grid Margin="8,8,8,0">
             
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="240"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
@@ -43,51 +43,18 @@
 
                 <Rectangle Height="8"/>
 
-                <CheckBox Content="Topmost" IsChecked="{Binding IsTopmost}" HorizontalAlignment="Left" Width="69" />
-
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Left" Margin="8,0,0,8">
 
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="fft bars:" Width="64"/>
-                    <TextBox Text="{Binding BarCount,FallbackValue=512,
-                        Mode=TwoWay,
-                        UpdateSourceTrigger=PropertyChanged,
-                        NotifyOnValidationError=True}" 
-                             VerticalAlignment="Center" Width="64" 
-                             IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}">
-                        <Validation.ErrorTemplate>
-                            <ControlTemplate>
-                                <StackPanel>
-                                    <AdornedElementPlaceholder/>
-                                    <Border BorderBrush="DarkGray" BorderThickness="1" Padding="4" Background="White">
-                                        <TextBlock Text="{Binding [0].ErrorContent,FallbackValue=?}" Background="White" Foreground="Red"/>
-                                    </Border>
-                                </StackPanel>
-                            </ControlTemplate>
-                        </Validation.ErrorTemplate>
-                    </TextBox>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                    <Label Content="fft res:" Width="48"/>
+                    <ComboBox Width="64" IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}"
+                              ItemsSource="{Binding FFTResolutions}"
+                              SelectedValue="{Binding FFTResolution,FallbackValue=1024}"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="fft size:" Width="64"/>
-                    <ComboBox Width="64" IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}">
-                        <ComboBoxItem Content="256"/>
-                        <ComboBoxItem Content="512"/>
-                        <ComboBoxItem Content="1024" IsSelected="True"/>
-                        <ComboBoxItem Content="2048"/>
-                        <ComboBoxItem Content="4096"/>
-                        <ComboBoxItem Content="8192"/>
-                        <ComboBoxItem Content="16384"/>
-                    </ComboBox>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="bar width:" Width="64"/>
-                    <Slider Minimum="1" Maximum="100" VerticalAlignment="Center" Width="64" TickFrequency="10" TickPlacement="Both" Margin="0,4,0,0"
-                            IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}"/>
-                </StackPanel>
+                <CheckBox Content="Topmost" IsChecked="{Binding IsTopmost}" HorizontalAlignment="Left" Width="69" />
 
             </StackPanel>
 

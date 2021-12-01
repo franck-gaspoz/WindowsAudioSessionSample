@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 
 using Un4seen.BassWasapi;
@@ -75,6 +76,29 @@ namespace WindowsAudioSession.UI
                 NotifyPropertyChanged();
             }
         }
+
+        int _fftResolution = 1024;
+
+        /// <summary>
+        /// fft resolution
+        /// </summary>
+        public int FFTResolution
+        {
+            get
+            {
+                return _fftResolution;
+            }
+            set
+            {
+                _fftResolution = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public List<int> FFTResolutions { get; protected set; } = new List<int>
+        {
+            256,512,1024,2048,4096,8192,16384
+        };
 
         public WASOverviewWindowViewModel()
         {

@@ -82,12 +82,14 @@
     <Compile Include="Commands\Commands.cs" />
     <Compile Include="Commands\StopCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
+    <Compile Include="Components\ExceptionHelper.cs" />
     <Compile Include="Components\FFT\FFTProvider.cs" />
     <Compile Include="Components\FFT\SampleLengthExt.cs" />
     <Compile Include="UI\FFT\FFTControl.xaml.cs">
       <DependentUpon>FFTControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\FFT\FFTControlViewModel.cs" />
+    <Compile Include="UI\UIHelper.cs" />
     <Compile Include="WASComponents.cs" />
     <Compile Include="UI\FFT\FFTDrawer.cs" />
     <Compile Include="UI\WASOverviewWindow.xaml.cs">

@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 using Un4seen.BassWasapi;
 
 using WindowsAudioSession.Components.AudioCapture;

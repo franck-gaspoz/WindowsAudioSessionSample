@@ -13,6 +13,7 @@ namespace WindowsAudioSession.UI.FFT
         {
             InitializeComponent();
             ViewModel = new FFTControlViewModel(this);
+            DataContext = ViewModel;
         }
     }
 }

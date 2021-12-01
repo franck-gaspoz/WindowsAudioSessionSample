@@ -1,7 +1,5 @@
 ﻿using System;
 
-using Un4seen.BassWasapi;
-
 using WindowsAudioSession.Components.AudioCapture;
 
 namespace WindowsAudioSession.Components.FFT
@@ -30,14 +28,14 @@ namespace WindowsAudioSession.Components.FFT
             var _bufferLastIndex = _fftProvider.SampleLength.ToBufferSize() - 1;
 
             for (var x = 0; x < _barsCount; x++)
-            {   
+            {
                 double peak = 0;
                 var b1 = (int)Math.Pow(2, x * 10.0 / (_barsCount - 1));
                 if (b1 > _bufferLastIndex) b1 = _bufferLastIndex;
                 if (b1 <= b0) b1 = b0 + 1;
                 for (; b0 < b1; b0++)
                 {
-                    if (peak < _fftProvider.FFT[1 + b0]) 
+                    if (peak < _fftProvider.FFT[1 + b0])
                         peak = _fftProvider.FFT[1 + b0];
                 }
                 var y = (Math.Sqrt(peak) * 3 * 255) - 4;

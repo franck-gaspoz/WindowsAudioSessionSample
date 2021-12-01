@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 using WindowsAudioSession.UI;
 
@@ -17,15 +18,23 @@ namespace WindowsAudioSession
 
         public App()
         {
-            WASOverviewWindowViewModel = new WASOverviewWindowViewModel();
-            WASOverviewWindow = new WASOverviewWindow
+            try
             {
-                DataContext = WASOverviewWindowViewModel
-            };
+                WASOverviewWindowViewModel = new WASOverviewWindowViewModel();
+                WASOverviewWindow = new WASOverviewWindow
+                {
+                    DataContext = WASOverviewWindowViewModel
+                };
 
-            WASComponents = new WASComponents();
+                WASComponents = new WASComponents();
 
-            _ = WASOverviewWindow.ShowDialog();
+                _ = WASOverviewWindow.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                UIHelper.ShowError(ex);
+                Environment.Exit(1);
+            }
         }
     }
 }

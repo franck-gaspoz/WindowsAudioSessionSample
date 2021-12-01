@@ -29,7 +29,7 @@
                 </StackPanel.Resources>
                 
                 <StackPanel Orientation="Horizontal" Margin="0,0,8,0">
-                    <Label Content="fft bars:" Width="64" />
+                    <Label Content="bars:" Width="36" />
                     <TextBox Text="{Binding BarCount,FallbackValue=512,
                         Mode=TwoWay,
                         UpdateSourceTrigger=PropertyChanged,
@@ -39,7 +39,7 @@
                         <Validation.ErrorTemplate>
                             <ControlTemplate>
                                 <StackPanel>
-                                    <AdornedElementPlaceholder/>
+                                    <AdornedElementPlaceholder Margin="100,4,0,0"/>
                                     <Border BorderBrush="DarkGray" BorderThickness="1" Padding="4" Background="White">
                                         <TextBlock Text="{Binding [0].ErrorContent,FallbackValue=?}" Background="White" Foreground="Red"/>
                                     </Border>
@@ -55,8 +55,7 @@
                             Width="64" 
                             TickFrequency="10" TickPlacement="Both" 
                             Margin="0,4,0,0"
-                            Value="{Binding BarWidthPercent,Mode=TwoWay}"
-                            IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}"/>
+                            Value="{Binding BarWidthPercent,Mode=TwoWay}"/>
                 </StackPanel>
                 
             </StackPanel>
