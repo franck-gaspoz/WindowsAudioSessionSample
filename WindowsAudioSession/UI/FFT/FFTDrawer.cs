@@ -23,6 +23,8 @@ namespace WindowsAudioSession.UI.FFT
 
         readonly GradientBrush BarBrush;
 
+        public bool IsStarted { get; protected set; }
+
         public FFTDrawer(Canvas canvas)
         {
             _canvas = canvas;
@@ -99,24 +101,34 @@ namespace WindowsAudioSession.UI.FFT
 
         public void HandleTick()
         {
-            if (_fftAnalyser == null) return;
+            if (_fftAnalyser == null || !IsStarted) return;
 
-            var x0 = Margin;
-            var y0 = Margin;
-            var width = _canvas.ActualWidth - Margin;
-            var height = _canvas.ActualHeight - Margin;
+            try
+            {
 
-            Draw(x0, y0, width, height, ref _fftAnalyser.SpectrumData);
+                var x0 = Margin;
+                var y0 = Margin;
+                var width = _canvas.ActualWidth - Margin;
+                var height = _canvas.ActualHeight - Margin;
+
+                Draw(x0, y0, width, height, ref _fftAnalyser.SpectrumData);
+            } catch (Exception ex)
+            {
+                Stop();
+                UIHelper.ShowError(ex);
+            }
         }
 
         public void Start()
         {
             ResetBars();
+            IsStarted = true;
         }
 
         public void Stop()
         {
             ResetBars();
+            IsStarted = false;
         }
 
     }

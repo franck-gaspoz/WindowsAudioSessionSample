@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 
 using WindowsAudioSession.UI;
@@ -20,6 +22,9 @@ namespace WindowsAudioSession
         {
             try
             {
+                CultureInfo.DefaultThreadCurrentCulture =
+                CultureInfo.DefaultThreadCurrentUICulture =
+                    new CultureInfo("en");
                 WASOverviewWindowViewModel = new WASOverviewWindowViewModel();
                 WASOverviewWindow = new WASOverviewWindow
                 {

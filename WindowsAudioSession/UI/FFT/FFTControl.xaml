@@ -32,8 +32,7 @@
                     <Label Content="bars:" Width="36" />
                     <TextBox Text="{Binding BarCount,FallbackValue=512,
                         Mode=TwoWay,
-                        UpdateSourceTrigger=PropertyChanged,
-                        NotifyOnValidationError=True}" 
+                        UpdateSourceTrigger=PropertyChanged}" 
                              VerticalAlignment="Center"
                              IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}">
                         <Validation.ErrorTemplate>
