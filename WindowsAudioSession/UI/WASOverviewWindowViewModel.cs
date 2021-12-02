@@ -77,7 +77,7 @@ namespace WindowsAudioSession.UI
             }
         }
 
-        int _fftResolution = 1024;
+        int _fftResolution = 8192;
 
         /// <summary>
         /// fft resolution
@@ -97,7 +97,7 @@ namespace WindowsAudioSession.UI
 
         public List<int> FFTResolutions { get; protected set; } = new List<int>
         {
-            256,512,1024,2048,4096,8192,16384
+            1024,2048,4096,8192,16384
         };
 
         public WASOverviewWindowViewModel()

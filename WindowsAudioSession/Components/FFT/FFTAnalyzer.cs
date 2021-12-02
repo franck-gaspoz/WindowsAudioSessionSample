@@ -25,7 +25,7 @@ namespace WindowsAudioSession.Components.FFT
             if (!_fftProvider.IsFFTAvailable) return;
 
             var b0 = 0;
-            var _bufferLastIndex = _fftProvider.SampleLength.ToBufferSize() - 1;
+            var _bufferLastIndex = _fftProvider.FFTLength.ToBufferSize() - 1;
 
             for (var x = 0; x < _barsCount; x++)
             {

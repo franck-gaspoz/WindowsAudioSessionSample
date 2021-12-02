@@ -1,6 +1,4 @@
 ﻿
-using System.ComponentModel.DataAnnotations;
-
 using WindowsAudioSession.Components.AudioCapture;
 using WindowsAudioSession.Components.FFT;
 
@@ -17,7 +15,7 @@ namespace WindowsAudioSession.UI.FFT
         /// <summary>
         /// bar count
         /// </summary>
-        [Range(1, 5)]
+        [BarsCountValidation]
         public int BarCount
         {
             get => _barCount;
@@ -36,10 +34,7 @@ namespace WindowsAudioSession.UI.FFT
         /// </summary>
         public int BarWidthPercent
         {
-            get
-            {
-                return _barWidthPercent;
-            }
+            get => _barWidthPercent;
             set
             {
                 _barWidthPercent = value;

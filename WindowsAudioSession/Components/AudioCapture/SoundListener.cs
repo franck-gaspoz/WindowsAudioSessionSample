@@ -22,11 +22,8 @@ namespace WindowsAudioSession.Components.AudioCapture
 
         readonly WASAPIPROC _process;
 
-        static bool _isInitialized = false;
-
-        static readonly List<int> _initializedSoundDevices = new List<int>();
-
         readonly List<ISoundCaptureHandler> _soundCaptureHandlers = new List<ISoundCaptureHandler>();
+
         const int _activationDelay = 500;
 
         public SoundListener AddSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
@@ -57,31 +54,20 @@ namespace WindowsAudioSession.Components.AudioCapture
 
         void InitiliazeSoundCapture(int soundDeviceIndex, int sampleRate)
         {
-            if (_isInitialized) return;
-
-            _ = Bass.BASS_SetConfig(BASSConfig.BASS_CONFIG_UPDATETHREADS, false);
-
             if (!Bass.BASS_Init(0, sampleRate, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero))
-                ThrowsInitializationErrorException("u4seen.Bass.BASS_Init failed");
+                ThrowsAudioApiErrorException("u4seen.Bass.BASS_Init failed");
 
-            _isInitialized = true;
-
-            if (!_initializedSoundDevices.Contains(soundDeviceIndex))
+            if (!BassWasapi.BASS_WASAPI_Init(
+                soundDeviceIndex,
+                0,  // mix format sample rate
+                0,  // channels (0=mix)
+                BASSWASAPIInit.BASS_WASAPI_BUFFER,  // enable double buffering
+                1f, // buffer length in seconds
+                0.05f,  // callback intervall in seconds
+                _process,   // callback
+                IntPtr.Zero))
             {
-                if (!BassWasapi.BASS_WASAPI_Init(
-                    soundDeviceIndex,
-                    0,
-                    0,
-                    BASSWASAPIInit.BASS_WASAPI_BUFFER,
-                    1f,
-                    0.05f,
-                    _process,
-                    IntPtr.Zero))
-                {
-                    ThrowsInitializationErrorException("BASS_WASAPI_Init failed");
-                }
-
-                _initializedSoundDevices.Add(soundDeviceIndex);
+                ThrowsAudioApiErrorException("BASS_WASAPI_Init failed");
             }
         }
 
@@ -132,7 +118,14 @@ namespace WindowsAudioSession.Components.AudioCapture
             if (!_dispatcherTimer.IsEnabled)
                 return;
 
-            _ = BassWasapi.BASS_WASAPI_Stop(true);
+            if (!BassWasapi.BASS_WASAPI_Stop(true))
+                ThrowsAudioApiErrorException("BassWasapi.BASS_WASAPI_Stop failed");
+            if (!BassWasapi.BASS_WASAPI_Free())
+                ThrowsAudioApiErrorException("BassWasapi.BASS_WASAPI_Free failed");
+            if (!Bass.BASS_Free())
+                ThrowsAudioApiErrorException("Bass.BASS_Free failed");
+            if (!Bass.FreeMe())
+                ThrowsAudioApiErrorException("Bass.FreeMe failed");
 
             Thread.Sleep(_activationDelay);
             _dispatcherTimer.IsEnabled = false;

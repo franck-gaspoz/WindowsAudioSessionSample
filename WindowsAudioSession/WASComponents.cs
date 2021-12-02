@@ -12,7 +12,7 @@ namespace WindowsAudioSession
 
         public SoundListener SoundListener { get; set; }
 
-        public void BuildComponents(SampleLength sampleLength)
+        public void BuildComponents(FFTLength sampleLength)
         {
             SoundListener = new SoundListener();
 

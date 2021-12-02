@@ -7,7 +7,7 @@ namespace WindowsAudioSession.Components
 {
     public static class WindowsAudioSessionHelper
     {
-        public static void ThrowsInitializationErrorException(string reason)
+        public static void ThrowsAudioApiErrorException(string reason)
         {
             var errorCode = Bass.BASS_ErrorGetCode();
             throw new InvalidOperationException($"error: {reason}. Error code = {errorCode}");
@@ -16,9 +16,9 @@ namespace WindowsAudioSession.Components
         public static void FreeBassWasapi()
         {
             if (!BassWasapi.BASS_WASAPI_Free())
-                ThrowsInitializationErrorException("BASS_WASAPI_Free failed");
+                ThrowsAudioApiErrorException("BASS_WASAPI_Free failed");
             if (!Bass.BASS_Free())
-                ThrowsInitializationErrorException("BASS_Free failed");
+                ThrowsAudioApiErrorException("BASS_Free failed");
         }
     }
 }

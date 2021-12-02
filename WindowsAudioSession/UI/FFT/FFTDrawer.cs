@@ -37,7 +37,7 @@ namespace WindowsAudioSession.UI.FFT
                 new GradientStop(Colors.DodgerBlue,0.8),
                 new GradientStop(Colors.Cyan,0.90),
             });
-            BarBrush = new LinearGradientBrush(gradients);
+            BarBrush = new LinearGradientBrush(gradients,90d);
         }
 
         public void AttachTo(FFTAnalyzer fftAnalyzer)
@@ -91,6 +91,12 @@ namespace WindowsAudioSession.UI.FFT
             }
         }
 
+        void ResetBars()
+        {
+            _canvas.Children.Clear();
+            _lastBarSizes = null;
+        }
+
         public void HandleTick()
         {
             if (_fftAnalyser == null) return;
@@ -110,8 +116,7 @@ namespace WindowsAudioSession.UI.FFT
 
         public void Stop()
         {
-            _canvas.Children.Clear();
-            _lastBarSizes = null;
+            ResetBars();
         }
 
     }

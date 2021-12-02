@@ -48,7 +48,7 @@
             <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Left" Margin="8,0,0,8">
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-                    <Label Content="fft res:" Width="48"/>
+                    <Label Content="fft length:" Width="64"/>
                     <ComboBox Width="64" IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}"
                               ItemsSource="{Binding FFTResolutions}"
                               SelectedValue="{Binding FFTResolution,FallbackValue=1024}"/>

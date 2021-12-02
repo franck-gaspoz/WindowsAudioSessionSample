@@ -84,7 +84,8 @@
     <Compile Include="Commands\StartCommand.cs" />
     <Compile Include="Components\ExceptionHelper.cs" />
     <Compile Include="Components\FFT\FFTProvider.cs" />
-    <Compile Include="Components\FFT\SampleLengthExt.cs" />
+    <Compile Include="Components\FFT\FFTLengthExt.cs" />
+    <Compile Include="UI\FFT\BarsCountValidationAttribute.cs" />
     <Compile Include="UI\FFT\FFTControl.xaml.cs">
       <DependentUpon>FFTControl.xaml</DependentUpon>
     </Compile>
@@ -104,7 +105,7 @@
     <Compile Include="Components\AudioCapture\ListenableSoundDevices.cs" />
     <Compile Include="Components\AudioCapture\SoundListener.cs" />
     <Compile Include="Components\FFT\FFTAnalyzer.cs" />
-    <Compile Include="Components\FFT\SampleLength.cs" />
+    <Compile Include="Components\FFT\FFTLength.cs" />
     <Compile Include="Components\WindowsAudioSessionHelper.cs" />
     <Page Include="UI\FFT\FFTControl.xaml">
       <SubType>Designer</SubType>

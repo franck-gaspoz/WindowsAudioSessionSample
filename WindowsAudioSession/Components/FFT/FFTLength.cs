@@ -1,6 +1,6 @@
 ﻿namespace WindowsAudioSession.Components.FFT
 {
-    public enum SampleLength
+    public enum FFTLength
     {
         FFT256,
         FFT512,
