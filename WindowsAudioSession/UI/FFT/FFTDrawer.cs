@@ -39,7 +39,7 @@ namespace WindowsAudioSession.UI.FFT
                 new GradientStop(Colors.DodgerBlue,0.8),
                 new GradientStop(Colors.Cyan,0.90),
             });
-            BarBrush = new LinearGradientBrush(gradients,90d);
+            BarBrush = new LinearGradientBrush(gradients, 90d);
         }
 
         public void AttachTo(FFTAnalyzer fftAnalyzer)
@@ -112,7 +112,8 @@ namespace WindowsAudioSession.UI.FFT
                 var height = _canvas.ActualHeight - Margin;
 
                 Draw(x0, y0, width, height, ref _fftAnalyser.SpectrumData);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Stop();
                 UIHelper.ShowError(ex);

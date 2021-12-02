@@ -75,7 +75,9 @@ namespace WindowsAudioSession.UI.FFT
 
         public void Start()
         {
-            if (IsStarted || !IsValid) return;
+            if (IsStarted) return;
+            Validate();
+            if (!IsValid) return;
             _fftDrawer.Start();
             IsStarted = true;
         }

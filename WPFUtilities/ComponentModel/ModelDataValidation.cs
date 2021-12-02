@@ -41,7 +41,11 @@ namespace WPFUtilities.ComponentModel
         /// </summary>
         public void Validate()
         {
-
+            foreach (var property in GetType().GetProperties())
+            {
+                if (property.GetCustomAttributes(true).Any(x => x is ValidationAttribute))
+                    Validate(property.Name);
+            }
         }
 
         public bool HasErrors => Errors.Any();
