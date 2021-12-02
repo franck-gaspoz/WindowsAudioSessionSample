@@ -111,7 +111,7 @@ namespace WindowsAudioSession.UI.FFT
 
         public void Start()
         {
-
+            ResetBars();
         }
 
         public void Stop()

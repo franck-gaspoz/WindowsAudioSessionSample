@@ -13,7 +13,9 @@ namespace WPFUtilities.ComponentModel
         public readonly IDictionary<string, List<string>> Errors = new Dictionary<string, List<string>>();
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
-        protected void Validate([CallerMemberName] string propertyName = null)
+        public bool IsValid => Errors.Count == 0;
+
+        public void Validate([CallerMemberName] string propertyName = null)
         {
             var property = GetType().GetProperty(propertyName);
             if (property == null)
@@ -32,6 +34,14 @@ namespace WPFUtilities.ComponentModel
             }
 
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        }
+
+        /// <summary>
+        /// validates the model
+        /// </summary>
+        public void Validate()
+        {
+
         }
 
         public bool HasErrors => Errors.Any();

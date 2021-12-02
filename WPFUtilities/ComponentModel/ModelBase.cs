@@ -23,11 +23,21 @@ namespace WPFUtilities.ComponentModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public ModelBase()
+        {
+            ErrorsChanged += ModelBase_ErrorsChanged;
+        }
+
+        private void ModelBase_ErrorsChanged(object sender, DataErrorsChangedEventArgs e)
+        {
+            NotifyPropertyChanged("IsValid");
+        }
+
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (!IsDirty) IsDirty = true;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            if (IsDataValidationEnabled)
+            if (IsDataValidationEnabled && propertyName!=nameof(IsValid))
             {
                 Validate(propertyName);
             }
