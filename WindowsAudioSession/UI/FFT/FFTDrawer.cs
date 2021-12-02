@@ -56,7 +56,8 @@ namespace WindowsAudioSession.UI.FFT
             )
         {
             var barCount = barSizes.Length;
-            var barWidth = (width - 2 * Margin) / barCount;
+            var barMaxWidth = (width - (2d * Margin)) / barCount;
+            var barWidth = barMaxWidth * WidthPercent / 100d;
 
             if (_lastBarSizes == null)
             {
@@ -89,7 +90,7 @@ namespace WindowsAudioSession.UI.FFT
                 Canvas.SetTop(bar, y_top);
                 bar.Height = barHeight;
 
-                x += barWidth;
+                x += barMaxWidth;
             }
         }
 

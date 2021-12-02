@@ -70,6 +70,7 @@ namespace WindowsAudioSession.UI.FFT
 
         public void HandleTick()
         {
+            _fftDrawer.WidthPercent = BarWidthPercent;
             _fftDrawer.HandleTick();
         }
 
