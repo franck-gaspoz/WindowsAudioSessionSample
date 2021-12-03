@@ -10,6 +10,20 @@
 
     <Grid x:Name="container" >
 
+        <Grid.Resources>
+
+            <LinearGradientBrush x:Key="VuMeterBrush">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Color="Green" Offset="0"/>
+                    <GradientStop Color="LightGreen" Offset="0.1"/>
+                    <GradientStop Color="Yellow" Offset="0.60"/>
+                    <GradientStop Color="Orange" Offset="0.7"/>
+                    <GradientStop Color="Red" Offset="0.9"/>
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+
+        </Grid.Resources>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
@@ -21,16 +35,103 @@
 
         <Rectangle 
             Grid.Column="2"
-            Height="8"      
-            HorizontalAlignment="Left"
-            Fill="Red">
+            Height="8"    
+            Opacity="0.5"
+            HorizontalAlignment="Stretch"
+            Fill="{StaticResource VuMeterBrush}"/>
+        
+        <Rectangle 
+            Grid.Column="2"
+            Height="6"      
+            HorizontalAlignment="Stretch"
+            Fill="{StaticResource VuMeterBrush}"/>
+        
+        <Rectangle 
+            Grid.Column="2"
+            Height="6"      
+            HorizontalAlignment="Right"            
+            Fill="Black">
             <Rectangle.Width>
-                <MultiBinding Converter="{x:Static converters:SizePercentageConverter.Instance}">
+                <MultiBinding Converter="{x:Static converters:SizePercentConverter.Instance}">
                     <Binding ElementName="container" Path="ActualWidth" FallbackValue="100"/>
-                    <Binding Path="Level" FallbackValue="1"/>
+                    <Binding Path="InvertedLevel" FallbackValue="1"/>
                 </MultiBinding>
             </Rectangle.Width>
         </Rectangle>
+
+        <Grid Grid.Column="2">
+            <Grid.Resources>
+                <Style TargetType="Rectangle">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="Fill" Value="black"/>
+                    <Setter Property="Width" Value="4"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Grid.Column="1"/>
+            <Rectangle Grid.Column="3"/>
+            <Rectangle Grid.Column="5"/>
+            <Rectangle Grid.Column="7"/>
+            <Rectangle Grid.Column="9"/>
+            <Rectangle Grid.Column="11"/>
+            <Rectangle Grid.Column="13"/>
+            <Rectangle Grid.Column="15"/>
+            <Rectangle Grid.Column="17"/>
+            <Rectangle Grid.Column="19"/>
+            <Rectangle Grid.Column="21"/>
+            <Rectangle Grid.Column="23"/>
+            <Rectangle Grid.Column="25"/>
+            <Rectangle Grid.Column="27"/>
+            <Rectangle Grid.Column="29"/>
+            <Rectangle Grid.Column="31"/>
+            <Rectangle Grid.Column="33"/>
+            <Rectangle Grid.Column="35"/>
+            <Rectangle Grid.Column="37"/>
+            <Rectangle Grid.Column="39"/>
+        </Grid>
         
     </Grid>
     

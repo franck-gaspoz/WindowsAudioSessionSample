@@ -51,6 +51,7 @@
     <Compile Include="ComponentModel\ModelBase.cs" />
     <Compile Include="ComponentModel\ModelDataValidation.cs" />
     <Compile Include="Converters\NotBooleanConverter.cs" />
+    <Compile Include="Converters\SizePercentRectConverter.cs" />
     <Compile Include="Converters\SizePercentConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

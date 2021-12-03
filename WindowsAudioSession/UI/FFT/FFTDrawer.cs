@@ -18,7 +18,6 @@ namespace WindowsAudioSession.UI.FFT
 
         public double WidthPercent { get; set; } = 100;
 
-        int[] _lastBarSizes;
         Rectangle[] _bars;
 
         readonly GradientBrush BarBrush;
@@ -59,9 +58,8 @@ namespace WindowsAudioSession.UI.FFT
             var barMaxWidth = (width - (2d * Margin)) / barCount;
             var barWidth = barMaxWidth * WidthPercent / 100d;
 
-            if (_lastBarSizes == null)
+            if (_bars == null)
             {
-                _lastBarSizes = new int[barCount];
                 _bars = new Rectangle[barCount];
                 for (var i = 0; i < barCount; i++)
                 {
@@ -97,7 +95,7 @@ namespace WindowsAudioSession.UI.FFT
         void ResetBars()
         {
             _canvas.Children.Clear();
-            _lastBarSizes = null;
+            _bars = null;
         }
 
         public void HandleTick()

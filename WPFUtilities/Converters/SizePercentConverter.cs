@@ -4,11 +4,11 @@ using System.Windows.Data;
 
 namespace WPFUtilities.Converters
 {
-    public class SizePercentageConverter : IMultiValueConverter
+    public class SizePercentConverter : IMultiValueConverter
     {
-        static SizePercentageConverter _instance;
-        public static SizePercentageConverter Instance
-            => _instance ?? (_instance = new SizePercentageConverter());
+        static SizePercentConverter _instance;
+        public static SizePercentConverter Instance
+            => _instance ?? (_instance = new SizePercentConverter());
 
         /// <summary>
         /// parameter 0 : a size

@@ -18,6 +18,25 @@ namespace WindowsAudioSession.UI.SoundLevel
             {
                 _level = value;
                 NotifyPropertyChanged();
+                InvertedLevel = 1 - _level;
+            }
+        }
+
+        double _invertedLevel = 1;
+
+        /// <summary>
+        /// inverted level
+        /// </summary>
+        public double InvertedLevel
+        {
+            get
+            {
+                return _invertedLevel;
+            }
+            set
+            {
+                _invertedLevel = value;
+                NotifyPropertyChanged();
             }
         }
 
@@ -46,15 +65,14 @@ namespace WindowsAudioSession.UI.SoundLevel
         /// </summary>
         public double LabelWidth
         {
-            get
-            {
-                return _labelWidth;
-            }
+            get => _labelWidth;
+
             set
             {
                 _labelWidth = value;
                 NotifyPropertyChanged();
             }
         }
+
     }
 }

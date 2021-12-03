@@ -12,6 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{BC20D436-EE21-4703-AE47-41C9E64ACC1E}"
+	ProjectSection(SolutionItems) = preProject
+		Doc\windows-audio-session-sample.gif.gif = Doc\windows-audio-session-sample.gif.gif
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +34,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BC20D436-EE21-4703-AE47-41C9E64ACC1E} = {894D20A8-B3F5-4106-9054-C6632770FBCE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C32B7050-47CC-489F-9E0C-C7C3470CD3CD}
