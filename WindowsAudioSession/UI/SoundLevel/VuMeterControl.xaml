@@ -29,7 +29,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Foreground="White" Width="{Binding LabelWidth,FallbackValue=12}" Text="{Binding Label,FallbackValue=?}"
+        <TextBlock Foreground="White" 
+                   Width="{Binding LabelWidth,FallbackValue=12}" 
+                   Text="{Binding Label,FallbackValue=C}"
                    Margin="0,0,0,0" 
                    HorizontalAlignment="Left" VerticalAlignment="Center"/>
 

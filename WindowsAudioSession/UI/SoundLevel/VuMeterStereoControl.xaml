@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:WindowsAudioSession.UI.SoundLevel" 
              d:DataContext="{d:DesignInstance Type=local:VuMeterStereoViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="200" Background="Black">
+             d:DesignHeight="48" d:DesignWidth="200" Background="Black">
 
     <Grid Margin="8">
 

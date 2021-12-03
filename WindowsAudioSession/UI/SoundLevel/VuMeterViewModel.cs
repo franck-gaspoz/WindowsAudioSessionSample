@@ -40,7 +40,7 @@ namespace WindowsAudioSession.UI.SoundLevel
             }
         }
 
-        string _label = "?";
+        string _label = "C";
 
         /// <summary>
         /// label
