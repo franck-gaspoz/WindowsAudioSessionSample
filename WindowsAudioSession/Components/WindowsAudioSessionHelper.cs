@@ -9,6 +9,11 @@ namespace WindowsAudioSession.Components
     {
         public static void ThrowsAudioApiErrorException(string reason)
         {
+            throw BuildAudioApiErrorException(reason);
+        }
+
+        public static Exception BuildAudioApiErrorException(string reason)
+        {
             var errorCode = Bass.BASS_ErrorGetCode();
             throw new InvalidOperationException($"error: {reason}. Error code = {errorCode}");
         }
@@ -20,5 +25,6 @@ namespace WindowsAudioSession.Components
             if (!Bass.BASS_Free())
                 ThrowsAudioApiErrorException("BASS_Free failed");
         }
+
     }
 }

@@ -45,9 +45,6 @@ namespace WindowsAudioSession.Components.FFT
                 SpectrumData[x] = y;
             }
 
-            //if (DisplayEnable) _spectrum.Set(_spectrumdata);
-            //for (x = 0; x < _linesCount; x++) _spectrumdata[x] = 0;
-
             // level sound capture handler
             /*int level = BassWasapi.BASS_WASAPI_GetLevel();
             _l.Value = Utils.LowWord32(level);

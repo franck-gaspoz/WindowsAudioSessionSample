@@ -7,6 +7,7 @@
         xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
         xmlns:commands="clr-namespace:WindowsAudioSession.Commands"
         xmlns:fftControls="clr-namespace:WindowsAudioSession.UI.FFT"
+        xmlns:soundLevelControls="clr-namespace:WindowsAudioSession.UI.SoundLevel"
         d:DataContext="{d:DesignInstance Type=local:WASOverviewWindowViewModel}"
         Topmost="True"
         WindowStartupLocation="CenterScreen"
@@ -29,6 +30,7 @@
                 <ColumnDefinition Width="240"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <ListBox ItemsSource="{Binding ListenableDevices}" SelectedItem="{Binding SelectedDevice,Mode=TwoWay}" />
@@ -58,9 +60,21 @@
 
             </StackPanel>
 
+            <Grid Grid.Column="3" Margin="8,0,0,0">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <soundLevelControls:VuMeterControl x:Name="vuMeterControl1"/>
+
+            </Grid>
+            
         </Grid>
 
-        <fftControls:FFTControl Grid.Row="1" x:Name="FFTControl1"/>
+        <fftControls:FFTControl Grid.Row="1" x:Name="fftControl1"/>
 
     </Grid>
 </Window>

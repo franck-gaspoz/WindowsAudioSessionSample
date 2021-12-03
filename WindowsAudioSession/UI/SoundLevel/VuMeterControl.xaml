@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="WindowsAudioSession.UI.SoundLevel.VuMeterControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
+             xmlns:local="clr-namespace:WindowsAudioSession.UI.SoundLevel" 
+             d:DataContext="{d:DesignInstance Type=local:VuMeterViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="200" Background="Black">
+
+    <Grid x:Name="container" Margin="8">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Height="8"      
+                   HorizontalAlignment="Left"
+                   Fill="Red">
+            <Rectangle.Width>
+                <MultiBinding Converter="{x:Static converters:SizePercentageConverter.Instance}">
+                    <Binding ElementName="container" Path="ActualWidth" FallbackValue="100"/>
+                    <Binding Path="LevelRight" FallbackValue="1"/>
+                </MultiBinding>
+            </Rectangle.Width>
+        </Rectangle>
+
+        <Rectangle Grid.Row="2"
+                   Height="8"
+                   HorizontalAlignment="Left"
+                   Fill="Red" >
+            <Rectangle.Width>
+                <MultiBinding Converter="{x:Static converters:SizePercentageConverter.Instance}">
+                    <Binding ElementName="container" Path="ActualWidth" FallbackValue="100"/>
+                    <Binding Path="LevelLeft" FallbackValue="1"/>
+                </MultiBinding>
+            </Rectangle.Width>
+        </Rectangle>
+
+    </Grid>
+    
+</UserControl>
