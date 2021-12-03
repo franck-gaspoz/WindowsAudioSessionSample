@@ -7,15 +7,17 @@
              xmlns:local="clr-namespace:WindowsAudioSession.UI.SoundLevel" d:DataContext="{d:DesignInstance Type=local:VuMeterViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="16" d:DesignWidth="200">
-    
-    <Grid>
+
+    <Grid x:Name="container" >
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Foreground="White" Text="{Binding ChannelLabel,FallbackValue=?}" Margin="0,0,4,0" VerticalAlignment="Center"/>
+        <TextBlock Foreground="White" Width="{Binding LabelWidth,FallbackValue=12}" Text="{Binding Label,FallbackValue=?}"
+                   Margin="0,0,0,0" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         <Rectangle 
             Grid.Column="2"

@@ -9,10 +9,10 @@ namespace WindowsAudioSession.UI.SoundLevel
     public class VuMeterStereoViewModel : ModelBase, ISoundCaptureHandler
     {
         public VuMeterViewModel VuMeterLeftViewModel { get; protected set; }
-            = new VuMeterViewModel() { ChannelLabel = "L" };
+            = new VuMeterViewModel() { Label = "L" };
 
         public VuMeterViewModel VuMeterRightViewModel { get; protected set; }
-            = new VuMeterViewModel() { ChannelLabel = "R" };
+            = new VuMeterViewModel() { Label = "R" };
 
         SoundLevelCapture _soundLevelCapture;
 

@@ -12,7 +12,7 @@
         Topmost="True"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="Windows Audio Session Samples" 
+        Title="Windows Audio Session Sample" 
 		Height="414" 
 		Width="891"	
 		>

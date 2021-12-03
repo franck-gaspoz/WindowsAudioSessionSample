@@ -21,20 +21,38 @@ namespace WindowsAudioSession.UI.SoundLevel
             }
         }
 
-        string _channelLabel = "?";
+        string _label = "?";
 
         /// <summary>
-        /// channel label
+        /// label
         /// </summary>
-        public string ChannelLabel
+        public string Label
         {
             get
             {
-                return _channelLabel;
+                return _label;
             }
             set
             {
-                _channelLabel = value;
+                _label = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        double _labelWidth = 12;
+
+        /// <summary>
+        /// label width
+        /// </summary>
+        public double LabelWidth
+        {
+            get
+            {
+                return _labelWidth;
+            }
+            set
+            {
+                _labelWidth = value;
                 NotifyPropertyChanged();
             }
         }
