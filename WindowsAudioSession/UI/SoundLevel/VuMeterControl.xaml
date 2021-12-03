@@ -4,42 +4,32 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
-             xmlns:local="clr-namespace:WindowsAudioSession.UI.SoundLevel" 
-             d:DataContext="{d:DesignInstance Type=local:VuMeterViewModel}"
+             xmlns:local="clr-namespace:WindowsAudioSession.UI.SoundLevel" d:DataContext="{d:DesignInstance Type=local:VuMeterViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="200" Background="Black">
+             d:DesignHeight="16" d:DesignWidth="200">
+    
+    <Grid>
 
-    <Grid x:Name="container" Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="4"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+        <TextBlock Foreground="White" Text="{Binding ChannelLabel,FallbackValue=?}" Margin="0,0,4,0" VerticalAlignment="Center"/>
 
-        <Rectangle Height="8"      
-                   HorizontalAlignment="Left"
-                   Fill="Red">
+        <Rectangle 
+            Grid.Column="2"
+            Height="8"      
+            HorizontalAlignment="Left"
+            Fill="Red">
             <Rectangle.Width>
                 <MultiBinding Converter="{x:Static converters:SizePercentageConverter.Instance}">
                     <Binding ElementName="container" Path="ActualWidth" FallbackValue="100"/>
-                    <Binding Path="LevelRight" FallbackValue="1"/>
+                    <Binding Path="Level" FallbackValue="1"/>
                 </MultiBinding>
             </Rectangle.Width>
         </Rectangle>
-
-        <Rectangle Grid.Row="2"
-                   Height="8"
-                   HorizontalAlignment="Left"
-                   Fill="Red" >
-            <Rectangle.Width>
-                <MultiBinding Converter="{x:Static converters:SizePercentageConverter.Instance}">
-                    <Binding ElementName="container" Path="ActualWidth" FallbackValue="100"/>
-                    <Binding Path="LevelLeft" FallbackValue="1"/>
-                </MultiBinding>
-            </Rectangle.Width>
-        </Rectangle>
-
+        
     </Grid>
     
 </UserControl>

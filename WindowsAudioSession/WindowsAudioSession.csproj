@@ -91,10 +91,14 @@
       <DependentUpon>FFTControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\FFT\FFTControlViewModel.cs" />
-    <Compile Include="UI\SoundLevel\VuMeterViewModel.cs" />
     <Compile Include="UI\SoundLevel\VuMeterControl.xaml.cs">
       <DependentUpon>VuMeterControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\SoundLevel\VuMeterStereoViewModel.cs" />
+    <Compile Include="UI\SoundLevel\VuMeterStereoControl.xaml.cs">
+      <DependentUpon>VuMeterStereoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SoundLevel\VuMeterViewModel.cs" />
     <Compile Include="UI\UIHelper.cs" />
     <Compile Include="WASComponents.cs" />
     <Compile Include="UI\FFT\FFTDrawer.cs" />
@@ -117,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\SoundLevel\VuMeterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\SoundLevel\VuMeterStereoControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

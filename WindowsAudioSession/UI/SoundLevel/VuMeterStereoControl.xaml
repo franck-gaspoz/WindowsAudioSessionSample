@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="WindowsAudioSession.UI.SoundLevel.VuMeterStereoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:soundLevelControls="clr-namespace:WindowsAudioSession.UI.SoundLevel"
+             xmlns:local="clr-namespace:WindowsAudioSession.UI.SoundLevel" 
+             d:DataContext="{d:DesignInstance Type=local:VuMeterStereoViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="200" Background="Black">
+
+    <Grid x:Name="container" Margin="8">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <soundLevelControls:VuMeterControl DataContext="{Binding VuMeterLeftViewModel}"/>
+
+        <soundLevelControls:VuMeterControl Grid.Row="2" DataContext="{Binding VuMeterRightViewModel}"/>
+
+    </Grid>
+    
+</UserControl>

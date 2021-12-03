@@ -68,7 +68,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <soundLevelControls:VuMeterControl x:Name="vuMeterControl1"/>
+                <soundLevelControls:VuMeterStereoControl x:Name="vuMeterControl1"/>
 
             </Grid>
             
