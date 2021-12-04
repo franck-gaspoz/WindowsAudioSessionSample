@@ -9,7 +9,7 @@ namespace WindowsAudioSession.UI.FFT
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            if (!(validationContext.ObjectInstance is FFTControlViewModel))
+            if (!(validationContext!=null && validationContext.ObjectInstance is FFTControlViewModel))
                 return new ValidationResult($"can only by used in a model of type {typeof(FFTControlViewModel)}");
 
             var maxAllowed = Math.Min(4096, App.WASOverviewWindowViewModel.FFTResolution / 2);

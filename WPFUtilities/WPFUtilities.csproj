@@ -48,6 +48,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="ComponentModel\ModelBase.cs" />
     <Compile Include="ComponentModel\ModelDataValidation.cs" />
     <Compile Include="Converters\NotBooleanConverter.cs" />

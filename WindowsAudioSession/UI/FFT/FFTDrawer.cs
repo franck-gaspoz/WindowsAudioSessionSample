@@ -20,26 +20,24 @@ namespace WindowsAudioSession.UI.FFT
 
         Rectangle[] _bars;
 
-        readonly GradientBrush BarBrush;
+        public Brush BarBrush { get; set; }
+            = new LinearGradientBrush(
+                new GradientStopCollection(
+                    new List<GradientStop>()
+                    {
+                        new GradientStop(Colors.Red,0),
+                        new GradientStop(Colors.Orange,0.1),
+                        new GradientStop(Colors.Yellow,0.2),
+                        new GradientStop(Colors.LightGreen,0.3),
+                        new GradientStop(Colors.Green,0.6),
+                        new GradientStop(Colors.DodgerBlue,0.8),
+                        new GradientStop(Colors.Cyan,0.90),
+                    }),
+                90d);
 
         public bool IsStarted { get; protected set; }
 
-        public FFTDrawer(Canvas canvas)
-        {
-            _canvas = canvas;
-
-            var gradients = new GradientStopCollection(new List<GradientStop>()
-            {
-                new GradientStop(Colors.Red,0),
-                new GradientStop(Colors.Orange,0.1),
-                new GradientStop(Colors.Yellow,0.2),
-                new GradientStop(Colors.LightGreen,0.3),
-                new GradientStop(Colors.Green,0.6),
-                new GradientStop(Colors.DodgerBlue,0.8),
-                new GradientStop(Colors.Cyan,0.90),
-            });
-            BarBrush = new LinearGradientBrush(gradients, 90d);
-        }
+        public FFTDrawer(Canvas canvas) => _canvas = canvas;
 
         public void AttachTo(FFTAnalyzer fftAnalyzer)
         {

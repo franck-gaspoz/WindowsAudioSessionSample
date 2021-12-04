@@ -8,7 +8,7 @@ namespace WindowsAudioSession.UI.FFT
 {
     public class FFTControlViewModel : ModelBase, ISoundCaptureHandler
     {
-        readonly FFTDrawer _fftDrawer;
+        public FFTDrawer FFTDrawer { get; protected set; }
 
         int _barCount = 512;
 
@@ -60,18 +60,18 @@ namespace WindowsAudioSession.UI.FFT
 
         public FFTControlViewModel(FFTControl fftControl)
         {
-            _fftDrawer = new FFTDrawer(fftControl.BarGraph);
+            FFTDrawer = new FFTDrawer(fftControl.BarGraph);
         }
 
         public void AttachTo(FFTAnalyzer fftAnalyzer)
         {
-            _fftDrawer.AttachTo(fftAnalyzer);
+            FFTDrawer.AttachTo(fftAnalyzer);
         }
 
         public void HandleTick()
         {
-            _fftDrawer.WidthPercent = BarWidthPercent;
-            _fftDrawer.HandleTick();
+            FFTDrawer.WidthPercent = BarWidthPercent;
+            FFTDrawer.HandleTick();
         }
 
         public void Start()
@@ -79,14 +79,14 @@ namespace WindowsAudioSession.UI.FFT
             if (IsStarted) return;
             Validate();
             if (!IsValid) return;
-            _fftDrawer.Start();
+            FFTDrawer.Start();
             IsStarted = true;
         }
 
         public void Stop()
         {
             if (!IsStarted) return;
-            _fftDrawer.Stop();
+            FFTDrawer.Stop();
             IsStarted = false;
         }
     }

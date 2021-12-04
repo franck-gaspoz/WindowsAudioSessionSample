@@ -76,5 +76,19 @@
 
         <fftControls:FFTControl Grid.Row="1" x:Name="fftControl1"/>
 
+        <Border BorderBrush="#444444" BorderThickness="1"
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                Margin="0,16,0,0"
+                Grid.Row="1">
+            <fftControls:FFTControl 
+                BarCount="16"
+                BarWidthPercent="90"
+                FFTDrawMargin="0"
+                IsBarCountControlVisible="False"
+                IsBarSizeControlVisible="False"
+                Width="300" Height="66" 
+                x:Name="fftControl2"/>
+        </Border>
+        
     </Grid>
 </Window>
