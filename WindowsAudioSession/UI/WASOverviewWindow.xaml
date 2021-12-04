@@ -83,7 +83,7 @@
             <fftControls:FFTControl 
                 Opacity="0.7"
                 BarCount="16"
-                BarWidthPercent="90"
+                BarWidthPercent="80"
                 FFTDrawMargin="0"
                 IsBarCountControlVisible="False"
                 IsBarSizeControlVisible="False"

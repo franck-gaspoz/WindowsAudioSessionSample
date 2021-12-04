@@ -7,6 +7,7 @@ using System.Windows;
 using System.Collections.Generic;
 using System.Windows.Shapes;
 using WPFUtilities.CustomBrushes;
+using WindowsAudioSession.UI.FFT;
 
 namespace WindowsAudioSession
 {
@@ -15,26 +16,45 @@ namespace WindowsAudioSession
         public FFTProvider FFTProvider { get; protected set; }
         public FFTAnalyzer FFTAnalyser1 { get; protected set; }
         public FFTAnalyzer FFTAnalyser2 { get; protected set; }
+        public FFTPeakAnalyzer FFTPeakAnalyser2 { get; protected set; }
+        public FFTPeakDrawer FFTPeakDrawer2 { get; protected set; }
         public SoundListener SoundListener { get; protected set; }
         public SoundLevelCapture SoundLevelCapture { get; protected set; }
 
         public void BuildComponents(FFTLength sampleLength)
         {
+            // chain manager
+
             SoundListener = new SoundListener();
+
+            // FFT
 
             FFTProvider = new FFTProvider(sampleLength);
 
-            FFTAnalyser1 = new FFTAnalyzer( FFTProvider, App.WASOverviewWindow.fftControl1.ViewModel.BarCount);
-            App.WASOverviewWindow.fftControl1.ViewModel.AttachTo(FFTAnalyser1);
+            // FFT component #1
 
-            FFTAnalyser2 = new FFTAnalyzer(FFTProvider, App.WASOverviewWindow.fftControl2.ViewModel.BarCount);
-            App.WASOverviewWindow.fftControl2.ViewModel.AttachTo(FFTAnalyser2);
+            var fftControl1ViewModel = App.WASOverviewWindow.fftControl1.ViewModel;
+            FFTAnalyser1 = new FFTAnalyzer( FFTProvider, fftControl1ViewModel.BarCount);
+            fftControl1ViewModel.AttachTo(FFTAnalyser1);
 
-            App.WASOverviewWindow.fftControl2.ViewModel.FFTDrawer.BarBrush 
+            // FFT component #2
+
+            var fftControl2ViewModel = App.WASOverviewWindow.fftControl2.ViewModel;
+            FFTAnalyser2 = new FFTAnalyzer(FFTProvider, fftControl2ViewModel.BarCount);
+            fftControl2ViewModel.AttachTo(FFTAnalyser2);
+            fftControl2ViewModel.FFTDrawer.BarBrush 
                 = HatchRawBrush.Build(Brushes.LightGreen,4,2);
+
+            FFTPeakAnalyser2 = new FFTPeakAnalyzer(FFTAnalyser2, fftControl2ViewModel.BarCount);
+            FFTPeakDrawer2 = new FFTPeakDrawer(App.WASOverviewWindow.fftControl2.BarGraph) { WidthPercent = 80d };
+            FFTPeakDrawer2.AttachTo(FFTPeakAnalyser2);
+
+            // Sound Level component
 
             SoundLevelCapture = new SoundLevelCapture();
             App.WASOverviewWindow.vuMeterControl1.ViewModel.AttachTo(SoundLevelCapture);
+
+            // components chain
 
             _ = SoundListener
                 .AddSoundCaptureHandler(FFTProvider)
@@ -44,6 +64,8 @@ namespace WindowsAudioSession
 
                 .AddSoundCaptureHandler(FFTAnalyser2)
                 .AddSoundCaptureHandler(App.WASOverviewWindow.fftControl2.ViewModel)
+                .AddSoundCaptureHandler(FFTPeakAnalyser2)
+                .AddSoundCaptureHandler(FFTPeakDrawer2)
 
                 .AddSoundCaptureHandler(SoundLevelCapture)
                 .AddSoundCaptureHandler(App.WASOverviewWindow.vuMeterControl1.ViewModel);

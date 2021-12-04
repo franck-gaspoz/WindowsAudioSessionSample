@@ -83,6 +83,7 @@
     <Compile Include="Commands\StopCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
     <Compile Include="Components\ExceptionHelper.cs" />
+    <Compile Include="Components\FFT\FFTPeakAnalyzer.cs" />
     <Compile Include="Components\FFT\FFTProvider.cs" />
     <Compile Include="Components\FFT\FFTLengthExt.cs" />
     <Compile Include="Components\SoundLevelCapture.cs" />
@@ -91,6 +92,7 @@
       <DependentUpon>FFTControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\FFT\FFTControlViewModel.cs" />
+    <Compile Include="UI\FFT\FFTPeakDrawer.cs" />
     <Compile Include="UI\SoundLevel\VuMeterControl.xaml.cs">
       <DependentUpon>VuMeterControl.xaml</DependentUpon>
     </Compile>

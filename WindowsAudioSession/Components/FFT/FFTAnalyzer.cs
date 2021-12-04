@@ -44,29 +44,6 @@ namespace WindowsAudioSession.Components.FFT
 
                 SpectrumData[x] = y;
             }
-
-            // level sound capture handler
-            /*int level = BassWasapi.BASS_WASAPI_GetLevel();
-            _l.Value = Utils.LowWord32(level);
-            _r.Value = Utils.HighWord32(level);
-            if (level == _lastlevel && level != 0) _hanctr++;
-            _lastlevel = level;
-            */
-
-            //Required, because some programs hang the output. If the output hangs for a 75ms
-            //this piece of code re initializes the output so it doesn't make a gliched sound for long.
-            /*
-            if (_hanctr > 3)
-            {
-                _hanctr = 0;
-                _l.Value = 0;
-                _r.Value = 0;
-                Free();
-                Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
-                _initialized = false;
-                Enable = true;
-            }
-            */
         }
 
         public void Start()
