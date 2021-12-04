@@ -78,9 +78,10 @@
 
         <Border BorderBrush="#444444" BorderThickness="1"
                 HorizontalAlignment="Center" VerticalAlignment="Top"
-                Margin="0,16,0,0"
+                Margin="0,24,0,0"
                 Grid.Row="1">
             <fftControls:FFTControl 
+                Opacity="0.7"
                 BarCount="16"
                 BarWidthPercent="90"
                 FFTDrawMargin="0"

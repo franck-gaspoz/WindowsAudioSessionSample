@@ -3,6 +3,10 @@ using WindowsAudioSession.Components.AudioCapture;
 using WindowsAudioSession.Components.FFT;
 using WindowsAudioSession.Components;
 using System.Windows.Media;
+using System.Windows;
+using System.Collections.Generic;
+using System.Windows.Shapes;
+using WPFUtilities.CustomBrushes;
 
 namespace WindowsAudioSession
 {
@@ -25,7 +29,9 @@ namespace WindowsAudioSession
 
             FFTAnalyser2 = new FFTAnalyzer(FFTProvider, App.WASOverviewWindow.fftControl2.ViewModel.BarCount);
             App.WASOverviewWindow.fftControl2.ViewModel.AttachTo(FFTAnalyser2);
-            App.WASOverviewWindow.fftControl2.ViewModel.FFTDrawer.BarBrush = Brushes.LightGreen;
+
+            App.WASOverviewWindow.fftControl2.ViewModel.FFTDrawer.BarBrush 
+                = HatchRawBrush.Build(Brushes.LightGreen,4,2);
 
             SoundLevelCapture = new SoundLevelCapture();
             App.WASOverviewWindow.vuMeterControl1.ViewModel.AttachTo(SoundLevelCapture);
