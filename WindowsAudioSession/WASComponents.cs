@@ -3,9 +3,6 @@ using WindowsAudioSession.Components.AudioCapture;
 using WindowsAudioSession.Components.FFT;
 using WindowsAudioSession.Components;
 using System.Windows.Media;
-using System.Windows;
-using System.Collections.Generic;
-using System.Windows.Shapes;
 using WPFUtilities.CustomBrushes;
 using WindowsAudioSession.UI.FFT;
 
@@ -34,7 +31,7 @@ namespace WindowsAudioSession
             // FFT component #1
 
             var fftControl1ViewModel = App.WASOverviewWindow.fftControl1.ViewModel;
-            FFTAnalyser1 = new FFTAnalyzer( FFTProvider, fftControl1ViewModel.BarCount);
+            FFTAnalyser1 = new FFTAnalyzer(FFTProvider, fftControl1ViewModel.BarCount);
             fftControl1ViewModel.AttachTo(FFTAnalyser1);
 
             // FFT component #2
@@ -42,8 +39,8 @@ namespace WindowsAudioSession
             var fftControl2ViewModel = App.WASOverviewWindow.fftControl2.ViewModel;
             FFTAnalyser2 = new FFTAnalyzer(FFTProvider, fftControl2ViewModel.BarCount);
             fftControl2ViewModel.AttachTo(FFTAnalyser2);
-            fftControl2ViewModel.FFTDrawer.BarBrush 
-                = HatchRawBrush.Build(Brushes.LightGreen,4,2);
+            fftControl2ViewModel.FFTDrawer.BarBrush
+                = HatchRawBrush.Build(Brushes.LightGreen, 4, 3);
 
             FFTPeakAnalyser2 = new FFTPeakAnalyzer(FFTAnalyser2, fftControl2ViewModel.BarCount);
             FFTPeakDrawer2 = new FFTPeakDrawer(App.WASOverviewWindow.fftControl2.BarGraph) { WidthPercent = 80d };
@@ -52,7 +49,8 @@ namespace WindowsAudioSession
             // Sound Level component
 
             SoundLevelCapture = new SoundLevelCapture();
-            App.WASOverviewWindow.vuMeterControl1.ViewModel.AttachTo(SoundLevelCapture);
+            var vuMeterViewModel = App.WASOverviewWindow.vuMeterControl1.ViewModel;
+            vuMeterViewModel.AttachTo(SoundLevelCapture);
 
             // components chain
 
@@ -60,15 +58,15 @@ namespace WindowsAudioSession
                 .AddSoundCaptureHandler(FFTProvider)
 
                 .AddSoundCaptureHandler(FFTAnalyser1)
-                .AddSoundCaptureHandler(App.WASOverviewWindow.fftControl1.ViewModel)
+                .AddSoundCaptureHandler(fftControl1ViewModel)
 
                 .AddSoundCaptureHandler(FFTAnalyser2)
-                .AddSoundCaptureHandler(App.WASOverviewWindow.fftControl2.ViewModel)
+                .AddSoundCaptureHandler(fftControl2ViewModel)
                 .AddSoundCaptureHandler(FFTPeakAnalyser2)
                 .AddSoundCaptureHandler(FFTPeakDrawer2)
 
                 .AddSoundCaptureHandler(SoundLevelCapture)
-                .AddSoundCaptureHandler(App.WASOverviewWindow.vuMeterControl1.ViewModel);
+                .AddSoundCaptureHandler(vuMeterViewModel);
         }
     }
 }

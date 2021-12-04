@@ -102,7 +102,6 @@ namespace WindowsAudioSession.UI.FFT
 
             try
             {
-
                 var x0 = Margin;
                 var y0 = Margin;
                 var width = _canvas.ActualWidth - Margin;
