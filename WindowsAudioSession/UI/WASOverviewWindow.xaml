@@ -91,30 +91,47 @@
 
         <fftControls:FFTControl Grid.Row="1" x:Name="fftControl1" ShowScaleLines="True"/>
 
-        <Border BorderBrush="#444444" BorderThickness="1"
-                HorizontalAlignment="Center" VerticalAlignment="Top"
-                Margin="0,24,0,0"
-                Grid.Row="1">
-            <fftControls:FFTControl 
-                DrawBackground="#66000000"
-                BarCount="16"
-                BarWidthPercent="80"
-                FFTDrawMargin="0"
-                IsBarCountControlVisible="False"
-                IsBarSizeControlVisible="False"
-                Width="300" Height="66" 
-                x:Name="fftControl2"/>
-        </Border>
+        <Grid Grid.Row="1" Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="33*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="8"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="8"/>
+                <ColumnDefinition Width="33*"/>
+            </Grid.ColumnDefinitions>
 
-        <Border BorderBrush="#444444" BorderThickness="1"
-                HorizontalAlignment="Center" VerticalAlignment="Top"
-                Margin="0,108,0,0"
-                Grid.Row="1">
-            <soundWaveControls:SoundWaveControl
-                DrawBackground="#66000000"
-                Width="300" Height="66" 
-                x:Name="soundWaveControl"/>
-        </Border>
+            <Border BorderBrush="#444444"
+                    BorderThickness="1"
+                    Grid.Row="1"
+                    Grid.Column="2"        
+                    >
+                    <fftControls:FFTControl 
+                        DrawBackground="#66000000"
+                        BarCount="16"
+                        BarWidthPercent="80"
+                        FFTDrawMargin="0"
+                        IsBarCountControlVisible="False"
+                        IsBarSizeControlVisible="False"
+                        x:Name="fftControl2"/>
+            </Border>
 
+            <Border BorderBrush="#444444" BorderThickness="1"
+                    Grid.Column="2"
+                    Grid.Row="3">
+                    <soundWaveControls:SoundWaveControl
+                        DrawBackground="#66000000"
+                        x:Name="soundWaveControl"/>
+            </Border>
+
+        </Grid>
+       
     </Grid>
 </Window>
