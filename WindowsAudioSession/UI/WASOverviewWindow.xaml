@@ -15,9 +15,9 @@
         mc:Ignorable="d"
         Title="Windows Audio Session Sample" 
 		Height="414" 
-		Width="891"	
+		Width="891"	        
 		>
-    
+
     <Grid>
         
         <Grid.RowDefinitions>
