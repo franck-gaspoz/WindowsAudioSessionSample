@@ -103,6 +103,11 @@
       <DependentUpon>VuMeterStereoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\SoundLevel\VuMeterViewModel.cs" />
+    <Compile Include="UI\SoundWave\SoundWaveControl.xaml.cs">
+      <DependentUpon>SoundWaveControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SoundWave\SoundWaveControlViewModel.cs" />
+    <Compile Include="UI\SoundWave\SoundWaveDrawer.cs" />
     <Compile Include="UI\UIHelper.cs" />
     <Compile Include="WASComponents.cs" />
     <Compile Include="UI\FFT\FFTDrawer.cs" />
@@ -129,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\SoundLevel\VuMeterStereoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\SoundWave\SoundWaveControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

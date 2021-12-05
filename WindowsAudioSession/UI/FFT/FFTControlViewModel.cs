@@ -59,14 +59,10 @@ namespace WindowsAudioSession.UI.FFT
         }
 
         public FFTControlViewModel(FFTControl fftControl)
-        {
-            FFTDrawer = new FFTDrawer(fftControl.BarGraph);
-        }
+            => FFTDrawer = new FFTDrawer(fftControl.BarGraph);
 
         public void AttachTo(FFTAnalyzer fftAnalyzer)
-        {
-            FFTDrawer.AttachTo(fftAnalyzer);
-        }
+            => FFTDrawer.AttachTo(fftAnalyzer);
 
         public void HandleTick()
         {

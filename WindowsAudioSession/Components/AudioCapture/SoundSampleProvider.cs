@@ -6,7 +6,7 @@ namespace WindowsAudioSession.Components.AudioCapture
 {
     public class SoundSampleProvider : ISoundCaptureHandler
     {
-        public float[] SoundSample { get; protected set; }
+        public float[] SoundSampleData;
 
         public bool IsDataAvailable { get; protected set; }
 
@@ -14,21 +14,21 @@ namespace WindowsAudioSession.Components.AudioCapture
 
         public SoundSampleProvider(int bufferLength)
         {
-            SoundSample = new float[bufferLength];
+            SoundSampleData = new float[bufferLength];
         }
 
         public void HandleTick()
         {
             var previewAvailableLength = BassWasapi.BASS_WASAPI_GetData(
-                SoundSample,
+                SoundSampleData,
                 (int)BASSData.BASS_DATA_AVAILABLE
                 );
 
             if (previewAvailableLength > 0)
             {
                 var AvailableLength = BassWasapi.BASS_WASAPI_GetData(
-                SoundSample,
-                SoundSample.Length
+                SoundSampleData,
+                SoundSampleData.Length
                 );
                 IsDataAvailable = AvailableLength > 0;
             }

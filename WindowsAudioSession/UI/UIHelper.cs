@@ -9,7 +9,7 @@ namespace WindowsAudioSession.UI
         public static void ShowError(Exception ex)
         {
             var messages = new List<string>() { ex.Message };
-            Exception innerException = ex;
+            var innerException = ex;
             while ((innerException = innerException.InnerException) != null)
             {
                 messages.Add(innerException.Message);

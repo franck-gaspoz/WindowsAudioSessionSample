@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
+using WindowsAudioSession.Components;
 using WindowsAudioSession.Components.AudioCapture;
 using WindowsAudioSession.Components.FFT;
 
@@ -49,9 +50,11 @@ namespace WindowsAudioSession.UI.FFT
                 _bars = new Rectangle[barCount];
                 for (var i = 0; i < barCount; i++)
                 {
-                    var bar = new Rectangle();
+                    var bar = new Rectangle()
+                    {
+                        Fill = BarBrush
+                    };
                     _bars[i] = bar;
-                    bar.Fill = BarBrush;
                     _ = _canvas.Children.Add(bar);
                 }
             }
@@ -81,8 +84,10 @@ namespace WindowsAudioSession.UI.FFT
         void ResetBars()
         {
             if (_bars != null)
+            {
                 foreach (var bar in _bars)
                     _canvas.Children.Remove(bar);
+            }
             _bars = null;
         }
 
@@ -102,7 +107,8 @@ namespace WindowsAudioSession.UI.FFT
             catch (Exception ex)
             {
                 Stop();
-                UIHelper.ShowError(ex);
+                UIHelper.ShowError(
+                    ExceptionHelper.BuildException(ex));
             }
         }
 

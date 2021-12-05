@@ -17,7 +17,7 @@ namespace WindowsAudioSession
         public FFTAnalyzer FFTAnalyser1 { get; protected set; }
         public FFTAnalyzer FFTAnalyser2 { get; protected set; }
         public FFTPeakAnalyzer FFTPeakAnalyser2 { get; protected set; }
-        public FFTPeakDrawer FFTPeakDrawer2 { get; protected set; }
+        public FFTPeakDrawer FFTPeakDrawer { get; protected set; }
         public SoundListener SoundListener { get; protected set; }
         public SoundLevelCapture SoundLevelCapture { get; protected set; }
         public SoundSampleProvider SoundSampleProvider { get; protected set; }
@@ -50,8 +50,8 @@ namespace WindowsAudioSession
                 = HatchRawBrush.Build(Brushes.LightGreen, 4, 3);
 
             FFTPeakAnalyser2 = new FFTPeakAnalyzer(FFTAnalyser2, fftControl2ViewModel.BarCount);
-            FFTPeakDrawer2 = new FFTPeakDrawer(App.WASOverviewWindow.fftControl2.BarGraph) { WidthPercent = 80d };
-            FFTPeakDrawer2.AttachTo(FFTPeakAnalyser2);
+            FFTPeakDrawer = new FFTPeakDrawer(App.WASOverviewWindow.fftControl2.BarGraph) { WidthPercent = 80d };
+            FFTPeakDrawer.AttachTo(FFTPeakAnalyser2);
 
             // Sound Level component
 
@@ -76,7 +76,7 @@ namespace WindowsAudioSession
                 .AddSoundCaptureHandler(FFTAnalyser2)
                 .AddSoundCaptureHandler(fftControl2ViewModel)
                 .AddSoundCaptureHandler(FFTPeakAnalyser2)
-                .AddSoundCaptureHandler(FFTPeakDrawer2)
+                .AddSoundCaptureHandler(FFTPeakDrawer)
 
                 .AddSoundCaptureHandler(SoundLevelCapture)
                 .AddSoundCaptureHandler(vuMeterViewModel);
