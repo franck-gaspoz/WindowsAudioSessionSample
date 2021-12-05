@@ -62,7 +62,7 @@ namespace WindowsAudioSession.UI.FFT
             for (var i = 0; i < barCount; i++)
             {
                 var barHeight = Math.Max(0, barSizes[i] * (height - 2 * Margin) / 255d);
-                var y_top = y0 + height - 2*Margin - barHeight;
+                var y_top = y0 + height - 2 * Margin - barHeight;
 
                 var bar = _bars[i];
 

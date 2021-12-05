@@ -31,7 +31,8 @@ namespace WindowsAudioSession.UI.SoundLevel
 
         public void Start() { }
 
-        public void Stop() {
+        public void Stop()
+        {
             VuMeterLeftViewModel.Level = 0;
             VuMeterRightViewModel.Level = 0;
         }

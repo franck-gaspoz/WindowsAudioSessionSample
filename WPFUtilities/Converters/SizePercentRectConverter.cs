@@ -20,9 +20,9 @@ namespace WPFUtilities.Converters
         /// <param name="parameter"></param>
         /// <param name="culture"></param>
         /// <returns>a rect with sized width, max height</returns>
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture) 
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
             => values[0] is double width && values[1] is double percent
-                ? new Rect(0, 0, Math.Max(0,width * percent), int.MaxValue)
+                ? new Rect(0, 0, Math.Max(0, width * percent), int.MaxValue)
                 : new Rect(0, 0, 0, 0);
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

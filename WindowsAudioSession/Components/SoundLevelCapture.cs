@@ -26,7 +26,7 @@ namespace WindowsAudioSession.Components
                 UIHelper.ShowError(
                     ExceptionHelper.BuildException(
                         WindowsAudioSessionHelper.BuildAudioApiErrorException("BASS_WASAPI_GetLevel failed")));
-            } 
+            }
             else
             {
                 LevelLeft = Utils.LowWord32(level);
@@ -34,11 +34,13 @@ namespace WindowsAudioSession.Components
             }
         }
 
-        public void Start() {
+        public void Start()
+        {
             IsStarted = true;
         }
 
-        public void Stop() {
+        public void Stop()
+        {
             LevelLeft = LevelRight = 0;
             IsStarted = false;
         }

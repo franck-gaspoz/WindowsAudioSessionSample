@@ -8,7 +8,8 @@ namespace WPFUtilities.CustomBrushes
         public static Brush Build(
             Brush fill,
             double filledRawHeight = 2,
-            double emptyRawHeight = 1)
+            double emptyRawHeight = 1,
+            bool freeze = true)
         {
             var geometryGroup = new GeometryGroup();
             var geometryDrawing = new GeometryDrawing();
@@ -25,6 +26,8 @@ namespace WPFUtilities.CustomBrushes
             drawingBrush.TileMode = TileMode.Tile;
 
             drawingBrush.Drawing = geometryDrawing;
+
+            if (freeze) drawingBrush.Freeze();
 
             return drawingBrush;
         }

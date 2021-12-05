@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -17,8 +16,8 @@ namespace WindowsAudioSession.UI.FFT
         public FFTScaleDrawer(FFTControl fftControl)
         {
             FFTControl = fftControl;
-            FFTControl.SizeChanged += (o,e) => FFTControl_SizeChanged();
-            FFTControl.Loaded += (o,e) => FFTControl_SizeChanged();
+            FFTControl.SizeChanged += (o, e) => FFTControl_SizeChanged();
+            FFTControl.Loaded += (o, e) => FFTControl_SizeChanged();
         }
 
         private void FFTControl_SizeChanged()

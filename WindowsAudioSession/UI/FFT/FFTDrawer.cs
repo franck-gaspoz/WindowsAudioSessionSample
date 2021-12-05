@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
 using WindowsAudioSession.Components.AudioCapture;
 using WindowsAudioSession.Components.FFT;
+
+using WPFUtilities.CustomBrushes;
 
 namespace WindowsAudioSession.UI.FFT
 {
@@ -20,20 +21,7 @@ namespace WindowsAudioSession.UI.FFT
 
         Rectangle[] _bars;
 
-        public Brush BarBrush { get; set; }
-            = new LinearGradientBrush(
-                new GradientStopCollection(
-                    new List<GradientStop>()
-                    {
-                        new GradientStop(Colors.Red,0),
-                        new GradientStop(Colors.Orange,0.1),
-                        new GradientStop(Colors.Yellow,0.2),
-                        new GradientStop(Colors.LightGreen,0.3),
-                        new GradientStop(Colors.Green,0.6),
-                        new GradientStop(Colors.DodgerBlue,0.8),
-                        new GradientStop(Colors.Cyan,0.90),
-                    }),
-                90d);
+        public Brush BarBrush { get; set; } = SpectrumBrush.Build();
 
         public bool IsStarted { get; protected set; }
 
@@ -73,7 +61,7 @@ namespace WindowsAudioSession.UI.FFT
             for (var i = 0; i < barCount; i++)
             {
                 var barHeight = Math.Max(0, barSizes[i] * (height - 2 * Margin) / 255d);
-                var y_top = y0 + height - 2*Margin - barHeight;
+                var y_top = y0 + height - 2 * Margin - barHeight;
 
                 var bar = _bars[i];
 

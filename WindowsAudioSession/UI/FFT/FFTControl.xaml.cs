@@ -46,7 +46,8 @@ namespace WindowsAudioSession.UI.FFT
         public int BarWidthPercent
         {
             get => (int)GetValue(BarWidthPercentProperty);
-            set {
+            set
+            {
                 SetValue(BarWidthPercentProperty, value);
                 ViewModel.BarWidthPercent = value;
             }

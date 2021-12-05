@@ -1,10 +1,12 @@
 ﻿
+using System.Windows.Media;
+
+using WindowsAudioSession.Components;
 using WindowsAudioSession.Components.AudioCapture;
 using WindowsAudioSession.Components.FFT;
-using WindowsAudioSession.Components;
-using System.Windows.Media;
-using WPFUtilities.CustomBrushes;
 using WindowsAudioSession.UI.FFT;
+
+using WPFUtilities.CustomBrushes;
 
 namespace WindowsAudioSession
 {

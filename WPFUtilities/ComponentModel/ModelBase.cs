@@ -37,7 +37,7 @@ namespace WPFUtilities.ComponentModel
         {
             if (!IsDirty) IsDirty = true;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            if (IsDataValidationEnabled && propertyName!=nameof(IsValid))
+            if (IsDataValidationEnabled && propertyName != nameof(IsValid))
             {
                 Validate(propertyName);
             }
