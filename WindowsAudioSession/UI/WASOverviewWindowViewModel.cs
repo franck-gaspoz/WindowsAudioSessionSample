@@ -117,7 +117,38 @@ namespace WindowsAudioSession.UI
 
         public List<int> SampleFrequencies { get; protected set; } = new List<int>
         {
-            41000
+            41000,
+            48000
+        };
+
+        int _sampleLength = 2048;
+
+        /// <summary>
+        /// sample length
+        /// </summary>
+        public int SampleLength
+        {
+            get => _sampleLength;
+            
+            set
+            {
+                _sampleLength = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public List<int> SampleLengths { get; protected set; } = new List<int>
+        {
+            128,
+            256,
+            512,
+            1024,
+            2048,
+            4096,
+            8192,
+            16384,
+            32768,
+            65536
         };
 
         public WASOverviewWindowViewModel()

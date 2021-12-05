@@ -17,9 +17,7 @@ namespace WindowsAudioSession.Commands
                 var components = App.WASComponents;
                 var viewModel = App.WASOverviewWindowViewModel;
 
-                components.BuildComponents(
-                    viewModel.FFTResolution.ToSampleLength()
-                    );
+                components.BuildComponents(viewModel);
 
                 var deviceId = Convert.ToInt32(viewModel.SelectedDevice.id);
 

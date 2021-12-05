@@ -4,6 +4,7 @@ using System.Windows.Media;
 using WindowsAudioSession.Components;
 using WindowsAudioSession.Components.AudioCapture;
 using WindowsAudioSession.Components.FFT;
+using WindowsAudioSession.UI;
 using WindowsAudioSession.UI.FFT;
 
 using WPFUtilities.CustomBrushes;
@@ -19,16 +20,20 @@ namespace WindowsAudioSession
         public FFTPeakDrawer FFTPeakDrawer2 { get; protected set; }
         public SoundListener SoundListener { get; protected set; }
         public SoundLevelCapture SoundLevelCapture { get; protected set; }
+        public SoundSampleProvider SoundSampleProvider { get; protected set; }
 
-        public void BuildComponents(FFTLength sampleLength)
+        public void BuildComponents(WASOverviewWindowViewModel viewModel)
         {
+            var fftLength = viewModel.FFTResolution.ToSampleLength();
+            var sampleLength = viewModel.SampleLength;
+
             // chain manager
 
             SoundListener = new SoundListener();
 
             // FFT
 
-            FFTProvider = new FFTProvider(sampleLength);
+            FFTProvider = new FFTProvider(fftLength);
 
             // FFT component #1
 
@@ -54,9 +59,15 @@ namespace WindowsAudioSession
             var vuMeterViewModel = App.WASOverviewWindow.vuMeterControl1.ViewModel;
             vuMeterViewModel.AttachTo(SoundLevelCapture);
 
+            // soound sample
+
+            SoundSampleProvider = new SoundSampleProvider(sampleLength);
+
             // components chain
 
             _ = SoundListener
+                .AddSoundCaptureHandler(SoundSampleProvider)
+
                 .AddSoundCaptureHandler(FFTProvider)
 
                 .AddSoundCaptureHandler(FFTAnalyser1)

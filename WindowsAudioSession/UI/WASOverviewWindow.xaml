@@ -27,7 +27,7 @@
         <Grid Margin="8,8,8,0">
             
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="240"/>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -35,21 +35,28 @@
 
             <ListBox ItemsSource="{Binding ListenableDevices}" SelectedItem="{Binding SelectedDevice,Mode=TwoWay}" />
 
-            <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left" Margin="8,0,0,0">
+            <StackPanel Orientation="Vertical" Grid.Column="1" >
+            
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="8,0,0,0">
 
-                <Button Grid.Column="1" Content="Start" Command="{x:Static commands:Commands.Start}" HorizontalAlignment="Left" Width="43"/>
+                    <Button Grid.Column="1" Margin="0,0,8,0" Content="Start" Command="{x:Static commands:Commands.Start}" HorizontalAlignment="Left" Width="58"/>
 
-                <Rectangle Height="4"/>
+                    <Button Content="Stop" Margin="0,0,0,0" Command="{x:Static commands:Commands.Stop}" HorizontalAlignment="Left" Width="58" />
 
-                <Button Content="Stop" Command="{x:Static commands:Commands.Stop}" HorizontalAlignment="Left" Width="43" />
+                </StackPanel>
 
-                <Rectangle Height="8"/>
+                <CheckBox Margin="8,4,0,4" Content="Topmost" IsChecked="{Binding IsTopmost}" HorizontalAlignment="Left" Width="69" />
 
-                <CheckBox Content="Topmost" IsChecked="{Binding IsTopmost}" HorizontalAlignment="Left" Width="69" />
-
+                <StackPanel Orientation="Horizontal" Margin="4,0,0,8">
+                    <Label Content="spl len" Width="66"/>
+                    <ComboBox Width="64" IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}"
+                              ItemsSource="{Binding SampleLengths}"
+                              SelectedValue="{Binding SampleLength,FallbackValue=2048}"/>
+                </StackPanel>
+                
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Left" Margin="8,0,0,8">
+            <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,0,8">
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
                     <Label Content="fft length:" Width="68"/>

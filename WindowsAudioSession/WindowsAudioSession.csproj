@@ -82,6 +82,7 @@
     <Compile Include="Commands\Commands.cs" />
     <Compile Include="Commands\StopCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
+    <Compile Include="Components\AudioCapture\SoundSampleProvider.cs" />
     <Compile Include="Components\ExceptionHelper.cs" />
     <Compile Include="Components\FFT\FFTPeakAnalyzer.cs" />
     <Compile Include="Components\FFT\FFTProvider.cs" />

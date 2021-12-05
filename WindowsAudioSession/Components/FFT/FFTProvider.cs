@@ -11,6 +11,8 @@ namespace WindowsAudioSession.Components.FFT
 
         public FFTLength FFTLength { get; protected set; }
 
+        public int AvailableLength { get; protected set; }
+
         public bool IsFFTAvailable { get; protected set; } = true;
 
         public FFTProvider(FFTLength fftLength)
@@ -21,10 +23,10 @@ namespace WindowsAudioSession.Components.FFT
 
         public void HandleTick()
         {
-            var ret = BassWasapi.BASS_WASAPI_GetData(
+            AvailableLength = BassWasapi.BASS_WASAPI_GetData(
                 FFT,
                 (int)FFTLength.ToBassData());
-            IsFFTAvailable = ret >= -1;
+            IsFFTAvailable = AvailableLength != -1;
         }
 
         public void Start() { }
@@ -32,6 +34,7 @@ namespace WindowsAudioSession.Components.FFT
         public void Stop()
         {
             IsFFTAvailable = false;
+            AvailableLength = 0;
         }
     }
 }
