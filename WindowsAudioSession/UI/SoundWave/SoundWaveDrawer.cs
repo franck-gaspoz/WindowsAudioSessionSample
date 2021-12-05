@@ -18,6 +18,8 @@ namespace WindowsAudioSession.UI.SoundWave
 
         public Brush LineBrush { get; set; } = Brushes.White;
 
+        public double ScaleFactor { get; set; } = 1.8d;
+
         readonly Canvas _canvas;
         SoundSampleProvider _soundSampleProvider;
 
@@ -97,7 +99,7 @@ namespace WindowsAudioSession.UI.SoundWave
 
             var x = x0;
             double j = 0;
-            var scaleFactor = drawHeight;
+            var scaleFactor = drawHeight / ScaleFactor;
             var centery = y0 + drawHeight / 2d;
 
             for (var i = 0; i < linesCount - 1; i++)
