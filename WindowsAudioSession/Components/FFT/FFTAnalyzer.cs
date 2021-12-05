@@ -46,14 +46,20 @@ namespace WindowsAudioSession.Components.FFT
             }
         }
 
+        void Reset()
+        {
+            if (SpectrumData!=null)
+                for (var x = 0; x < _barsCount; x++) SpectrumData[x] = 0;
+        }
+
         public void Start()
         {
-
+            Reset();
         }
 
         public void Stop()
         {
-            for (var x = 0; x < _barsCount; x++) SpectrumData[x] = 0;
+            Reset();
         }
     }
 }

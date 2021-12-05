@@ -118,6 +118,12 @@ namespace WindowsAudioSession.Components.AudioCapture
             if (!_dispatcherTimer.IsEnabled)
                 return;
 
+            Thread.Sleep(_activationDelay);
+            _dispatcherTimer.IsEnabled = false;
+
+            foreach (var soundCaptureHandler in _soundCaptureHandlers)
+                soundCaptureHandler.Stop();
+
             if (!BassWasapi.BASS_WASAPI_Stop(true))
                 ThrowsAudioApiErrorException("BassWasapi.BASS_WASAPI_Stop failed");
             if (!BassWasapi.BASS_WASAPI_Free())
@@ -126,12 +132,6 @@ namespace WindowsAudioSession.Components.AudioCapture
                 ThrowsAudioApiErrorException("Bass.BASS_Free failed");
             if (!Bass.FreeMe())
                 ThrowsAudioApiErrorException("Bass.FreeMe failed");
-
-            Thread.Sleep(_activationDelay);
-            _dispatcherTimer.IsEnabled = false;
-
-            foreach (var soundCaptureHandler in _soundCaptureHandlers)
-                soundCaptureHandler.Stop();
         }
     }
 }
