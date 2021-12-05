@@ -21,4 +21,4 @@ Clean architecture approach: complete discoupling between data,data providers,da
 - Data validators
 - Data binding
 - Commands
-
+- Visual Drawings
