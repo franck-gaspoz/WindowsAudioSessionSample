@@ -2,9 +2,12 @@
 
 A sample of usage of Windows Audio Session WASAPI using BASS.NET - WPF C# .NET Framework 4.8
 
-**colored bars (vu-meters) showing captured device sound FFT and Sound Level**
+- colored bars (vu-meters) showing captured device sound FFT and Sound Level
 
 Clean architecture approach, relying on the patterns MVVM, Command, Chain of responsability
 
-![a FFT having 512 bars](https://github.com/franck-gaspoz/WindowsAudioSessionSample/blob/c9d774c80f25d7ab12ad24073497b3eb12a08719/Doc/windows-audio-session-sample.gif "a FFT having 512 bars")
-
+<p align="center">
+<img src="https://github.com/franck-gaspoz/WindowsAudioSessionSample/blob/9276670c6c67af31047e6f3fba1870b8253e0c29/Doc/windows-audio-session-sample2.gif" width="70%" align="center" style="margin-left:auto;margin-right:auto" alt="a FFT having 512 bars + FFT with 16 bars and peak bars + stereo sound level">
+<br>
+<i>a FFT having 512 bars + FFT with 16 bars and peak bars + stereo sound level</i>
+</p>
