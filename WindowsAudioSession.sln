@@ -17,6 +17,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{BC20D436-EE21-4703-AE47-41C9E64ACC1E}"
 	ProjectSection(SolutionItems) = preProject
 		Doc\windows-audio-session-sample.gif.gif = Doc\windows-audio-session-sample.gif.gif
+		Doc\windows-audio-session-sample2.gif.gif = Doc\windows-audio-session-sample2.gif.gif
 	EndProjectSection
 EndProject
 Global
