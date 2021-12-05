@@ -76,7 +76,9 @@ namespace WindowsAudioSession.UI.SoundWave
             var linesCount = (int)Math.Ceiling(drawWidth / Resolution);
             if (linesCount != _lastLinesCount && _lastLinesCount != -1)
                 ResetLines();
-            var sampleResolution = 8d; // availableLength / (double)linesCount;
+            var sampleResolution = 8d;
+            var maxSampleResolution = availableLength / (double)linesCount;
+            sampleResolution = Math.Min(sampleResolution, maxSampleResolution);
 
             if (_lines == null)
             {
