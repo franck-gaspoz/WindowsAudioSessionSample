@@ -15,14 +15,15 @@ namespace WindowsAudioSession.Commands
             try
             {
                 var components = App.WASComponents;
+                var viewModel = App.WASOverviewWindowViewModel;
 
                 components.BuildComponents(
-                    App.WASOverviewWindowViewModel.FFTResolution.ToSampleLength()
+                    viewModel.FFTResolution.ToSampleLength()
                     );
 
-                var deviceId = Convert.ToInt32(App.WASOverviewWindowViewModel.SelectedDevice.id);
+                var deviceId = Convert.ToInt32(viewModel.SelectedDevice.id);
 
-                components.SoundListener.Start(deviceId);
+                components.SoundListener.Start(deviceId, viewModel.SampleFrequency);
 
                 App.WASOverviewWindowViewModel.IsStarted = true;
 

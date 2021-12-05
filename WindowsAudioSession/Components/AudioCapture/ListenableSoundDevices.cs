@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 
+using Un4seen.Bass;
 using Un4seen.BassWasapi;
 
 namespace WindowsAudioSession.Components.AudioCapture
