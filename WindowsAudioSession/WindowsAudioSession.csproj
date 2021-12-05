@@ -93,6 +93,7 @@
     </Compile>
     <Compile Include="UI\FFT\FFTControlViewModel.cs" />
     <Compile Include="UI\FFT\FFTPeakDrawer.cs" />
+    <Compile Include="UI\FFT\FFTScaleDrawer.cs" />
     <Compile Include="UI\SoundLevel\VuMeterControl.xaml.cs">
       <DependentUpon>VuMeterControl.xaml</DependentUpon>
     </Compile>

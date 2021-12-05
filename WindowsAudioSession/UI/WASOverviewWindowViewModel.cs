@@ -100,6 +100,26 @@ namespace WindowsAudioSession.UI
             1024,2048,4096,8192,16384
         };
 
+        int _sampleFrequency = 44100;
+
+        /// <summary>
+        /// sample frequency
+        /// </summary>
+        public int SampleFrequency
+        {
+            get => _sampleFrequency;
+            set
+            {
+                _sampleFrequency = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public List<int> SampleFrequencies { get; protected set; } = new List<int>
+        {
+            44100
+        };
+
         public WASOverviewWindowViewModel()
         {
             var devices = new ListenableSoundDevices().DevicesList;

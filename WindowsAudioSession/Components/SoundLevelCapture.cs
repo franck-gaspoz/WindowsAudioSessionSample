@@ -15,46 +15,23 @@ namespace WindowsAudioSession.Components
 
         public int LevelRight { get; protected set; }
 
-#if AntiHang
-        int _lastLevel;
-        int _hanctr;
-#endif
-
         public void HandleTick()
         {
             if (!IsStarted) return;
 
             var level = BassWasapi.BASS_WASAPI_GetLevel();
-            if (level != -1)
-            {
-                LevelLeft = Utils.LowWord32(level);
-                LevelRight = Utils.HighWord32(level);
-            }
-            else
+            if (level == -1)
             {
                 Stop();
                 UIHelper.ShowError(
                     ExceptionHelper.BuildException(
                         WindowsAudioSessionHelper.BuildAudioApiErrorException("BASS_WASAPI_GetLevel failed")));
-            }
-
-#if AntiHang
-            if (level == _lastLevel && level != 0) _hanctr++;
-            _lastLevel = level;
-
-            //Required, because some programs hang the output. If the output hangs for a 75ms
-            //this piece of code re initializes the output so it doesn't make a gliched sound for long.
-            if (_hanctr > 3)
+            } 
+            else
             {
-                _hanctr = 0;
-                LevelLeft = 0;
-                LevelRight = 0;
-                Free();
-                Bass.BASS_Init(0, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
-                _initialized = false;
-                Enable = true;
+                LevelLeft = Utils.LowWord32(level);
+                LevelRight = Utils.HighWord32(level);
             }
-#endif
         }
 
         public void Start() {

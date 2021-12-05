@@ -12,3 +12,6 @@ dotnet_diagnostic.IDE0022.severity = none
 
 # IDE0021: Utiliser un corps de bloc pour les constructeurs
 dotnet_diagnostic.IDE0021.severity = none
+
+# IDE0055: Corriger la mise en forme
+dotnet_diagnostic.IDE0055.severity = none

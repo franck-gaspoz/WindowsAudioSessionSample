@@ -10,6 +10,8 @@ namespace WindowsAudioSession.UI.FFT
     {
         public FFTControlViewModel ViewModel { get; protected set; }
 
+        public FFTScaleDrawer FFScaleDrawer { get; protected set; }
+
         public bool IsBarCountControlVisible
         {
             get => (bool)GetValue(IsBarCountControlVisibleProperty);
@@ -53,6 +55,15 @@ namespace WindowsAudioSession.UI.FFT
         public static readonly DependencyProperty BarWidthPercentProperty =
             DependencyProperty.Register("BarWidthPercent", typeof(int), typeof(FFTControl), new PropertyMetadata(100));
 
+        public bool ShowScaleLines
+        {
+            get { return (bool)GetValue(ShowScaleLinesProperty); }
+            set { SetValue(ShowScaleLinesProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowScaleLinesProperty =
+            DependencyProperty.Register("ShowScaleLines", typeof(bool), typeof(FFTControl), new PropertyMetadata(false));
+
         public Thickness FFTDrawMargin
         {
             get => (Thickness)GetValue(FFTDrawMarginProperty);
@@ -67,6 +78,7 @@ namespace WindowsAudioSession.UI.FFT
             InitializeComponent();
             ViewModel = new FFTControlViewModel(this);
             DataContext = ViewModel;
+            FFScaleDrawer = new FFTScaleDrawer(this);
             Loaded += FFTControl_Loaded;
         }
 

@@ -73,7 +73,7 @@ namespace WindowsAudioSession.UI.FFT
             for (var i = 0; i < barCount; i++)
             {
                 var barHeight = Math.Max(0, barSizes[i] * (height - 2 * Margin) / 255d);
-                var y_top = y0 + height - Margin - barHeight;
+                var y_top = y0 + height - 2*Margin - barHeight;
 
                 var bar = _bars[i];
 
@@ -92,7 +92,9 @@ namespace WindowsAudioSession.UI.FFT
 
         void ResetBars()
         {
-            _canvas.Children.Clear();
+            if (_bars != null)
+                foreach (var bar in _bars)
+                    _canvas.Children.Remove(bar);
             _bars = null;
         }
 
@@ -104,8 +106,8 @@ namespace WindowsAudioSession.UI.FFT
             {
                 var x0 = Margin;
                 var y0 = Margin;
-                var width = _canvas.ActualWidth - Margin;
-                var height = _canvas.ActualHeight - Margin;
+                var width = _canvas.ActualWidth;
+                var height = _canvas.ActualHeight;
 
                 Draw(x0, y0, width, height, ref _fftAnalyser.SpectrumData);
             }

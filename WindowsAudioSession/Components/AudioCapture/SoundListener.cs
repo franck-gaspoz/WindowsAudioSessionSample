@@ -24,7 +24,7 @@ namespace WindowsAudioSession.Components.AudioCapture
 
         readonly List<ISoundCaptureHandler> _soundCaptureHandlers = new List<ISoundCaptureHandler>();
 
-        const int _activationDelay = 500;
+        const int _activationDelay = 200;
 
         public SoundListener AddSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
         {
