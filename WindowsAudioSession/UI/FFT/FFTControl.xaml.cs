@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace WindowsAudioSession.UI.FFT
 {
@@ -11,6 +12,15 @@ namespace WindowsAudioSession.UI.FFT
         public FFTControlViewModel ViewModel { get; protected set; }
 
         public FFTScaleDrawer FFScaleDrawer { get; protected set; }
+
+        public Brush DrawBackground
+        {
+            get => (Brush)GetValue(DrawBackgroundProperty);
+            set => SetValue(DrawBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty DrawBackgroundProperty =
+            DependencyProperty.Register("DrawBackground", typeof(Brush), typeof(FFTControl), new PropertyMetadata(Brushes.Black));
 
         public bool IsBarCountControlVisible
         {

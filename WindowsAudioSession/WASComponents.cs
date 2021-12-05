@@ -62,12 +62,13 @@ namespace WindowsAudioSession
             // soound sample
 
             SoundSampleProvider = new SoundSampleProvider(sampleLength);
+            var soundWaveControlViewModel = App.WASOverviewWindow.soundWaveControl.ViewModel;
+            soundWaveControlViewModel.AttachTo(SoundSampleProvider);
 
             // components chain
 
             _ = SoundListener
                 .AddSoundCaptureHandler(SoundSampleProvider)
-
                 .AddSoundCaptureHandler(FFTProvider)
 
                 .AddSoundCaptureHandler(FFTAnalyser1)
@@ -79,7 +80,9 @@ namespace WindowsAudioSession
                 .AddSoundCaptureHandler(FFTPeakDrawer)
 
                 .AddSoundCaptureHandler(SoundLevelCapture)
-                .AddSoundCaptureHandler(vuMeterViewModel);
+                .AddSoundCaptureHandler(vuMeterViewModel)
+
+                .AddSoundCaptureHandler(soundWaveControlViewModel);
         }
     }
 }

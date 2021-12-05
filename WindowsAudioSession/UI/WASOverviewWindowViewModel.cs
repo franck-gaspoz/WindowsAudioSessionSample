@@ -121,7 +121,7 @@ namespace WindowsAudioSession.UI
             48000
         };
 
-        int _sampleLength = 2048;
+        int _sampleLength = 16384;
 
         /// <summary>
         /// sample length
@@ -129,7 +129,7 @@ namespace WindowsAudioSession.UI
         public int SampleLength
         {
             get => _sampleLength;
-            
+
             set
             {
                 _sampleLength = value;

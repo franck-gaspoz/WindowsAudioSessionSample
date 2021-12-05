@@ -12,14 +12,16 @@
         
         <Canvas Grid.Row="1" 
                 x:Name="BarGraph" 
-                Background="Black"
+                Background="{Binding DrawBackground, 
+                    RelativeSource={RelativeSource AncestorType=UserControl}}"
                 Margin="{Binding Path=FFTDrawMargin, 
-                        RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    RelativeSource={RelativeSource AncestorType=UserControl}}"
                 />
 
         <Grid>
 
-            <StackPanel Margin="16" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <StackPanel Margin="16" Orientation="Vertical"
+                        HorizontalAlignment="Right" VerticalAlignment="Top">
 
                 <StackPanel.Resources>
                     <Style TargetType="Label">
@@ -33,7 +35,8 @@
                     </Style>
                 </StackPanel.Resources>
                 
-                <StackPanel Orientation="Horizontal" Margin="0,0,8,0"
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8"
+                            HorizontalAlignment="Right"
                             Visibility="{Binding Path=IsBarCountControlVisible, 
                                          RelativeSource={RelativeSource AncestorType=UserControl},
                                          Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
@@ -58,7 +61,8 @@
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal" 
-                            Margin="0,0,8,0"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,0,0"
                             Visibility="{Binding Path=IsBarSizeControlVisible, 
                             RelativeSource={RelativeSource AncestorType=UserControl},
                             Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"

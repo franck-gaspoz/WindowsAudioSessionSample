@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -15,7 +14,7 @@ namespace WindowsAudioSession.UI.SoundWave
 
         public double Margin { get; set; } = 8;
 
-        public double Resolution { get; set; } = 10;
+        public double Resolution { get; set; } = 2;
 
         public Brush LineBrush { get; set; } = Brushes.White;
 
@@ -45,9 +44,16 @@ namespace WindowsAudioSession.UI.SoundWave
                 var y0 = Margin;
                 var width = _canvas.ActualWidth;
                 var height = _canvas.ActualHeight;
-                Draw(x0, y0, width, height, ref _soundSampleProvider.SoundSampleData);
+                Draw(
+                    x0, 
+                    y0, 
+                    width, 
+                    height, 
+                    ref _soundSampleProvider.SoundSampleData,
+                    _soundSampleProvider.AvailableLength);
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Stop();
                 UIHelper.ShowError(
@@ -56,25 +62,27 @@ namespace WindowsAudioSession.UI.SoundWave
         }
 
         private void Draw(
-            double x0, 
-            double y0, 
-            double width, 
-            double height, 
-            ref float[] soundSampleData
+            double x0,
+            double y0,
+            double width,
+            double height,
+            ref float[] soundSampleData,
+            int availableLength
             )
         {
-            var drawWidth = width - 2d * Margin;
-            //var columnWidth = drawWidth / soundSampleData.Length;
+            var drawWidth = width - (2d * Margin);
+            var drawHeight = height - (2d * Margin);
 
             var linesCount = (int)Math.Ceiling(drawWidth / Resolution);
             if (linesCount != _lastLinesCount && _lastLinesCount != -1)
                 ResetLines();
+            var sampleResolution = 6d; // availableLength / (double)linesCount;
 
             if (_lines == null)
             {
                 _lines = new Line[linesCount];
                 _lastLinesCount = linesCount;
-                for (var i = 0; i < linesCount; i++)
+                for (var i = 0; i < linesCount - 1; i++)
                 {
                     var line = new Line
                     {
@@ -86,15 +94,28 @@ namespace WindowsAudioSession.UI.SoundWave
             }
 
             var x = x0;
-            for (var i = 0; i < linesCount; i++) {
+            double j = 0;
+            var scaleFactor = drawHeight;
+            var centery = y0 + drawHeight / 2d;
 
+            for (var i = 0; i < linesCount - 1; i++)
+            {
+                var line = _lines[i];
+                var j1 = (int)Math.Floor(j);
+                line.Y1 = centery + (soundSampleData[j1] * scaleFactor);
+                line.X1 = x;
+                var j2 = (int)Math.Floor(j + sampleResolution);
+                line.Y2 = centery + (soundSampleData[j2] * scaleFactor);
+                line.X2 = x + Resolution;
+                x += Resolution;
+                j += sampleResolution;
             }
 
         }
 
         void ResetLines()
         {
-            if (_lines!=null)
+            if (_lines != null)
             {
                 foreach (var line in _lines)
                     _canvas.Children.Remove(line);

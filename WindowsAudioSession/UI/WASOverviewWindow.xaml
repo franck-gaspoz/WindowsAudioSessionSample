@@ -7,6 +7,7 @@
         xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
         xmlns:commands="clr-namespace:WindowsAudioSession.Commands"
         xmlns:fftControls="clr-namespace:WindowsAudioSession.UI.FFT"
+        xmlns:soundWaveControls="clr-namespace:WindowsAudioSession.UI.SoundWave"
         xmlns:soundLevelControls="clr-namespace:WindowsAudioSession.UI.SoundLevel"
         d:DataContext="{d:DesignInstance Type=local:WASOverviewWindowViewModel}"
         Topmost="True"
@@ -48,7 +49,7 @@
                 <CheckBox Margin="8,4,0,4" Content="Topmost" IsChecked="{Binding IsTopmost}" HorizontalAlignment="Left" Width="69" />
 
                 <StackPanel Orientation="Horizontal" Margin="4,0,0,8">
-                    <Label Content="spl len" Width="66"/>
+                    <Label Content="spl length:" Width="66"/>
                     <ComboBox Width="64" IsEnabled="{Binding IsStarted,Converter={x:Static converters:NotBooleanConverter.Instance}}"
                               ItemsSource="{Binding SampleLengths}"
                               SelectedValue="{Binding SampleLength,FallbackValue=2048}"/>
@@ -95,7 +96,7 @@
                 Margin="0,24,0,0"
                 Grid.Row="1">
             <fftControls:FFTControl 
-                Opacity="0.7"
+                DrawBackground="#66000000"
                 BarCount="16"
                 BarWidthPercent="80"
                 FFTDrawMargin="0"
@@ -104,6 +105,16 @@
                 Width="300" Height="66" 
                 x:Name="fftControl2"/>
         </Border>
-        
+
+        <Border BorderBrush="#444444" BorderThickness="1"
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                Margin="0,108,0,0"
+                Grid.Row="1">
+            <soundWaveControls:SoundWaveControl
+                DrawBackground="#66000000"
+                Width="300" Height="66" 
+                x:Name="soundWaveControl"/>
+        </Border>
+
     </Grid>
 </Window>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 using WindowsAudioSession.Components.AudioCapture;
 
@@ -23,7 +18,7 @@ namespace WindowsAudioSession.UI.SoundWave
         public Thickness DrawMargin
         {
             get => _drawMargin;
-            
+
             set
             {
                 _drawMargin = value;
@@ -59,12 +54,14 @@ namespace WindowsAudioSession.UI.SoundWave
         public void Start()
         {
             if (IsStarted) return;
+            SoundWaveDrawer.Start();
             IsStarted = true;
         }
 
         public void Stop()
         {
             if (!IsStarted) return;
+            SoundWaveDrawer.Stop();
             IsStarted = false;
         }
     }

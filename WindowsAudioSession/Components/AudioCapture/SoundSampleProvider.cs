@@ -26,10 +26,12 @@ namespace WindowsAudioSession.Components.AudioCapture
 
             if (previewAvailableLength > 0)
             {
-                var AvailableLength = BassWasapi.BASS_WASAPI_GetData(
-                SoundSampleData,
-                SoundSampleData.Length
+                AvailableLength = BassWasapi.BASS_WASAPI_GetData(
+                    SoundSampleData,
+                    SoundSampleData.Length
                 );
+                if (AvailableLength > 0)
+                    AvailableLength /= 4;
                 IsDataAvailable = AvailableLength > 0;
             }
         }

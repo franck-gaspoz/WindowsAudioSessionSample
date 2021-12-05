@@ -48,7 +48,7 @@ namespace WindowsAudioSession.Components.FFT
 
         void Reset()
         {
-            if (SpectrumData!=null)
+            if (SpectrumData != null)
                 for (var x = 0; x < _barsCount; x++) SpectrumData[x] = 0;
         }
 

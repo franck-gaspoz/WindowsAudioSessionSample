@@ -1,6 +1,5 @@
 ﻿using System;
 
-using WindowsAudioSession.Components.FFT;
 using WindowsAudioSession.UI;
 
 namespace WindowsAudioSession.Commands
