@@ -4,7 +4,7 @@ namespace WindowsAudioSession.Components.FFT
 {
     public interface IFFTProvider : ISoundCaptureHandler
     {
-        float[] FFT { get; }
+        float[] FFTData { get; }
 
         bool IsFFTAvailable { get; }
 

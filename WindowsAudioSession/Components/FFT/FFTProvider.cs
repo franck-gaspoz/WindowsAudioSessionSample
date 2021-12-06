@@ -7,7 +7,7 @@ namespace WindowsAudioSession.Components.FFT
 {
     public class FFTProvider : IFFTProvider, ISoundCaptureHandler
     {
-        public float[] FFT { get; protected set; }
+        public float[] FFTData { get; protected set; }
 
         public FFTLength FFTLength { get; protected set; }
 
@@ -18,13 +18,13 @@ namespace WindowsAudioSession.Components.FFT
         public FFTProvider(FFTLength fftLength)
         {
             FFTLength = fftLength;
-            FFT = new float[fftLength.ToBufferSize()];
+            FFTData = new float[fftLength.ToBufferSize()];
         }
 
         public void HandleTick()
         {
             AvailableLength = BassWasapi.BASS_WASAPI_GetData(
-                FFT,
+                FFTData,
                 (int)FFTLength.ToBassData());
             IsFFTAvailable = AvailableLength != -1;
         }

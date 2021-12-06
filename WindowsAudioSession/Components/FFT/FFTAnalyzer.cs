@@ -36,8 +36,8 @@ namespace WindowsAudioSession.Components.FFT
                 if (b1 <= b0) b1 = b0 + 1;
                 for (; b0 < b1; b0++)
                 {
-                    if (peak < FFTProvider.FFT[1 + b0])
-                        peak = FFTProvider.FFT[1 + b0];
+                    if (peak < FFTProvider.FFTData[1 + b0])
+                        peak = FFTProvider.FFTData[1 + b0];
                 }
                 var y = (Math.Sqrt(peak) * 3 * 255) - 4;
                 if (y > 255) y = 255;
