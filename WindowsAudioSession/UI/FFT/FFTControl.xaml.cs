@@ -5,7 +5,7 @@ using System.Windows.Media;
 namespace WindowsAudioSession.UI.FFT
 {
     /// <summary>
-    /// Logique d'interaction pour FFTControl.xaml
+    /// fft control
     /// </summary>
     public partial class FFTControl : UserControl, IDrawable
     {

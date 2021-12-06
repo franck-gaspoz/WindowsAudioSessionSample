@@ -3,7 +3,7 @@
 namespace WindowsAudioSession.UI.SoundLevel
 {
     /// <summary>
-    /// Logique d'interaction pour VuMeterStereoControl.xaml
+    /// vu-meter stereo control
     /// </summary>
     public partial class VuMeterStereoControl : UserControl
     {

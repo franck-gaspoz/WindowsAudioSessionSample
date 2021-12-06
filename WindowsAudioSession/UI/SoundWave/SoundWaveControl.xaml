@@ -12,8 +12,6 @@
             x:Name="WaveGraph"
             Background="{Binding DrawBackground, 
                 RelativeSource={RelativeSource AncestorType=UserControl}}"
-            Margin="{Binding Path=DrawMargin, 
-                RelativeSource={RelativeSource AncestorType=UserControl}}"
             />
     </Grid>
     

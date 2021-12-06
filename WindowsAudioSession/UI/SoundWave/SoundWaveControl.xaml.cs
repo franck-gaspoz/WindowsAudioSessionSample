@@ -5,7 +5,7 @@ using System.Windows.Media;
 namespace WindowsAudioSession.UI.SoundWave
 {
     /// <summary>
-    /// Logique d'interaction pour SoundWaveControl.xaml
+    /// sound wave control
     /// </summary>
     public partial class SoundWaveControl : UserControl, IDrawable
     {
