@@ -17,6 +17,8 @@ namespace WindowsAudioSession.Components.AudioCapture
     /// <summary>
     /// AudioPlugEngine
     /// <para>might have separated typed initializers (currently have only 'InitiliazeSoundCapture') ?</para>
+    /// <para>the audio plug engine should be separated from the sound apis initializer.
+    /// that would allow to runs several engine parrallely</para>
     /// </summary>
     public class AudioPlugEngine
     {
