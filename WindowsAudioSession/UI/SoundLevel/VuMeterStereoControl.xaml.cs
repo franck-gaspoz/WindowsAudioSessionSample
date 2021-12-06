@@ -7,7 +7,7 @@ namespace WindowsAudioSession.UI.SoundLevel
     /// </summary>
     public partial class VuMeterStereoControl : UserControl
     {
-        public VuMeterStereoViewModel ViewModel { get; protected set; }
+        public IVuMeterStereoViewModel ViewModel { get; protected set; }
 
         public VuMeterStereoControl()
         {

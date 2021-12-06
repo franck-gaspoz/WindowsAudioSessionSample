@@ -6,8 +6,9 @@ namespace WindowsAudioSession.Components.FFT
 {
     public class FFTPeakAnalyzer : IFFTPeakAnalyzer, ISoundCaptureHandler
     {
-        readonly int _barsCount;
-        readonly IFFTAnalyzer _fftAnalyzer;
+        public int BarsCount { get; protected set; }
+
+        public IFFTAnalyzer FFTAnalyzer { get; protected set; }
 
         public double[] SpectrumPeakData { get; protected set; }
 
@@ -17,17 +18,17 @@ namespace WindowsAudioSession.Components.FFT
             IFFTAnalyzer fftAnalyzer,
             int barsCount)
         {
-            _fftAnalyzer = fftAnalyzer;
-            _barsCount = barsCount;
-            SpectrumPeakData = new double[_barsCount];
+            FFTAnalyzer = fftAnalyzer;
+            BarsCount = barsCount;
+            SpectrumPeakData = new double[BarsCount];
         }
 
         public void HandleTick()
         {
-            for (var i = 0; i < _fftAnalyzer.SpectrumData.Length; i++)
+            for (var i = 0; i < FFTAnalyzer.SpectrumData.Length; i++)
             {
                 var peakValue = SpectrumPeakData[i];
-                var newValue = _fftAnalyzer.SpectrumData[i];
+                var newValue = FFTAnalyzer.SpectrumData[i];
 
                 if (newValue < peakValue)
                 {
@@ -56,7 +57,7 @@ namespace WindowsAudioSession.Components.FFT
 
         void Reset()
         {
-            for (var x = 0; x < _barsCount; x++) SpectrumPeakData[x] = 0;
+            for (var x = 0; x < BarsCount; x++) SpectrumPeakData[x] = 0;
         }
     }
 }

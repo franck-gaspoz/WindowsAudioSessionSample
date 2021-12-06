@@ -6,8 +6,9 @@ namespace WindowsAudioSession.Components.FFT
 {
     public class FFTAnalyzer : IFFTAnalyzer, ISoundCaptureHandler
     {
-        readonly int _barsCount;
-        readonly IFFTProvider _fftProvider;
+        public int BarsCount { get; protected set; }
+
+        public IFFTProvider FFTProvider { get; protected set; }
 
         public double[] SpectrumData { get; protected set; }
 
@@ -15,28 +16,28 @@ namespace WindowsAudioSession.Components.FFT
             IFFTProvider fftProvider,
             int barsCount)
         {
-            _fftProvider = fftProvider;
-            _barsCount = barsCount;
-            SpectrumData = new double[_barsCount];
+            FFTProvider = fftProvider;
+            BarsCount = barsCount;
+            SpectrumData = new double[BarsCount];
         }
 
         public void HandleTick()
         {
-            if (!_fftProvider.IsFFTAvailable) return;
+            if (!FFTProvider.IsFFTAvailable) return;
 
             var b0 = 0;
-            var _bufferLastIndex = _fftProvider.FFTLength.ToBufferSize() - 1;
+            var _bufferLastIndex = FFTProvider.FFTLength.ToBufferSize() - 1;
 
-            for (var x = 0; x < _barsCount; x++)
+            for (var x = 0; x < BarsCount; x++)
             {
                 double peak = 0;
-                var b1 = (int)Math.Pow(2, x * 10.0 / (_barsCount - 1));
+                var b1 = (int)Math.Pow(2, x * 10.0 / (BarsCount - 1));
                 if (b1 > _bufferLastIndex) b1 = _bufferLastIndex;
                 if (b1 <= b0) b1 = b0 + 1;
                 for (; b0 < b1; b0++)
                 {
-                    if (peak < _fftProvider.FFT[1 + b0])
-                        peak = _fftProvider.FFT[1 + b0];
+                    if (peak < FFTProvider.FFT[1 + b0])
+                        peak = FFTProvider.FFT[1 + b0];
                 }
                 var y = (Math.Sqrt(peak) * 3 * 255) - 4;
                 if (y > 255) y = 255;
@@ -49,7 +50,7 @@ namespace WindowsAudioSession.Components.FFT
         void Reset()
         {
             if (SpectrumData != null)
-                for (var x = 0; x < _barsCount; x++) SpectrumData[x] = 0;
+                for (var x = 0; x < BarsCount; x++) SpectrumData[x] = 0;
         }
 
         public void Start()

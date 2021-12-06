@@ -19,3 +19,10 @@ preferred component usage:
 
 	  or else ? we have tp recreate components with new settings and rebuild chain
 
+	  attachment methods (attachTo) can be substituted by property setter
+
+	  composite view models construct sub view models themselves
+
+	  avoid privates fields - they better be exposed even if not modifiable
+	  (extensiblity) except if it concernes implementation details
+

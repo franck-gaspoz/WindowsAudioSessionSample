@@ -18,7 +18,7 @@ namespace WindowsAudioSession.UI.SoundWave
         public static readonly DependencyProperty DrawBackgroundProperty =
             DependencyProperty.Register("DrawBackground", typeof(Brush), typeof(SoundWaveControl), new PropertyMetadata(Brushes.Black));
 
-        public SoundWaveViewModel ViewModel { get; protected set; }
+        public ISoundWaveViewModel ViewModel { get; protected set; }
 
         public SoundWaveControl()
         {

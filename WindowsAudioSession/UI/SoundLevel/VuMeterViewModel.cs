@@ -3,7 +3,7 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.SoundLevel
 {
-    public class VuMeterViewModel : ModelBase
+    public class VuMeterViewModel : ModelBase, IVuMeterViewModel
     {
         double _level = 0;
 
@@ -47,10 +47,8 @@ namespace WindowsAudioSession.UI.SoundLevel
         /// </summary>
         public string Label
         {
-            get
-            {
-                return _label;
-            }
+            get => _label;
+
             set
             {
                 _label = value;

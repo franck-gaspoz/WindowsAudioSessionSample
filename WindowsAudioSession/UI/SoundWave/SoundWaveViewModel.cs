@@ -7,7 +7,7 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.SoundWave
 {
-    public class SoundWaveViewModel : ModelBase, ISoundCaptureHandler
+    public class SoundWaveViewModel : ModelBase, ISoundWaveViewModel, ISoundCaptureHandler
     {
         public ISoundWaveDrawer SoundWaveDrawer { get; protected set; }
 

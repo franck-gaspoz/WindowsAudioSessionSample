@@ -28,7 +28,7 @@ namespace WindowsAudioSession.UI.SoundWave
         int _lastLinesCount = -1;
 
         public SoundWaveDrawer(IDrawable drawable) => _canvas = drawable.GetDrawingSurface();
-        
+
         public void AttachTo(ISoundSampleProvider soundSampleProvider)
         {
             _soundSampleProvider = soundSampleProvider;
@@ -45,10 +45,10 @@ namespace WindowsAudioSession.UI.SoundWave
                 var width = _canvas.ActualWidth;
                 var height = _canvas.ActualHeight;
                 Draw(
-                    x0, 
-                    y0, 
-                    width, 
-                    height, 
+                    x0,
+                    y0,
+                    width,
+                    height,
                     _soundSampleProvider.SoundSampleData,
                     _soundSampleProvider.AvailableLength);
 

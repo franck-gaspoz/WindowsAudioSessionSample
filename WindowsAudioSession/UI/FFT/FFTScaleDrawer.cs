@@ -6,11 +6,12 @@ namespace WindowsAudioSession.UI.FFT
 {
     /// <summary>
     /// FFTControl view extension: add a drawer to the control
-    /// <para>must be added before control is constructed, thus must be done by the control</para>
+    /// <para>must be added before control is constructed, thus is done by the control</para>
     /// </summary>
     public class FFTScaleDrawer : IFFTScaleDrawer
     {
         public Brush LineBrush { get; set; } = Brushes.DarkGray;
+
         public double LineOpacity { get; set; } = 0.5d;
 
         public FFTControl FFTControl { get; }

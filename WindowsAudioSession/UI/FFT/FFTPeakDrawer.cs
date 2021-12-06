@@ -9,9 +9,10 @@ using WindowsAudioSession.Components.FFT;
 namespace WindowsAudioSession.UI.FFT
 {
     public class FFTPeakDrawer : IFFTPeakDrawer, ISoundCaptureHandler
-    { 
+    {
         readonly Canvas _canvas;
-        IFFTPeakAnalyzer _fftPeakAnalyser;
+
+        public IFFTPeakAnalyzer FFTPeakAnalyser { get; protected set; }
 
         public double Margin { get; set; } = 8;
 
@@ -29,7 +30,7 @@ namespace WindowsAudioSession.UI.FFT
         public FFTPeakDrawer(IDrawable drawable) => _canvas = drawable.GetDrawingSurface();
 
         public void AttachTo(IFFTPeakAnalyzer fftPeakAnalyzer)
-            => _fftPeakAnalyser = fftPeakAnalyzer;
+            => FFTPeakAnalyser = fftPeakAnalyzer;
 
         public void Draw(
             double x0,
@@ -83,7 +84,7 @@ namespace WindowsAudioSession.UI.FFT
 
         public void HandleTick()
         {
-            if (_fftPeakAnalyser == null || !IsStarted) return;
+            if (FFTPeakAnalyser == null || !IsStarted) return;
 
             try
             {
@@ -92,7 +93,7 @@ namespace WindowsAudioSession.UI.FFT
                 var width = _canvas.ActualWidth;
                 var height = _canvas.ActualHeight;
 
-                Draw(x0, y0, width, height, _fftPeakAnalyser.SpectrumPeakData);
+                Draw(x0, y0, width, height, FFTPeakAnalyser.SpectrumPeakData);
             }
             catch (Exception ex)
             {

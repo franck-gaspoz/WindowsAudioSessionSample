@@ -7,6 +7,8 @@ namespace WindowsAudioSession.UI.FFT
 {
     public interface IFFTPeakDrawer : ISoundCaptureHandler
     {
+        IFFTPeakAnalyzer FFTPeakAnalyser { get; }
+
         double Margin { get; set; }
 
         double WidthPercent { get; set; }

@@ -13,8 +13,9 @@ namespace WindowsAudioSession.UI.FFT
 {
     public class FFTDrawer : IFFTDrawer, ISoundCaptureHandler
     {
-        readonly Canvas _canvas;
-        IFFTAnalyzer _fftAnalyser;
+        public Canvas _canvas;
+
+        public IFFTAnalyzer FFTAnalyser { get; protected set; }
 
         public double Margin { get; set; } = 8;
 
@@ -31,7 +32,7 @@ namespace WindowsAudioSession.UI.FFT
 
         public void AttachTo(IFFTAnalyzer fftAnalyzer)
         {
-            _fftAnalyser = fftAnalyzer;
+            FFTAnalyser = fftAnalyzer;
         }
 
         public void Draw(
@@ -94,7 +95,7 @@ namespace WindowsAudioSession.UI.FFT
 
         public void HandleTick()
         {
-            if (_fftAnalyser == null || !IsStarted) return;
+            if (FFTAnalyser == null || !IsStarted) return;
 
             try
             {
@@ -103,7 +104,7 @@ namespace WindowsAudioSession.UI.FFT
                 var width = _canvas.ActualWidth;
                 var height = _canvas.ActualHeight;
 
-                Draw(x0, y0, width, height, _fftAnalyser.SpectrumData);
+                Draw(x0, y0, width, height, FFTAnalyser.SpectrumData);
             }
             catch (Exception ex)
             {
