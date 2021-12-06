@@ -1,6 +1,8 @@
-﻿namespace WindowsAudioSession.Components.FFT
+﻿using WindowsAudioSession.Components.AudioCapture;
+
+namespace WindowsAudioSession.Components.FFT
 {
-    public interface IFFTProvider
+    public interface IFFTProvider : ISoundCaptureHandler
     {
         float[] FFT { get; }
 

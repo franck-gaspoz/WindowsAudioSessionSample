@@ -5,9 +5,9 @@ using Un4seen.BassWasapi;
 using WindowsAudioSession.Components.AudioCapture;
 using WindowsAudioSession.UI;
 
-namespace WindowsAudioSession.Components
+namespace WindowsAudioSession.Components.SoundLevel
 {
-    public class SoundLevelCapture : ISoundCaptureHandler
+    public class SoundLevelCapture : ISoundLevelCapture, ISoundCaptureHandler
     {
         public bool IsStarted { get; protected set; }
 

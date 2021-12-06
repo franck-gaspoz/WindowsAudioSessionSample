@@ -1,0 +1,21 @@
+preferred component usage:
+
+1) create unlinked components
+
+2) connect components togethers. includes:
+	
+		- view model (+ analyzers)
+		- model (providers)
+		
+	view can embeded own drawers
+
+3) constructors should have no parameters (NO DI here !)
+
+	- methods should allow to setup components
+
+	- code might adapt components even if already configured
+		(eg: fft bars count) -> chain should not be recreated
+		most complicated: implies to popagate shared settings into the chain
+
+	  or else ? we have tp recreate components with new settings and rebuild chain
+

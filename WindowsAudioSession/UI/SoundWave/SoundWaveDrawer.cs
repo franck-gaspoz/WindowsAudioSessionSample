@@ -5,10 +5,11 @@ using System.Windows.Shapes;
 
 using WindowsAudioSession.Components;
 using WindowsAudioSession.Components.AudioCapture;
+using WindowsAudioSession.Components.Sample;
 
 namespace WindowsAudioSession.UI.SoundWave
 {
-    public class SoundWaveDrawer : ISoundCaptureHandler
+    public class SoundWaveDrawer : ISoundWaveDrawer, ISoundCaptureHandler
     {
         public bool IsStarted { get; protected set; }
 
@@ -21,17 +22,14 @@ namespace WindowsAudioSession.UI.SoundWave
         public double ScaleFactor { get; set; } = 1.8d;
 
         readonly Canvas _canvas;
-        SoundSampleProvider _soundSampleProvider;
+        ISoundSampleProvider _soundSampleProvider;
 
         Line[] _lines;
         int _lastLinesCount = -1;
 
-        public SoundWaveDrawer(Canvas canvas)
-        {
-            _canvas = canvas;
-        }
-
-        public void AttachTo(SoundSampleProvider soundSampleProvider)
+        public SoundWaveDrawer(IDrawable drawable) => _canvas = drawable.GetDrawingSurface();
+        
+        public void AttachTo(ISoundSampleProvider soundSampleProvider)
         {
             _soundSampleProvider = soundSampleProvider;
         }
@@ -51,7 +49,7 @@ namespace WindowsAudioSession.UI.SoundWave
                     y0, 
                     width, 
                     height, 
-                    ref _soundSampleProvider.SoundSampleData,
+                    _soundSampleProvider.SoundSampleData,
                     _soundSampleProvider.AvailableLength);
 
             }
@@ -68,7 +66,7 @@ namespace WindowsAudioSession.UI.SoundWave
             double y0,
             double width,
             double height,
-            ref float[] soundSampleData,
+            float[] soundSampleData,
             int availableLength
             )
         {

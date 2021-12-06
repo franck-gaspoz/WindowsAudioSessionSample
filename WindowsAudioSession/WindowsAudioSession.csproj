@@ -82,7 +82,8 @@
     <Compile Include="Commands\Commands.cs" />
     <Compile Include="Commands\StopCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
-    <Compile Include="Components\AudioCapture\SoundSampleProvider.cs" />
+    <Compile Include="Components\Sample\ISoundSampleProvider.cs" />
+    <Compile Include="Components\Sample\SoundSampleProvider.cs" />
     <Compile Include="Components\ExceptionHelper.cs" />
     <Compile Include="Components\FFT\FFTPeakAnalyzer.cs" />
     <Compile Include="Components\FFT\FFTProvider.cs" />
@@ -90,7 +91,8 @@
     <Compile Include="Components\FFT\IFFTAnalyzer.cs" />
     <Compile Include="Components\FFT\IFFTPeakAnalyzer.cs" />
     <Compile Include="Components\FFT\IFFTProvider.cs" />
-    <Compile Include="Components\SoundLevelCapture.cs" />
+    <Compile Include="Components\SoundLevel\ISoundLevelCapture.cs" />
+    <Compile Include="Components\SoundLevel\SoundLevelCapture.cs" />
     <Compile Include="UI\FFT\BarsCountValidationAttribute.cs" />
     <Compile Include="UI\FFT\FFTControl.xaml.cs">
       <DependentUpon>FFTControl.xaml</DependentUpon>
@@ -111,10 +113,11 @@
       <DependentUpon>VuMeterStereoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\SoundLevel\VuMeterViewModel.cs" />
+    <Compile Include="UI\SoundWave\ISoundWaveDrawer.cs" />
     <Compile Include="UI\SoundWave\SoundWaveControl.xaml.cs">
       <DependentUpon>SoundWaveControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\SoundWave\SoundWaveControlViewModel.cs" />
+    <Compile Include="UI\SoundWave\SoundWaveViewModel.cs" />
     <Compile Include="UI\SoundWave\SoundWaveDrawer.cs" />
     <Compile Include="UI\UIHelper.cs" />
     <Compile Include="WASComponents.cs" />

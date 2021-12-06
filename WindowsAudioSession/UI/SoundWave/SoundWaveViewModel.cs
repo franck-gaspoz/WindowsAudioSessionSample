@@ -1,14 +1,15 @@
 ﻿using System.Windows;
 
 using WindowsAudioSession.Components.AudioCapture;
+using WindowsAudioSession.Components.Sample;
 
 using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.SoundWave
 {
-    public class SoundWaveControlViewModel : ModelBase, ISoundCaptureHandler
+    public class SoundWaveViewModel : ModelBase, ISoundCaptureHandler
     {
-        public SoundWaveDrawer SoundWaveDrawer { get; protected set; }
+        public ISoundWaveDrawer SoundWaveDrawer { get; protected set; }
 
         Thickness _drawMargin = new Thickness(8);
 
@@ -42,10 +43,10 @@ namespace WindowsAudioSession.UI.SoundWave
             }
         }
 
-        public SoundWaveControlViewModel(SoundWaveControl soundWaveControl)
-            => SoundWaveDrawer = new SoundWaveDrawer(soundWaveControl.WaveGraph);
+        public SoundWaveViewModel(IDrawable drawable)
+            => SoundWaveDrawer = new SoundWaveDrawer(drawable);
 
-        public void AttachTo(SoundSampleProvider soundSampleProvider)
+        public void AttachTo(ISoundSampleProvider soundSampleProvider)
             => SoundWaveDrawer.AttachTo(soundSampleProvider);
 
         public void HandleTick()

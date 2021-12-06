@@ -2,11 +2,13 @@
 using Un4seen.Bass;
 using Un4seen.BassWasapi;
 
-namespace WindowsAudioSession.Components.AudioCapture
+using WindowsAudioSession.Components.AudioCapture;
+
+namespace WindowsAudioSession.Components.Sample
 {
-    public class SoundSampleProvider : ISoundCaptureHandler
+    public class SoundSampleProvider : ISoundSampleProvider, ISoundCaptureHandler
     {
-        public float[] SoundSampleData;
+        public float[] SoundSampleData { get; protected set; }
 
         public bool IsDataAvailable { get; protected set; }
 

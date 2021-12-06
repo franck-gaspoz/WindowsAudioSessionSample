@@ -1,11 +1,12 @@
 ﻿
 using System.Windows.Media;
 
+using WindowsAudioSession.Components.AudioCapture;
 using WindowsAudioSession.Components.FFT;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public interface IFFTDrawer
+    public interface IFFTDrawer : ISoundCaptureHandler
     {
         double Margin { get; set; }
 

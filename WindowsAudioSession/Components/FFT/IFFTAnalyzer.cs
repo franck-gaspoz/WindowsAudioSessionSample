@@ -1,6 +1,8 @@
-﻿namespace WindowsAudioSession.Components.FFT
+﻿using WindowsAudioSession.Components.AudioCapture;
+
+namespace WindowsAudioSession.Components.FFT
 {
-    public interface IFFTAnalyzer
+    public interface IFFTAnalyzer : ISoundCaptureHandler
     {
         double[] SpectrumData { get; }
     }

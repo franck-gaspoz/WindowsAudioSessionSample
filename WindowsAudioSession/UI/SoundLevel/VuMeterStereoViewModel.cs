@@ -1,6 +1,7 @@
 ﻿
 using WindowsAudioSession.Components;
 using WindowsAudioSession.Components.AudioCapture;
+using WindowsAudioSession.Components.SoundLevel;
 
 using WPFUtilities.ComponentModel;
 
@@ -14,11 +15,11 @@ namespace WindowsAudioSession.UI.SoundLevel
         public VuMeterViewModel VuMeterRightViewModel { get; protected set; }
             = new VuMeterViewModel() { Label = "R" };
 
-        SoundLevelCapture _soundLevelCapture;
+        ISoundLevelCapture _soundLevelCapture;
 
         public VuMeterStereoViewModel() { }
 
-        public void AttachTo(SoundLevelCapture soundLevelCapture)
+        public void AttachTo(ISoundLevelCapture soundLevelCapture)
         {
             _soundLevelCapture = soundLevelCapture;
         }

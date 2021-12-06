@@ -8,7 +8,7 @@ namespace WindowsAudioSession.UI.FFT
 {
     public class FFTViewModel : ModelBase, ISoundCaptureHandler
     {
-        public FFTDrawer FFTDrawer { get; protected set; }
+        public IFFTDrawer FFTDrawer { get; protected set; }
 
         int _barCount = 512;
 
@@ -51,7 +51,7 @@ namespace WindowsAudioSession.UI.FFT
         {
             get => _isStarted;
 
-            set
+            protected set
             {
                 _isStarted = value;
                 NotifyPropertyChanged();

@@ -7,7 +7,7 @@ namespace WindowsAudioSession.UI.SoundWave
     /// <summary>
     /// Logique d'interaction pour SoundWaveControl.xaml
     /// </summary>
-    public partial class SoundWaveControl : UserControl
+    public partial class SoundWaveControl : UserControl, IDrawable
     {
         public Brush DrawBackground
         {
@@ -18,13 +18,15 @@ namespace WindowsAudioSession.UI.SoundWave
         public static readonly DependencyProperty DrawBackgroundProperty =
             DependencyProperty.Register("DrawBackground", typeof(Brush), typeof(SoundWaveControl), new PropertyMetadata(Brushes.Black));
 
-        public SoundWaveControlViewModel ViewModel { get; protected set; }
+        public SoundWaveViewModel ViewModel { get; protected set; }
 
         public SoundWaveControl()
         {
             InitializeComponent();
-            ViewModel = new SoundWaveControlViewModel(this);
+            ViewModel = new SoundWaveViewModel(this);
             DataContext = ViewModel;
         }
+
+        public Canvas GetDrawingSurface() => WaveGraph;
     }
 }
