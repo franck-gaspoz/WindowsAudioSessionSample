@@ -17,7 +17,7 @@ Clean architecture approach: complete discoupling between data,data providers,da
 
 ## Components dependencies:
 
-<a href="https://app.diagrams.net/?mode=github#Hfranck-gaspoz%2FWindowsAudioSessionSample%2Fmain%2FDoc%2FUntitled%20Diagram.drawio.svg">
-<img src="/Doc/Untitled%20Diagram.drawio.svg">
+<a href="https://app.diagrams.net/?mode=github#Hfranck-gaspoz%2FWindowsAudioSessionSample%2Fmain%2FDoc%2Fcomponents1.drawio.svg">
+<img src="/Doc/components1.drawio.svg">
 </a>
 
