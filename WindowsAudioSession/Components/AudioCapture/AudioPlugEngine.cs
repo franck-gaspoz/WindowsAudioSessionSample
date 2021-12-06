@@ -14,7 +14,11 @@ using commands = WindowsAudioSession.Commands.Commands;
 
 namespace WindowsAudioSession.Components.AudioCapture
 {
-    public class SoundCaptureEngine
+    /// <summary>
+    /// AudioPlugEngine
+    /// <para>might have separated typed initializers (currently have only 'InitiliazeSoundCapture') ?</para>
+    /// </summary>
+    public class AudioPlugEngine
     {
         public ListenableSoundDevices ListenabledSoundDevices { get; protected set; }
 
@@ -26,25 +30,32 @@ namespace WindowsAudioSession.Components.AudioCapture
 
         const int _activationDelay = 200;
 
-        public SoundCaptureEngine AddSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
+        public AudioPlugEngine AddSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
         {
             _soundCaptureHandlers.Add(soundCaptureHandler);
             return this;
         }
 
-        public SoundCaptureEngine RemoveSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
+        public AudioPlugEngine RemoveSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
         {
             _ = _soundCaptureHandlers.Remove(soundCaptureHandler);
             return this;
         }
 
-        public SoundCaptureEngine()
+        /// <summary>
+        /// build a new audio plug engine
+        /// <para>that can be done if no other engine is already running with same system audio resources</para>
+        /// </summary>
+        public AudioPlugEngine()
         {
             _process = new WASAPIPROC(WASAPICaptureCallback);
-            InitializeListener();
+            InitializeDispatcherTimer();
         }
 
-        void InitializeListener()
+        /// <summary>
+        /// initialize the dispatcher timer that triggers ticks for audio plugs
+        /// </summary>
+        void InitializeDispatcherTimer()
         {
             _dispatcherTimer = new DispatcherTimer();
             _dispatcherTimer.Tick += DispatcherTimerEventHandler;
@@ -52,6 +63,11 @@ namespace WindowsAudioSession.Components.AudioCapture
             _dispatcherTimer.IsEnabled = false;
         }
 
+        /// <summary>
+        /// initialize audio treatment: sound capture
+        /// </summary>
+        /// <param name="soundDeviceIndex">sound device index to be listened</param>
+        /// <param name="sampleRate">sample rate</param>
         void InitiliazeSoundCapture(int soundDeviceIndex, int sampleRate)
         {
             if (!Bass.BASS_Init(0, sampleRate, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero))
@@ -83,6 +99,12 @@ namespace WindowsAudioSession.Components.AudioCapture
             return length;
         }
 
+        /// <summary>
+        /// the dispatcher timer that runs the audio plug chain
+        /// <para>it is stoped if an exception occurs in audio chain treatments</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void DispatcherTimerEventHandler(object sender, EventArgs e)
         {
             try
@@ -97,6 +119,11 @@ namespace WindowsAudioSession.Components.AudioCapture
             }
         }
 
+        /// <summary>
+        /// starts the audio plug engine (if stopped else does nothing)
+        /// </summary>
+        /// <param name="soundDeviceIndex">sound device index in sound devices list</param>
+        /// <param name="sampleRate">sample rate</param>
         public void Start(int soundDeviceIndex, int sampleRate = 44100)
         {
             if (_dispatcherTimer.IsEnabled)
@@ -113,6 +140,9 @@ namespace WindowsAudioSession.Components.AudioCapture
                 soundCaptureHandler.Start();
         }
 
+        /// <summary>
+        /// stops the audio plug engine (if running else does nothing)
+        /// </summary>
         public void Stop()
         {
             if (!_dispatcherTimer.IsEnabled)

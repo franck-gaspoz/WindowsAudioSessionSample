@@ -20,9 +20,126 @@ preferred component usage:
 	  or else ? we have tp recreate components with new settings and rebuild chain
 
 	  attachment methods (attachTo) can be substituted by property setter
+	  we should not have both parameters in constructors and others provided with attachTo
+		-> a single model is necessary
 
 	  composite view models construct sub view models themselves
 
 	  avoid privates fields - they better be exposed even if not modifiable
 	  (extensiblity) except if it concernes implementation details
 
+ 4) should control build their own view model ?
+
+	  several different might be possible. so why instantiate a one ? they would get it
+	  throught DI can solve the question. or simply assign it by outside.
+
+
+      ...
+
+design choice:
+--------------
+
+	in order to avoid to configurate any components in independent way, after they has been built,
+	it is necessary to allow setup throught their properties and not uniquely at creation time throught
+	constructors.
+
+	thus:
+		- no parameters in components constructors
+		- any parameters is set throught properties setters
+		- properties that are shareable throught the chain:
+			- should be synchronized be mediators
+				-> this knowledge is avaialble to developpers, not by introspecting components
+			- or have a view model type that is shared throught components
+				-> this allows a graphical configuration of components based on introspection
+			  ex: the parameters bar count is shared throught fft analyzer / fft view model / fft drawer
+
+			- or a simple specific type that means it is a sharable property with notifiable properties, 
+				so boundable directly to ui:
+
+				SharableProperty<T> : ModelBase but doesn't allow annotation
+
+				public class BarCount : SharableProperty<int> {
+
+				}
+
+				This a simple separated view model appears as the best choice !!!
+				-----------------------------------------------------------------
+
+				[SharedProperty]	// needed ?
+				public class BarsCountViewModel : ModelBase {
+				
+					int _barsCount;
+
+					[Annotation..]
+					public int BarsCount {
+					
+						get => _barsCount;
+						set {
+							_barsCount = value;
+							NotifyPropertyChanged();
+						}
+
+					}
+				
+				}
+
+			due to dependencies between properties, viewmodels might be connected separately
+			(eg. BarsCount is relative to FFT Length).
+
+
+Sample case: view from a sound chain graphical editor
+-----------------------------------------------------
+
+	- pick up : FFT Control . it is instantiated
+
+	--> requires IFFTViewModel
+		--> found BarsCountViewModel not initialized
+			==> must be added separately
+		--> found Drawable : must be initialized with the control IDrawable interface
+		--> found IFFTAnalyzer
+			==> must be added separately
+
+	--> bound to FFScaleDrawer (already set, but might be changed)
+
+	one everything plug and models are valids, the audio plugs chain can be started
+
+
+components rules:
+-----------------
+
+Control
+	- no parameters in constructor
+	- public properties
+	- self initialized components properties: only eventually drawer
+	- dependency properties: must be bound to view model in Loaded event
+
+View Models
+	- can initialize sub view models if there are not shared by audio component dependencies
+	- implements ISoundCpatureHandler if needed
+	- required properties (components) should be null (not initialized) 
+		-> discoverable at run time throught introspection
+	- choose to use PROPERTIES to provide DATA. we connect properties, not method in a data chain
+
+		example: 
+			IFFTProvider : ISoundCaptureHandler {
+				float[] FFT { get; }	// (1)
+			}
+			FFTSmoother : IFFTProvider {
+				float[] FFT { get; }		// (2)
+				void HandleTick() {
+					FFT = Smooth( otherFFTProvider.FFT );
+				}
+			}
+			// can link (1) and (2) with introspection coz are IDENTICALS IN INTERFACE
+				(interface type is the same => data property is the same)
+
+			FFTProvider(1)		FFTSmoother(2)		FFTAnalyzer
+	tick		  1					  2				     3
+		it is a data pummping model between each component in the responsability chain
+		this is not the responsability of one component to call the others. it justs 
+		pump the data from the component it is connected to
+
+	 - flow order (dependecy direction) determinates the components orders in responsability chain
+
+Interface View models
+	- declares ISoundCaptureHandler if in view model impl (usefull to handle objects with only view model interface type in the responsability chain)

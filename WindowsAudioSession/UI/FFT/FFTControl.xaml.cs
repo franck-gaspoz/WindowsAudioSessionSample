@@ -9,7 +9,7 @@ namespace WindowsAudioSession.UI.FFT
     /// </summary>
     public partial class FFTControl : UserControl, IDrawable
     {
-        public FFTViewModel ViewModel { get; protected set; }
+        public IFFTViewModel ViewModel { get; protected set; }
 
         public IFFTScaleDrawer FFScaleDrawer { get; protected set; }
 

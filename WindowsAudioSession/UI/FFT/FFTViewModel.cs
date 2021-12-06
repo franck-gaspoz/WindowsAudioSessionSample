@@ -6,7 +6,7 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public class FFTViewModel : ModelBase, ISoundCaptureHandler
+    public class FFTViewModel : ModelBase, IFFTViewModel, ISoundCaptureHandler
     {
         public IFFTDrawer FFTDrawer { get; protected set; }
 

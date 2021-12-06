@@ -136,7 +136,7 @@
     </Compile>
     <Compile Include="Components\AudioCapture\ISoundCaptureHandler.cs" />
     <Compile Include="Components\AudioCapture\ListenableSoundDevices.cs" />
-    <Compile Include="Components\AudioCapture\SoundCaptureEngine.cs" />
+    <Compile Include="Components\AudioCapture\AudioPlugEngine.cs" />
     <Compile Include="Components\FFT\FFTAnalyzer.cs" />
     <Compile Include="Components\FFT\FFTLength.cs" />
     <Compile Include="Components\WindowsAudioSessionHelper.cs" />
