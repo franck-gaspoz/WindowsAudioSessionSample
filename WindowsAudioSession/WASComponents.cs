@@ -65,7 +65,8 @@ namespace WindowsAudioSession
 
             SoundLevelCapture = new SoundLevelCapture();
             var vuMeterViewModel = App.WASMainWindow.vuMeterControl1.ViewModel;
-            vuMeterViewModel.AttachTo(SoundLevelCapture);
+            vuMeterViewModel.VuMeterLeftViewModel.AttachTo(SoundLevelCapture);
+            vuMeterViewModel.VuMeterRightViewModel.AttachTo(SoundLevelCapture);
 
             // sound sample component
 
@@ -88,7 +89,8 @@ namespace WindowsAudioSession
                 .AddSoundCaptureHandler(FFTPeakDrawer)
 
                 .AddSoundCaptureHandler(SoundLevelCapture)
-                .AddSoundCaptureHandler(vuMeterViewModel)
+                .AddSoundCaptureHandler(vuMeterViewModel.VuMeterLeftViewModel)
+                .AddSoundCaptureHandler(vuMeterViewModel.VuMeterRightViewModel)
 
                 .AddSoundCaptureHandler(soundWaveViewModel);
         }

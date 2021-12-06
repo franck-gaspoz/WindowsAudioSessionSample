@@ -12,7 +12,7 @@ namespace WindowsAudioSession.UI.SoundLevel
         public VuMeterControl()
         {
             InitializeComponent();
-            ViewModel = new VuMeterViewModel();
+            ViewModel = new VuMeterLeftViewModel();
             DataContext = ViewModel;
         }
     }

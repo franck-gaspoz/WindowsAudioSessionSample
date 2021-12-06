@@ -1,10 +1,15 @@
 ﻿
+using WindowsAudioSession.Components.AudioCapture;
+using WindowsAudioSession.Components.SoundLevel;
+
 using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.SoundLevel
 {
-    public class VuMeterViewModel : ModelBase, IVuMeterViewModel
+    public class VuMeterRightViewModel : ModelBase, IVuMeterViewModel, ISoundCaptureHandler
     {
+        public ISoundLevelCapture SoundLevelCapture { get; protected set; }
+
         double _level = 0;
 
         /// <summary>
@@ -29,10 +34,8 @@ namespace WindowsAudioSession.UI.SoundLevel
         /// </summary>
         public double InvertedLevel
         {
-            get
-            {
-                return _invertedLevel;
-            }
+            get => _invertedLevel;
+            
             set
             {
                 _invertedLevel = value;
@@ -72,5 +75,16 @@ namespace WindowsAudioSession.UI.SoundLevel
             }
         }
 
+        public void AttachTo(ISoundLevelCapture soundLevelCapture)
+            => SoundLevelCapture = soundLevelCapture;
+
+        public void HandleTick()
+            => Level = SoundLevelCapture.LevelRight / 20000d;
+
+        void Reset() => Level = 0;
+
+        public void Start() => Reset();
+
+        public void Stop() => Reset();
     }
 }

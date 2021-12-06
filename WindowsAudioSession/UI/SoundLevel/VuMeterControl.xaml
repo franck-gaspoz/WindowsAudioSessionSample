@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
-             xmlns:local="clr-namespace:WindowsAudioSession.UI.SoundLevel" d:DataContext="{d:DesignInstance Type=local:VuMeterViewModel}"
+             xmlns:local="clr-namespace:WindowsAudioSession.UI.SoundLevel" d:DataContext="{d:DesignInstance Type=local:VuMeterLeftViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="16" d:DesignWidth="200">
 

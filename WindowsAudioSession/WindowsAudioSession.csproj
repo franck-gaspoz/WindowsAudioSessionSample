@@ -110,11 +110,12 @@
     <Compile Include="UI\SoundLevel\VuMeterControl.xaml.cs">
       <DependentUpon>VuMeterControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\SoundLevel\VuMeterRightViewModel.cs" />
     <Compile Include="UI\SoundLevel\VuMeterStereoViewModel.cs" />
     <Compile Include="UI\SoundLevel\VuMeterStereoControl.xaml.cs">
       <DependentUpon>VuMeterStereoControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\SoundLevel\VuMeterViewModel.cs" />
+    <Compile Include="UI\SoundLevel\VuMeterLeftViewModel.cs" />
     <Compile Include="UI\SoundWave\ISoundWaveDrawer.cs" />
     <Compile Include="UI\SoundWave\ISoundWaveViewModel.cs" />
     <Compile Include="UI\SoundWave\SoundWaveControl.xaml.cs">
