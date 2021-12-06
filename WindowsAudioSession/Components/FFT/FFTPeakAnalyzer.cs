@@ -4,17 +4,17 @@ using WindowsAudioSession.Components.AudioCapture;
 
 namespace WindowsAudioSession.Components.FFT
 {
-    public class FFTPeakAnalyzer : ISoundCaptureHandler
+    public class FFTPeakAnalyzer : IFFTPeakAnalyzer, ISoundCaptureHandler
     {
         readonly int _barsCount;
-        readonly FFTAnalyzer _fftAnalyzer;
+        readonly IFFTAnalyzer _fftAnalyzer;
 
-        public double[] SpectrumPeakData;
+        public double[] SpectrumPeakData { get; protected set; }
 
         public double DecayStep { get; set; } = 4d;
 
         public FFTPeakAnalyzer(
-            FFTAnalyzer fftAnalyzer,
+            IFFTAnalyzer fftAnalyzer,
             int barsCount)
         {
             _fftAnalyzer = fftAnalyzer;

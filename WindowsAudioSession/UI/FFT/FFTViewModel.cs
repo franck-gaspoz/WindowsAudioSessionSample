@@ -6,7 +6,7 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public class FFTControlViewModel : ModelBase, ISoundCaptureHandler
+    public class FFTViewModel : ModelBase, ISoundCaptureHandler
     {
         public FFTDrawer FFTDrawer { get; protected set; }
 
@@ -58,10 +58,10 @@ namespace WindowsAudioSession.UI.FFT
             }
         }
 
-        public FFTControlViewModel(FFTControl fftControl)
-            => FFTDrawer = new FFTDrawer(fftControl.BarGraph);
+        public FFTViewModel(IDrawable drawable)
+            => FFTDrawer = new FFTDrawer(drawable);
 
-        public void AttachTo(FFTAnalyzer fftAnalyzer)
+        public void AttachTo(IFFTAnalyzer fftAnalyzer)
             => FFTDrawer.AttachTo(fftAnalyzer);
 
         public void HandleTick()

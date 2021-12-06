@@ -87,14 +87,22 @@
     <Compile Include="Components\FFT\FFTPeakAnalyzer.cs" />
     <Compile Include="Components\FFT\FFTProvider.cs" />
     <Compile Include="Components\FFT\FFTLengthExt.cs" />
+    <Compile Include="Components\FFT\IFFTAnalyzer.cs" />
+    <Compile Include="Components\FFT\IFFTPeakAnalyzer.cs" />
+    <Compile Include="Components\FFT\IFFTProvider.cs" />
     <Compile Include="Components\SoundLevelCapture.cs" />
     <Compile Include="UI\FFT\BarsCountValidationAttribute.cs" />
     <Compile Include="UI\FFT\FFTControl.xaml.cs">
       <DependentUpon>FFTControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\FFT\FFTControlViewModel.cs" />
+    <Compile Include="UI\FFT\FFTViewModel.cs" />
     <Compile Include="UI\FFT\FFTPeakDrawer.cs" />
     <Compile Include="UI\FFT\FFTScaleDrawer.cs" />
+    <Compile Include="UI\FFT\IFFTDrawer.cs" />
+    <Compile Include="UI\FFT\IFFTPeakDrawer.cs" />
+    <Compile Include="UI\FFT\IFFTScaleDrawer.cs" />
+    <Compile Include="UI\FFT\IFFTViewModel.cs" />
+    <Compile Include="UI\IDrawable.cs" />
     <Compile Include="UI\SoundLevel\VuMeterControl.xaml.cs">
       <DependentUpon>VuMeterControl.xaml</DependentUpon>
     </Compile>
@@ -114,14 +122,14 @@
     <Compile Include="UI\WASOverviewWindow.xaml.cs">
       <DependentUpon>WASOverviewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\WASOverviewWindowViewModel.cs" />
+    <Compile Include="UI\WASMainViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\AudioCapture\ISoundCaptureHandler.cs" />
     <Compile Include="Components\AudioCapture\ListenableSoundDevices.cs" />
-    <Compile Include="Components\AudioCapture\SoundListener.cs" />
+    <Compile Include="Components\AudioCapture\SoundCaptureEngine.cs" />
     <Compile Include="Components\FFT\FFTAnalyzer.cs" />
     <Compile Include="Components\FFT\FFTLength.cs" />
     <Compile Include="Components\WindowsAudioSessionHelper.cs" />

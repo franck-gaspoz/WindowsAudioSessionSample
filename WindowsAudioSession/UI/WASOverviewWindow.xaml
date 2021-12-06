@@ -9,7 +9,7 @@
         xmlns:fftControls="clr-namespace:WindowsAudioSession.UI.FFT"
         xmlns:soundWaveControls="clr-namespace:WindowsAudioSession.UI.SoundWave"
         xmlns:soundLevelControls="clr-namespace:WindowsAudioSession.UI.SoundLevel"
-        d:DataContext="{d:DesignInstance Type=local:WASOverviewWindowViewModel}"
+        d:DataContext="{d:DesignInstance Type=local:WASMainViewModel}"
         Topmost="True"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"

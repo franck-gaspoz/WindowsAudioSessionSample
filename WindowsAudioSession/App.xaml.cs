@@ -13,7 +13,7 @@ namespace WindowsAudioSession
     {
         public static WASOverviewWindow WASOverviewWindow { get; set; }
 
-        public static WASOverviewWindowViewModel WASOverviewWindowViewModel { get; set; }
+        public static WASMainViewModel WASOverviewWindowViewModel { get; set; }
 
         public static WASComponents WASComponents { get; set; }
 
@@ -25,7 +25,7 @@ namespace WindowsAudioSession
                 CultureInfo.DefaultThreadCurrentUICulture =
                     new CultureInfo("en");
 
-                WASOverviewWindowViewModel = new WASOverviewWindowViewModel();
+                WASOverviewWindowViewModel = new WASMainViewModel();
                 WASOverviewWindow = new WASOverviewWindow
                 {
                     DataContext = WASOverviewWindowViewModel

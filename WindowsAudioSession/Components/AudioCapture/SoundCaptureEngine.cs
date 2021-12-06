@@ -14,7 +14,7 @@ using commands = WindowsAudioSession.Commands.Commands;
 
 namespace WindowsAudioSession.Components.AudioCapture
 {
-    public class SoundListener
+    public class SoundCaptureEngine
     {
         public ListenableSoundDevices ListenabledSoundDevices { get; protected set; }
 
@@ -26,19 +26,19 @@ namespace WindowsAudioSession.Components.AudioCapture
 
         const int _activationDelay = 200;
 
-        public SoundListener AddSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
+        public SoundCaptureEngine AddSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
         {
             _soundCaptureHandlers.Add(soundCaptureHandler);
             return this;
         }
 
-        public SoundListener RemoveSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
+        public SoundCaptureEngine RemoveSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
         {
             _ = _soundCaptureHandlers.Remove(soundCaptureHandler);
             return this;
         }
 
-        public SoundListener()
+        public SoundCaptureEngine()
         {
             _process = new WASAPIPROC(WASAPICaptureCallback);
             InitializeListener();

@@ -11,10 +11,10 @@ using WPFUtilities.CustomBrushes;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public class FFTDrawer : ISoundCaptureHandler
+    public class FFTDrawer : IFFTDrawer, ISoundCaptureHandler
     {
         readonly Canvas _canvas;
-        FFTAnalyzer _fftAnalyser;
+        IFFTAnalyzer _fftAnalyser;
 
         public double Margin { get; set; } = 8;
 
@@ -26,9 +26,10 @@ namespace WindowsAudioSession.UI.FFT
 
         public bool IsStarted { get; protected set; }
 
-        public FFTDrawer(Canvas canvas) => _canvas = canvas;
+        public FFTDrawer(IDrawable drawable)
+            => _canvas = drawable.GetDrawingSurface();
 
-        public void AttachTo(FFTAnalyzer fftAnalyzer)
+        public void AttachTo(IFFTAnalyzer fftAnalyzer)
         {
             _fftAnalyser = fftAnalyzer;
         }
@@ -38,7 +39,7 @@ namespace WindowsAudioSession.UI.FFT
             double y0,
             double width,
             double height,
-            ref double[] barSizes
+            double[] barSizes
             )
         {
             var barCount = barSizes.Length;
@@ -102,7 +103,7 @@ namespace WindowsAudioSession.UI.FFT
                 var width = _canvas.ActualWidth;
                 var height = _canvas.ActualHeight;
 
-                Draw(x0, y0, width, height, ref _fftAnalyser.SpectrumData);
+                Draw(x0, y0, width, height, _fftAnalyser.SpectrumData);
             }
             catch (Exception ex)
             {

@@ -9,8 +9,8 @@ namespace WindowsAudioSession.UI.FFT
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            if (!(validationContext.ObjectInstance is FFTControlViewModel))
-                return new ValidationResult($"can only by used in a model of type {typeof(FFTControlViewModel)}");
+            if (!(validationContext.ObjectInstance is FFTViewModel))
+                return new ValidationResult($"can only by used in a model of type {typeof(FFTViewModel)}");
 
             if (App.WASOverviewWindowViewModel == null)
                 return ValidationResult.Success;

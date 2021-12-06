@@ -4,15 +4,15 @@ using WindowsAudioSession.Components.AudioCapture;
 
 namespace WindowsAudioSession.Components.FFT
 {
-    public class FFTAnalyzer : ISoundCaptureHandler
+    public class FFTAnalyzer : IFFTAnalyzer, ISoundCaptureHandler
     {
         readonly int _barsCount;
-        readonly FFTProvider _fftProvider;
+        readonly IFFTProvider _fftProvider;
 
-        public double[] SpectrumData;
+        public double[] SpectrumData { get; protected set; }
 
         public FFTAnalyzer(
-            FFTProvider fftProvider,
+            IFFTProvider fftProvider,
             int barsCount)
         {
             _fftProvider = fftProvider;
