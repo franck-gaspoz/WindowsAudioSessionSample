@@ -12,10 +12,10 @@ namespace WindowsAudioSession.UI.FFT
             if (!(validationContext.ObjectInstance is FFTViewModel))
                 return new ValidationResult($"can only by used in a model of type {typeof(FFTViewModel)}");
 
-            if (App.WASOverviewWindowViewModel == null)
+            if (App.WASMainViewModel == null)
                 return ValidationResult.Success;
 
-            var maxAllowed = Math.Min(4096, App.WASOverviewWindowViewModel.FFTResolution / 2);
+            var maxAllowed = Math.Min(4096, App.WASMainViewModel.FFTResolution / 2);
 
             return !(value is int intValue)
                 ? new ValidationResult($"must be integer >= 1 and <= {maxAllowed}")

@@ -3,11 +3,11 @@
 namespace WindowsAudioSession.UI
 {
     /// <summary>
-    /// Logique d'interaction pour WASOverviewWindow.xaml
+    /// main window
     /// </summary>
-    public partial class WASOverviewWindow : Window
+    public partial class WASMainWindow : Window
     {
-        public WASOverviewWindow()
+        public WASMainWindow()
         {
             InitializeComponent();
         }

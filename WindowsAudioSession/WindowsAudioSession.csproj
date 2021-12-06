@@ -125,8 +125,8 @@
     <Compile Include="UI\UIHelper.cs" />
     <Compile Include="WASComponents.cs" />
     <Compile Include="UI\FFT\FFTDrawer.cs" />
-    <Compile Include="UI\WASOverviewWindow.xaml.cs">
-      <DependentUpon>WASOverviewWindow.xaml</DependentUpon>
+    <Compile Include="UI\WASMainWindow.xaml.cs">
+      <DependentUpon>WASMainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\WASMainViewModel.cs" />
     <Compile Include="App.xaml.cs">
@@ -155,7 +155,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\WASOverviewWindow.xaml">
+    <Page Include="UI\WASMainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

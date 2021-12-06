@@ -3,14 +3,14 @@
     public class StopCommand : AbstractCommand
     {
         public override bool CanExecute(object parameter)
-            => App.WASOverviewWindowViewModel != null && App.WASOverviewWindowViewModel.IsStarted;
+            => App.WASMainViewModel != null && App.WASMainViewModel.IsStarted;
 
         public override void Execute(object parameter)
         {
-            App.WASComponents.SoundListener.Stop();
+            App.WASComponents.SoundCaptureEngine.Stop();
 
-            App.WASOverviewWindowViewModel.IsStarted = false;
-            App.WASOverviewWindowViewModel.CanStart = true;
+            App.WASMainViewModel.IsStarted = false;
+            App.WASMainViewModel.CanStart = true;
         }
     }
 }

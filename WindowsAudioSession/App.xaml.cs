@@ -7,13 +7,13 @@ using WindowsAudioSession.UI;
 namespace WindowsAudioSession
 {
     /// <summary>
-    /// Logique d'interaction pour App.xaml
+    /// App
     /// </summary>
     public partial class App : Application
     {
-        public static WASOverviewWindow WASOverviewWindow { get; set; }
+        public static WASMainWindow WASMainWindow { get; set; }
 
-        public static WASMainViewModel WASOverviewWindowViewModel { get; set; }
+        public static WASMainViewModel WASMainViewModel { get; set; }
 
         public static WASComponents WASComponents { get; set; }
 
@@ -25,15 +25,15 @@ namespace WindowsAudioSession
                 CultureInfo.DefaultThreadCurrentUICulture =
                     new CultureInfo("en");
 
-                WASOverviewWindowViewModel = new WASMainViewModel();
-                WASOverviewWindow = new WASOverviewWindow
+                WASMainViewModel = new WASMainViewModel();
+                WASMainWindow = new WASMainWindow
                 {
-                    DataContext = WASOverviewWindowViewModel
+                    DataContext = WASMainViewModel
                 };
 
                 WASComponents = new WASComponents();
 
-                _ = WASOverviewWindow.ShowDialog();
+                _ = WASMainWindow.ShowDialog();
             }
             catch (Exception ex)
             {

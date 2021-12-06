@@ -7,22 +7,22 @@ namespace WindowsAudioSession.Commands
     public class StartCommand : AbstractCommand
     {
         public override bool CanExecute(object parameter)
-            => App.WASOverviewWindowViewModel != null && App.WASOverviewWindowViewModel.CanStart;
+            => App.WASMainViewModel != null && App.WASMainViewModel.CanStart;
 
         public override void Execute(object parameter)
         {
             try
             {
                 var components = App.WASComponents;
-                var viewModel = App.WASOverviewWindowViewModel;
+                var viewModel = App.WASMainViewModel;
 
                 components.BuildComponents(viewModel);
 
                 var deviceId = Convert.ToInt32(viewModel.SelectedDevice.id);
 
-                components.SoundListener.Start(deviceId, viewModel.SampleFrequency);
+                components.SoundCaptureEngine.Start(deviceId, viewModel.SampleFrequency);
 
-                App.WASOverviewWindowViewModel.IsStarted = true;
+                App.WASMainViewModel.IsStarted = true;
 
             }
             catch (Exception ex)
