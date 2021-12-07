@@ -27,6 +27,7 @@ namespace WindowsAudioSession
         public ISoundSampleProvider SoundSampleProvider { get; protected set; }
         public IFFTDrawer FFTDrawer1 { get; protected set; } = new FFTDrawer();
         public IFFTDrawer FFTDrawer2 { get; protected set; } = new FFTDrawer();
+        public FFTViewModelDrawerMediator FFTViewModelDrawerMediator { get; protected set; } = new FFTViewModelDrawerMediator();
 
         /// <summary>
         /// add and setup required components, connect to the view and activate the sound capture engine
@@ -52,6 +53,7 @@ namespace WindowsAudioSession
             FFTAnalyser1.BarsCount = fft1ViewModel.BarCount;
             FFTDrawer1.Drawable = App.WASMainWindow.fftControl1;
             FFTDrawer1.FFTAnalyser = FFTAnalyser1;
+            FFTViewModelDrawerMediator.InitializeMediate(fft1ViewModel, FFTDrawer1);
 
             // FFT component #2
 

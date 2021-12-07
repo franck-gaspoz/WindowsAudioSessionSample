@@ -100,6 +100,7 @@
     <Compile Include="UI\FFT\FFTViewModel.cs" />
     <Compile Include="UI\FFT\FFTPeakDrawer.cs" />
     <Compile Include="UI\FFT\FFTScaleDrawer.cs" />
+    <Compile Include="UI\FFT\FFTViewModelDrawerMediator.cs" />
     <Compile Include="UI\FFT\IFFTControl.cs" />
     <Compile Include="UI\FFT\IFFTDrawer.cs" />
     <Compile Include="UI\FFT\IFFTPeakDrawer.cs" />

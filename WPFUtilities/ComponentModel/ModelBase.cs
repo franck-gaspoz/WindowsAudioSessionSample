@@ -5,6 +5,7 @@ namespace WPFUtilities.ComponentModel
 {
     public class ModelBase :
         ModelDataValidation,
+        IModelBase,
         INotifyPropertyChanged
     {
         public bool IsDataValidationEnabled = true;

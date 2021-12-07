@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 
 namespace WPFUtilities.ComponentModel
 {
-    public class ModelDataValidation : INotifyDataErrorInfo
+    public class ModelDataValidation : INotifyDataErrorInfo, IModelDataValidation
     {
         public readonly IDictionary<string, List<string>> Errors = new Dictionary<string, List<string>>();
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
