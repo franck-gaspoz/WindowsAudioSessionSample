@@ -11,7 +11,7 @@ using WPFUtilities.CustomBrushes;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public class FFTDrawer : IFFTDrawer, ISoundCaptureHandler
+    public class FFTDrawer : IFFTDrawer, IAudioPlugHandler
     {
         public IDrawable Drawable { get; set; }
 

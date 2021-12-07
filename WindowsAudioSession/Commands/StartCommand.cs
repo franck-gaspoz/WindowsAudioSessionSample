@@ -20,7 +20,7 @@ namespace WindowsAudioSession.Commands
 
                 var deviceId = Convert.ToInt32(viewModel.SelectedDevice.id);
 
-                components.SoundCaptureEngine.Start(deviceId, viewModel.SampleFrequency);
+                components.AudioPlugEngine.Start(deviceId, viewModel.SampleFrequency);
 
                 App.WASMainViewModel.IsStarted = true;
 

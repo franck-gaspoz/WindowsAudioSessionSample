@@ -3,7 +3,7 @@ using WindowsAudioSession.Components.SoundLevel;
 
 namespace WindowsAudioSession.UI.SoundLevel
 {
-    public interface IVuMeterViewModel : ISoundCaptureHandler
+    public interface IVuMeterViewModel : IAudioPlugHandler
     {
         ISoundLevelCapture SoundLevelCapture { get; }
 

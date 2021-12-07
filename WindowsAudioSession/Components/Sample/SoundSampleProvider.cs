@@ -6,7 +6,7 @@ using WindowsAudioSession.Components.AudioCapture;
 
 namespace WindowsAudioSession.Components.Sample
 {
-    public class SoundSampleProvider : ISoundSampleProvider, ISoundCaptureHandler
+    public class SoundSampleProvider : ISoundSampleProvider, IAudioPlugHandler
     {
         public float[] SoundSampleData { get; protected set; }
 

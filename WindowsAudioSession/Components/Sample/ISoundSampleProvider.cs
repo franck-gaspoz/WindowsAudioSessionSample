@@ -3,7 +3,7 @@ using WindowsAudioSession.Components.AudioCapture;
 
 namespace WindowsAudioSession.Components.Sample
 {
-    public interface ISoundSampleProvider : ISoundCaptureHandler
+    public interface ISoundSampleProvider : IAudioPlugHandler
     {
         float[] SoundSampleData { get; }
 

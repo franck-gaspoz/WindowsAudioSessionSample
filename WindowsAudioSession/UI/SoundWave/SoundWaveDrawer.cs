@@ -9,7 +9,7 @@ using WindowsAudioSession.Components.Sample;
 
 namespace WindowsAudioSession.UI.SoundWave
 {
-    public class SoundWaveDrawer : ISoundWaveDrawer, ISoundCaptureHandler
+    public class SoundWaveDrawer : ISoundWaveDrawer, IAudioPlugHandler
     {
         public bool IsStarted { get; protected set; }
 

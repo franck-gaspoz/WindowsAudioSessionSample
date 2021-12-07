@@ -8,7 +8,7 @@ using WindowsAudioSession.Components.FFT;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public class FFTPeakDrawer : IFFTPeakDrawer, ISoundCaptureHandler
+    public class FFTPeakDrawer : IFFTPeakDrawer, IAudioPlugHandler
     {
         public IFFTPeakAnalyzer FFTPeakAnalyser { get; set; }
 

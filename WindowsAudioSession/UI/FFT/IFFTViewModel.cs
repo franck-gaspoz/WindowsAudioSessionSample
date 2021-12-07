@@ -3,7 +3,7 @@ using WindowsAudioSession.Components.AudioCapture;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public interface IFFTViewModel : ISoundCaptureHandler
+    public interface IFFTViewModel : IAudioPlugHandler
     {
         int BarCount { get; set; }
 

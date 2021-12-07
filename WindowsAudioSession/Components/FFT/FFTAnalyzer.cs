@@ -4,7 +4,7 @@ using WindowsAudioSession.Components.AudioCapture;
 
 namespace WindowsAudioSession.Components.FFT
 {
-    public class FFTAnalyzer : IFFTAnalyzer, ISoundCaptureHandler
+    public class FFTAnalyzer : IFFTAnalyzer, IAudioPlugHandler
     {
         int _barsCount;
         public int BarsCount

@@ -5,7 +5,7 @@ using WindowsAudioSession.Components.Sample;
 
 namespace WindowsAudioSession.UI.SoundWave
 {
-    public interface ISoundWaveViewModel : ISoundCaptureHandler
+    public interface ISoundWaveViewModel : IAudioPlugHandler
     {
         ISoundWaveDrawer SoundWaveDrawer { get; }
 

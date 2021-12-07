@@ -3,7 +3,7 @@ using WindowsAudioSession.Components.AudioCapture;
 
 namespace WindowsAudioSession.Components.SoundLevel
 {
-    public interface ISoundLevelCapture : ISoundCaptureHandler
+    public interface ISoundLevelCapture : IAudioPlugHandler
     {
         bool IsStarted { get; }
 

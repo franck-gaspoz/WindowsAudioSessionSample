@@ -6,7 +6,7 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.SoundLevel
 {
-    public class VuMeterLeftViewModel : ModelBase, IVuMeterViewModel, ISoundCaptureHandler
+    public class VuMeterLeftViewModel : ModelBase, IVuMeterViewModel, IAudioPlugHandler
     {
         public ISoundLevelCapture SoundLevelCapture { get; protected set; }
 

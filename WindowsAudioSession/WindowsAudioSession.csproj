@@ -135,7 +135,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Components\AudioCapture\ISoundCaptureHandler.cs" />
+    <Compile Include="Components\AudioCapture\IAudioPlugHandler.cs" />
     <Compile Include="Components\AudioCapture\ListenableSoundDevices.cs" />
     <Compile Include="Components\AudioCapture\AudioPlugEngine.cs" />
     <Compile Include="Components\FFT\FFTAnalyzer.cs" />

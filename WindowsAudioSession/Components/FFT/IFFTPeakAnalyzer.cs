@@ -2,7 +2,7 @@
 
 namespace WindowsAudioSession.Components.FFT
 {
-    public interface IFFTPeakAnalyzer : ISoundCaptureHandler
+    public interface IFFTPeakAnalyzer : IAudioPlugHandler
     {
         IFFTAnalyzer FFTAnalyzer { get; set; }
 

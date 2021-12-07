@@ -7,7 +7,7 @@
 
         public override void Execute(object parameter)
         {
-            App.WASComponents.SoundCaptureEngine.Stop();
+            App.WASComponents.AudioPlugEngine.Stop();
 
             App.WASMainViewModel.IsStarted = false;
             App.WASMainViewModel.CanStart = true;

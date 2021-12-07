@@ -5,7 +5,7 @@ using WindowsAudioSession.Components.FFT;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public interface IFFTDrawer : ISoundCaptureHandler
+    public interface IFFTDrawer : IAudioPlugHandler
     {
         IFFTAnalyzer FFTAnalyser { get; set; }
 

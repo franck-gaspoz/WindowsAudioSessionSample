@@ -28,17 +28,17 @@ namespace WindowsAudioSession.Components.AudioCapture
 
         readonly WASAPIPROC _process;
 
-        readonly List<ISoundCaptureHandler> _soundCaptureHandlers = new List<ISoundCaptureHandler>();
+        readonly List<IAudioPlugHandler> _soundCaptureHandlers = new List<IAudioPlugHandler>();
 
         const int _activationDelay = 200;
 
-        public AudioPlugEngine AddSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
+        public AudioPlugEngine AddSoundCaptureHandler(IAudioPlugHandler soundCaptureHandler)
         {
             _soundCaptureHandlers.Add(soundCaptureHandler);
             return this;
         }
 
-        public AudioPlugEngine RemoveSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
+        public AudioPlugEngine RemoveSoundCaptureHandler(IAudioPlugHandler soundCaptureHandler)
         {
             _ = _soundCaptureHandlers.Remove(soundCaptureHandler);
             return this;

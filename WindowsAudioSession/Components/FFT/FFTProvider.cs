@@ -5,7 +5,7 @@ using WindowsAudioSession.Components.AudioCapture;
 
 namespace WindowsAudioSession.Components.FFT
 {
-    public class FFTProvider : IFFTProvider, ISoundCaptureHandler
+    public class FFTProvider : IFFTProvider, IAudioPlugHandler
     {
         public float[] FFTData { get; protected set; }
 

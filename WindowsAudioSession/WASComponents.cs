@@ -22,7 +22,7 @@ namespace WindowsAudioSession
         public IFFTAnalyzer FFTAnalyser2 { get; protected set; } = new FFTAnalyzer();
         public IFFTPeakAnalyzer FFTPeakAnalyser2 { get; protected set; } = new FFTPeakAnalyzer();
         public IFFTPeakDrawer FFTPeakDrawer { get; protected set; } = new FFTPeakDrawer();
-        public AudioPlugEngine SoundCaptureEngine { get; protected set; }
+        public AudioPlugEngine AudioPlugEngine { get; protected set; }
         public ISoundLevelCapture SoundLevelCapture { get; protected set; }
         public ISoundSampleProvider SoundSampleProvider { get; protected set; }
         public IFFTDrawer FFTDrawer1 { get; protected set; } = new FFTDrawer();
@@ -39,7 +39,7 @@ namespace WindowsAudioSession
 
             // chain manager
 
-            SoundCaptureEngine = new AudioPlugEngine();
+            AudioPlugEngine = new AudioPlugEngine();
 
             // FFT
 
@@ -84,7 +84,7 @@ namespace WindowsAudioSession
 
             // audio capture handlers components chain
 
-            _ = SoundCaptureEngine
+            _ = AudioPlugEngine
                 .AddSoundCaptureHandler(SoundSampleProvider)
                 .AddSoundCaptureHandler(FFTProvider)
 
