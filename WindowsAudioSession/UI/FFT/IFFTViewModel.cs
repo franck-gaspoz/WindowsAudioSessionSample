@@ -4,17 +4,11 @@ using WindowsAudioSession.Components.FFT;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public interface IFFTViewModel : ISoundCaptureHandler
+    public interface IFFTViewModel
     {
-        IFFTDrawer FFTDrawer { get; }
-
         int BarCount { get; set; }
 
-        int BarWidthPercent { get; set; }
-
-        bool IsStarted { get; }
-
-        void AttachTo(IFFTAnalyzer fftAnalyzer);
-
+        int BarWidthPercent { get; set; }        
+        
     }
 }

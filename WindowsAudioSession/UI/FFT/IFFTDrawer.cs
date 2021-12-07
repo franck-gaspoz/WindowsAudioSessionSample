@@ -7,7 +7,9 @@ namespace WindowsAudioSession.UI.FFT
 {
     public interface IFFTDrawer : ISoundCaptureHandler
     {
-        IFFTAnalyzer FFTAnalyser { get; }
+        IFFTAnalyzer FFTAnalyser { get; set; }
+
+        IDrawable Drawable { get; set; }
 
         double Margin { get; set; }
 
@@ -16,7 +18,5 @@ namespace WindowsAudioSession.UI.FFT
         Brush BarBrush { get; set; }
 
         bool IsStarted { get; }
-
-        void AttachTo(IFFTAnalyzer fftAnalyzer);
     }
 }

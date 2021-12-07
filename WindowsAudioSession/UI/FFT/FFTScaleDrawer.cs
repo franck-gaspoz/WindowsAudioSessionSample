@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
+
+using WPFUtilities.ComponentModel.ValidationAttributes;
 
 namespace WindowsAudioSession.UI.FFT
 {
@@ -14,28 +17,35 @@ namespace WindowsAudioSession.UI.FFT
 
         public double LineOpacity { get; set; } = 0.5d;
 
-        public FFTControl FFTControl { get; }
+        IFFTControl _fftControl;
+
+        [OfType(typeof(FrameworkElement))]
+        public IFFTControl FFTControl
+        {
+            get => _fftControl;
+            set
+            {
+                _fftControl = value;
+                var frameworkElement = (FrameworkElement)FFTControl;
+                frameworkElement.SizeChanged += (o, e) => FFTControl_SizeChanged();
+                frameworkElement.Loaded += (o, e) => FFTControl_SizeChanged();
+            }
+        }
 
         readonly List<Line> _lines = new List<Line>();
 
-        public FFTScaleDrawer(FFTControl fftControl)
-        {
-            FFTControl = fftControl;
-            FFTControl.SizeChanged += (o, e) => FFTControl_SizeChanged();
-            FFTControl.Loaded += (o, e) => FFTControl_SizeChanged();
-        }
-
         private void FFTControl_SizeChanged()
         {
-            var drawPane = FFTControl.BarGraph;
+            var drawPane = _fftControl.GetDrawingSurface();
             foreach (var line in _lines)
                 drawPane.Children.Remove(line);
 
-            if (!FFTControl.ShowScaleLines)
+            if (!_fftControl.ShowScaleLines)
                 return;
 
             // 0hz -> 20khz (freq sample / 2)
-            var margin = FFTControl.ViewModel.FFTDrawer.Margin;
+            var margin = _fftControl.FFTDrawer == null ? 0
+                : _fftControl.FFTDrawer.Margin;
             var verticalLinesCount = 20;
             var verticalLinesCountSpacing = (drawPane.ActualWidth - 2d * margin) / verticalLinesCount;
             var x = margin;

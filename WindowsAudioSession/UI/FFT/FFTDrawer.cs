@@ -13,9 +13,9 @@ namespace WindowsAudioSession.UI.FFT
 {
     public class FFTDrawer : IFFTDrawer, ISoundCaptureHandler
     {
-        public Canvas _canvas;
+        public IDrawable Drawable { get; set; }
 
-        public IFFTAnalyzer FFTAnalyser { get; protected set; }
+        public IFFTAnalyzer FFTAnalyser { get; set; }
 
         public double Margin { get; set; } = 8;
 
@@ -27,14 +27,6 @@ namespace WindowsAudioSession.UI.FFT
 
         public bool IsStarted { get; protected set; }
 
-        public FFTDrawer(IDrawable drawable)
-            => _canvas = drawable.GetDrawingSurface();
-
-        public void AttachTo(IFFTAnalyzer fftAnalyzer)
-        {
-            FFTAnalyser = fftAnalyzer;
-        }
-
         public void Draw(
             double x0,
             double y0,
@@ -43,6 +35,7 @@ namespace WindowsAudioSession.UI.FFT
             double[] barSizes
             )
         {
+            var canvas = Drawable.GetDrawingSurface();
             var barCount = barSizes.Length;
             var barMaxWidth = (width - (2d * Margin)) / barCount;
             var barWidth = barMaxWidth * WidthPercent / 100d;
@@ -57,7 +50,7 @@ namespace WindowsAudioSession.UI.FFT
                         Fill = BarBrush
                     };
                     _bars[i] = bar;
-                    _ = _canvas.Children.Add(bar);
+                    _ = canvas.Children.Add(bar);
                 }
             }
 
@@ -85,10 +78,11 @@ namespace WindowsAudioSession.UI.FFT
 
         void ResetBars()
         {
+            var canvas = Drawable.GetDrawingSurface();
             if (_bars != null)
             {
                 foreach (var bar in _bars)
-                    _canvas.Children.Remove(bar);
+                    canvas.Children.Remove(bar);
             }
             _bars = null;
         }
@@ -99,10 +93,11 @@ namespace WindowsAudioSession.UI.FFT
 
             try
             {
+                var canvas = Drawable.GetDrawingSurface();
                 var x0 = Margin;
                 var y0 = Margin;
-                var width = _canvas.ActualWidth;
-                var height = _canvas.ActualHeight;
+                var width = canvas.ActualWidth;
+                var height = canvas.ActualHeight;
 
                 Draw(x0, y0, width, height, FFTAnalyser.SpectrumData);
             }

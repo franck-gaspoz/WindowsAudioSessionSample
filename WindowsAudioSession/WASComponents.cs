@@ -25,6 +25,8 @@ namespace WindowsAudioSession
         public AudioPlugEngine SoundCaptureEngine { get; protected set; }
         public ISoundLevelCapture SoundLevelCapture { get; protected set; }
         public ISoundSampleProvider SoundSampleProvider { get; protected set; }
+        public IFFTDrawer FFTDrawer1 { get; protected set; } = new FFTDrawer();
+        public IFFTDrawer FFTDrawer2 { get; protected set; } = new FFTDrawer();
 
         /// <summary>
         /// add and setup required components, connect to the view and activate the sound capture engine
@@ -47,15 +49,16 @@ namespace WindowsAudioSession
 
             var fft1ViewModel = App.WASMainWindow.fftControl1.ViewModel;
             FFTAnalyser1 = new FFTAnalyzer(FFTProvider, fft1ViewModel.BarCount);
-            fft1ViewModel.AttachTo(FFTAnalyser1);
+            FFTDrawer1.Drawable = App.WASMainWindow.fftControl1;
+            FFTDrawer1.FFTAnalyser = FFTAnalyser1;
 
             // FFT component #2
 
             var fft2ViewModel = App.WASMainWindow.fftControl2.ViewModel;
             FFTAnalyser2 = new FFTAnalyzer(FFTProvider, fft2ViewModel.BarCount);
-            fft2ViewModel.AttachTo(FFTAnalyser2);
-            fft2ViewModel.FFTDrawer.BarBrush
-                = HatchRawBrush.Build(Brushes.LightGreen, 4, 3);
+            FFTDrawer2.BarBrush = HatchRawBrush.Build(Brushes.LightGreen, 4, 3);
+            FFTDrawer2.Drawable = App.WASMainWindow.fftControl2;
+            FFTDrawer2.FFTAnalyser = FFTAnalyser2;
 
             FFTPeakAnalyser2 = new FFTPeakAnalyzer(FFTAnalyser2, fft2ViewModel.BarCount);
             FFTPeakDrawer = new FFTPeakDrawer(App.WASMainWindow.fftControl2) { WidthPercent = 80d };
@@ -81,10 +84,10 @@ namespace WindowsAudioSession
                 .AddSoundCaptureHandler(FFTProvider)
 
                 .AddSoundCaptureHandler(FFTAnalyser1)
-                .AddSoundCaptureHandler(fft1ViewModel)
+                .AddSoundCaptureHandler(FFTDrawer1)
 
                 .AddSoundCaptureHandler(FFTAnalyser2)
-                .AddSoundCaptureHandler(fft2ViewModel)
+                .AddSoundCaptureHandler(FFTDrawer2)
                 .AddSoundCaptureHandler(FFTPeakAnalyser2)
                 .AddSoundCaptureHandler(FFTPeakDrawer)
 
