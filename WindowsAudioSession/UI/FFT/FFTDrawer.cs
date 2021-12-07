@@ -19,7 +19,7 @@ namespace WindowsAudioSession.UI.FFT
 
         public double Margin { get; set; } = 8;
 
-        public double WidthPercent { get; set; } = 100;
+        public double BarWidthPercent { get; set; } = 100;
 
         Rectangle[] _bars;
 
@@ -38,7 +38,7 @@ namespace WindowsAudioSession.UI.FFT
             var canvas = Drawable.GetDrawingSurface();
             var barCount = barSizes.Length;
             var barMaxWidth = (width - (2d * Margin)) / barCount;
-            var barWidth = barMaxWidth * WidthPercent / 100d;
+            var barWidth = barMaxWidth * BarWidthPercent / 100d;
 
             if (_bars == null)
             {
@@ -67,7 +67,7 @@ namespace WindowsAudioSession.UI.FFT
                 //Canvas.SetLeft(_bars[i], Math.Ceiling(x));
 
                 //bar.Width = barWidth * WidthPercent / 100d;
-                bar.Width = Math.Ceiling(barWidth * WidthPercent / 100d);
+                bar.Width = Math.Ceiling(barWidth * BarWidthPercent / 100d);
 
                 Canvas.SetTop(bar, y_top);
                 bar.Height = barHeight;

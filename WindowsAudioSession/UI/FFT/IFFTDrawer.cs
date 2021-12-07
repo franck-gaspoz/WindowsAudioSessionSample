@@ -13,7 +13,7 @@ namespace WindowsAudioSession.UI.FFT
 
         double Margin { get; set; }
 
-        double WidthPercent { get; set; }
+        double BarWidthPercent { get; set; }
 
         Brush BarBrush { get; set; }
 
