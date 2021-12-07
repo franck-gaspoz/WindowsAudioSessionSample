@@ -32,13 +32,13 @@ namespace WindowsAudioSession.Components.AudioCapture
 
         const int _activationDelay = 200;
 
-        public AudioPlugEngine AddSoundCaptureHandler(IAudioPlugHandler soundCaptureHandler)
+        public AudioPlugEngine AddAudioPlugHandler(IAudioPlugHandler soundCaptureHandler)
         {
             _soundCaptureHandlers.Add(soundCaptureHandler);
             return this;
         }
 
-        public AudioPlugEngine RemoveSoundCaptureHandler(IAudioPlugHandler soundCaptureHandler)
+        public AudioPlugEngine RemoveAudioPlugHandler(IAudioPlugHandler soundCaptureHandler)
         {
             _ = _soundCaptureHandlers.Remove(soundCaptureHandler);
             return this;
@@ -164,6 +164,13 @@ namespace WindowsAudioSession.Components.AudioCapture
                 ThrowsAudioApiErrorException("Bass.BASS_Free failed");
             if (!Bass.FreeMe())
                 ThrowsAudioApiErrorException("Bass.FreeMe failed");
+        }
+
+        public void Reset()
+        {
+            if (_dispatcherTimer.IsEnabled)
+                Stop();
+            _soundCaptureHandlers.Clear();
         }
     }
 }

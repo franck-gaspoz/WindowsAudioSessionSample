@@ -9,17 +9,20 @@ namespace WindowsAudioSession.Components.FFT
     {
         public float[] FFTData { get; protected set; }
 
-        public FFTLength FFTLength { get; protected set; }
+        FFTLength _fftLength;
+        public FFTLength FFTLength
+        {
+            get => _fftLength;
+            set
+            {
+                _fftLength = value;
+                FFTData = new float[_fftLength.ToBufferSize()];
+            }
+        }
 
         public int AvailableLength { get; protected set; }
 
         public bool IsFFTAvailable { get; protected set; } = true;
-
-        public FFTProvider(FFTLength fftLength)
-        {
-            FFTLength = fftLength;
-            FFTData = new float[fftLength.ToBufferSize()];
-        }
 
         public void HandleTick()
         {

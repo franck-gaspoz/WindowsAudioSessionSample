@@ -8,7 +8,7 @@ namespace WindowsAudioSession.Components.FFT
 
         bool IsFFTAvailable { get; }
 
-        FFTLength FFTLength { get; }
+        FFTLength FFTLength { get; set; }
 
         int AvailableLength { get; }
     }

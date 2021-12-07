@@ -17,12 +17,12 @@ namespace WindowsAudioSession
     /// </summary>
     public class WASComponents
     {
-        public IFFTProvider FFTProvider { get; protected set; }
+        public AudioPlugEngine AudioPlugEngine { get; protected set; } = new AudioPlugEngine();
+        public IFFTProvider FFTProvider { get; protected set; } = new FFTProvider();
         public IFFTAnalyzer FFTAnalyser1 { get; protected set; } = new FFTAnalyzer();
         public IFFTAnalyzer FFTAnalyser2 { get; protected set; } = new FFTAnalyzer();
         public IFFTPeakAnalyzer FFTPeakAnalyser2 { get; protected set; } = new FFTPeakAnalyzer();
         public IFFTPeakDrawer FFTPeakDrawer { get; protected set; } = new FFTPeakDrawer();
-        public AudioPlugEngine AudioPlugEngine { get; protected set; }
         public ISoundLevelCapture SoundLevelCapture { get; protected set; }
         public ISoundSampleProvider SoundSampleProvider { get; protected set; }
         public IFFTDrawer FFTDrawer1 { get; protected set; } = new FFTDrawer();
@@ -40,11 +40,11 @@ namespace WindowsAudioSession
 
             // chain manager
 
-            AudioPlugEngine = new AudioPlugEngine();
+            AudioPlugEngine.Reset();
 
             // FFT
 
-            FFTProvider = new FFTProvider(fftLength);
+            FFTProvider.FFTLength = fftLength;
 
             // FFT component #1
 
@@ -87,23 +87,23 @@ namespace WindowsAudioSession
             // audio capture handlers components chain
 
             _ = AudioPlugEngine
-                .AddSoundCaptureHandler(SoundSampleProvider)
-                .AddSoundCaptureHandler(FFTProvider)
+                .AddAudioPlugHandler(SoundSampleProvider)
+                .AddAudioPlugHandler(FFTProvider)
 
-                .AddSoundCaptureHandler(FFTAnalyser1)
-                .AddSoundCaptureHandler(FFTDrawer1)
-                .AddSoundCaptureHandler(fft1ViewModel)
+                .AddAudioPlugHandler(FFTAnalyser1)
+                .AddAudioPlugHandler(FFTDrawer1)
+                .AddAudioPlugHandler(fft1ViewModel)
 
-                .AddSoundCaptureHandler(FFTAnalyser2)
-                .AddSoundCaptureHandler(FFTDrawer2)
-                .AddSoundCaptureHandler(FFTPeakAnalyser2)
-                .AddSoundCaptureHandler(FFTPeakDrawer)
+                .AddAudioPlugHandler(FFTAnalyser2)
+                .AddAudioPlugHandler(FFTDrawer2)
+                .AddAudioPlugHandler(FFTPeakAnalyser2)
+                .AddAudioPlugHandler(FFTPeakDrawer)
 
-                .AddSoundCaptureHandler(SoundLevelCapture)
-                .AddSoundCaptureHandler(vuMeterViewModel.VuMeterLeftViewModel)
-                .AddSoundCaptureHandler(vuMeterViewModel.VuMeterRightViewModel)
+                .AddAudioPlugHandler(SoundLevelCapture)
+                .AddAudioPlugHandler(vuMeterViewModel.VuMeterLeftViewModel)
+                .AddAudioPlugHandler(vuMeterViewModel.VuMeterRightViewModel)
 
-                .AddSoundCaptureHandler(soundWaveViewModel);
+                .AddAudioPlugHandler(soundWaveViewModel);
         }
     }
 }
