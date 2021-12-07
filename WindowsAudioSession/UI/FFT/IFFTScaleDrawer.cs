@@ -10,5 +10,7 @@ namespace WindowsAudioSession.UI.FFT
 
         double LineOpacity { get; set; }
 
+        double Margin { get; set; }
+
     }
 }

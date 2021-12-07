@@ -17,6 +17,8 @@ namespace WindowsAudioSession.UI.FFT
 
         public double LineOpacity { get; set; } = 0.5d;
 
+        public double Margin { get; set; } = 8d;
+
         IFFTControl _fftControl;
 
         [OfType(typeof(FrameworkElement))]
@@ -44,8 +46,7 @@ namespace WindowsAudioSession.UI.FFT
                 return;
 
             // 0hz -> 20khz (freq sample / 2)
-            var margin = _fftControl.FFTDrawer == null ? 0
-                : _fftControl.FFTDrawer.Margin;
+            var margin = Margin;
             var verticalLinesCount = 20;
             var verticalLinesCountSpacing = (drawPane.ActualWidth - 2d * margin) / verticalLinesCount;
             var x = margin;

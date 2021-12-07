@@ -4,8 +4,6 @@
     {
         IFFTViewModel ViewModel { get; set; }
 
-        IFFTDrawer FFTDrawer { get; set; }
-
         IFFTScaleDrawer FFTScaleDrawer { get; set; }
 
         bool ShowScaleLines { get; }
