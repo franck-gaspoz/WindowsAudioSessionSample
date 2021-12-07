@@ -6,20 +6,20 @@ namespace WindowsAudioSession.Components.FFT
 {
     public class FFTAnalyzer : IFFTAnalyzer, ISoundCaptureHandler
     {
-        public int BarsCount { get; protected set; }
+        int _barsCount;
+        public int BarsCount
+        {
+            get => _barsCount;
+            set
+            {
+                _barsCount = value;
+                SpectrumData = new double[_barsCount];
+            }
+        }
 
-        public IFFTProvider FFTProvider { get; protected set; }
+        public IFFTProvider FFTProvider { get; set; }
 
         public double[] SpectrumData { get; protected set; }
-
-        public FFTAnalyzer(
-            IFFTProvider fftProvider,
-            int barsCount)
-        {
-            FFTProvider = fftProvider;
-            BarsCount = barsCount;
-            SpectrumData = new double[BarsCount];
-        }
 
         public void HandleTick()
         {

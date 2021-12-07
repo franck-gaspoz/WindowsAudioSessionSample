@@ -10,9 +10,9 @@ namespace WindowsAudioSession.UI.FFT
 {
     public class FFTPeakDrawer : IFFTPeakDrawer, ISoundCaptureHandler
     {
-        readonly Canvas _canvas;
+        public IFFTPeakAnalyzer FFTPeakAnalyser { get; set; }
 
-        public IFFTPeakAnalyzer FFTPeakAnalyser { get; protected set; }
+        public IDrawable Drawable { get; set; }
 
         public double Margin { get; set; } = 8;
 
@@ -27,11 +27,6 @@ namespace WindowsAudioSession.UI.FFT
 
         public bool IsStarted { get; protected set; }
 
-        public FFTPeakDrawer(IDrawable drawable) => _canvas = drawable.GetDrawingSurface();
-
-        public void AttachTo(IFFTPeakAnalyzer fftPeakAnalyzer)
-            => FFTPeakAnalyser = fftPeakAnalyzer;
-
         public void Draw(
             double x0,
             double y0,
@@ -40,6 +35,7 @@ namespace WindowsAudioSession.UI.FFT
             double[] barSizes
             )
         {
+            var canvas = Drawable.GetDrawingSurface();
             var barCount = barSizes.Length;
             var barMaxWidth = (width - (2d * Margin)) / barCount;
             var barWidth = barMaxWidth * WidthPercent / 100d;
@@ -52,7 +48,7 @@ namespace WindowsAudioSession.UI.FFT
                     var bar = new Rectangle();
                     _bars[i] = bar;
                     bar.Fill = BarBrush;
-                    _ = _canvas.Children.Add(bar);
+                    _ = canvas.Children.Add(bar);
                 }
             }
 
@@ -78,7 +74,7 @@ namespace WindowsAudioSession.UI.FFT
 
         void ResetBars()
         {
-            _canvas.Children.Clear();
+            Drawable.GetDrawingSurface().Children.Clear();
             _bars = null;
         }
 
@@ -90,8 +86,9 @@ namespace WindowsAudioSession.UI.FFT
             {
                 var x0 = Margin;
                 var y0 = Margin;
-                var width = _canvas.ActualWidth;
-                var height = _canvas.ActualHeight;
+                var canvas = Drawable.GetDrawingSurface();
+                var width = canvas.ActualWidth;
+                var height = canvas.ActualHeight;
 
                 Draw(x0, y0, width, height, FFTPeakAnalyser.SpectrumPeakData);
             }
