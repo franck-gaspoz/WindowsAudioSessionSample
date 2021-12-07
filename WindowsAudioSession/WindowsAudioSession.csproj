@@ -118,6 +118,7 @@
       <DependentUpon>VuMeterStereoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\SoundLevel\VuMeterLeftViewModel.cs" />
+    <Compile Include="UI\SoundWave\ISoundWaveControl.cs" />
     <Compile Include="UI\SoundWave\ISoundWaveDrawer.cs" />
     <Compile Include="UI\SoundWave\ISoundWaveViewModel.cs" />
     <Compile Include="UI\SoundWave\SoundWaveControl.xaml.cs">

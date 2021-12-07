@@ -7,8 +7,19 @@ namespace WindowsAudioSession.UI.SoundWave
     /// <summary>
     /// sound wave control
     /// </summary>
-    public partial class SoundWaveControl : UserControl, IDrawable
+    public partial class SoundWaveControl : UserControl, ISoundWaveControl, IDrawable
     {
+        ISoundWaveViewModel _viewModel;
+        public ISoundWaveViewModel ViewModel
+        {
+            get => _viewModel;
+            set
+            {
+                _viewModel = ViewModel;
+                DataContext = _viewModel;
+            }
+        }
+
         public Brush DrawBackground
         {
             get => (Brush)GetValue(DrawBackgroundProperty);
@@ -18,13 +29,9 @@ namespace WindowsAudioSession.UI.SoundWave
         public static readonly DependencyProperty DrawBackgroundProperty =
             DependencyProperty.Register("DrawBackground", typeof(Brush), typeof(SoundWaveControl), new PropertyMetadata(Brushes.Black));
 
-        public ISoundWaveViewModel ViewModel { get; protected set; }
-
         public SoundWaveControl()
         {
             InitializeComponent();
-            ViewModel = new SoundWaveViewModel(this);
-            DataContext = ViewModel;
         }
 
         public Canvas GetDrawingSurface() => WaveGraph;

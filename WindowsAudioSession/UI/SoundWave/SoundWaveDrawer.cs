@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -11,6 +10,10 @@ namespace WindowsAudioSession.UI.SoundWave
 {
     public class SoundWaveDrawer : ISoundWaveDrawer, IAudioPlugHandler
     {
+        public IDrawable Drawable { get; set; }
+
+        public ISoundSampleProvider SoundSampleProvider { get; set; }
+
         public bool IsStarted { get; protected set; }
 
         public double Margin { get; set; } = 8;
@@ -21,36 +24,27 @@ namespace WindowsAudioSession.UI.SoundWave
 
         public double ScaleFactor { get; set; } = 1.8d;
 
-        readonly Canvas _canvas;
-        ISoundSampleProvider _soundSampleProvider;
-
         Line[] _lines;
         int _lastLinesCount = -1;
 
-        public SoundWaveDrawer(IDrawable drawable) => _canvas = drawable.GetDrawingSurface();
-
-        public void AttachTo(ISoundSampleProvider soundSampleProvider)
-        {
-            _soundSampleProvider = soundSampleProvider;
-        }
-
         public void HandleTick()
         {
-            if (_soundSampleProvider == null || !IsStarted) return;
+            if (SoundSampleProvider == null || !IsStarted) return;
 
             try
             {
+                var canvas = Drawable.GetDrawingSurface();
                 var x0 = Margin;
                 var y0 = Margin;
-                var width = _canvas.ActualWidth;
-                var height = _canvas.ActualHeight;
+                var width = canvas.ActualWidth;
+                var height = canvas.ActualHeight;
                 Draw(
                     x0,
                     y0,
                     width,
                     height,
-                    _soundSampleProvider.SoundSampleData,
-                    _soundSampleProvider.AvailableLength);
+                    SoundSampleProvider.SoundSampleData,
+                    SoundSampleProvider.AvailableLength);
 
             }
             catch (Exception ex)
@@ -91,7 +85,7 @@ namespace WindowsAudioSession.UI.SoundWave
                         Stroke = LineBrush
                     };
                     _lines[i] = line;
-                    _ = _canvas.Children.Add(line);
+                    _ = Drawable.GetDrawingSurface().Children.Add(line);
                 }
             }
 
@@ -120,7 +114,7 @@ namespace WindowsAudioSession.UI.SoundWave
             if (_lines != null)
             {
                 foreach (var line in _lines)
-                    _canvas.Children.Remove(line);
+                    Drawable.GetDrawingSurface().Children.Remove(line);
             }
             _lines = null;
         }

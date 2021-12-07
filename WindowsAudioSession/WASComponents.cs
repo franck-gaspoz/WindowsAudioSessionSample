@@ -7,6 +7,7 @@ using WindowsAudioSession.Components.Sample;
 using WindowsAudioSession.Components.SoundLevel;
 using WindowsAudioSession.UI;
 using WindowsAudioSession.UI.FFT;
+using WindowsAudioSession.UI.SoundWave;
 
 using WPFUtilities.CustomBrushes;
 
@@ -30,6 +31,8 @@ namespace WindowsAudioSession
         public FFTViewModelDrawerMediator FFTViewModelDrawerMediator { get; protected set; } = new FFTViewModelDrawerMediator();
         public IFFTViewModel FFTViewModel1 { get; protected set; } = new FFTViewModel();
         public IFFTViewModel FFTViewModel2 { get; protected set; } = new FFTViewModel();
+        public ISoundWaveViewModel SoundWaveViewModel { get; protected set; } = new SoundWaveViewModel();
+        public ISoundWaveDrawer SoundWaveDrawer { get; protected set; } = new SoundWaveDrawer();
 
         /// <summary>
         /// add and setup required components, connect to the view and activate the sound capture engine
@@ -83,8 +86,9 @@ namespace WindowsAudioSession
             // sound sample component
 
             SoundSampleProvider.BufferLength = sampleLength;
-            var soundWaveViewModel = App.WASMainWindow.soundWaveControl.ViewModel;
-            soundWaveViewModel.AttachTo(SoundSampleProvider);
+            App.WASMainWindow.soundWaveControl.ViewModel = SoundWaveViewModel;
+            SoundWaveDrawer.Drawable = App.WASMainWindow.soundWaveControl;
+            SoundWaveDrawer.SoundSampleProvider = SoundSampleProvider;
 
             // audio capture handlers components chain
 
@@ -105,7 +109,7 @@ namespace WindowsAudioSession
                 .AddAudioPlugHandler(vuMeterViewModel.VuMeterLeftViewModel)
                 .AddAudioPlugHandler(vuMeterViewModel.VuMeterRightViewModel)
 
-                .AddAudioPlugHandler(soundWaveViewModel);
+                .AddAudioPlugHandler(SoundWaveDrawer);
         }
     }
 }
