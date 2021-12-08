@@ -7,6 +7,7 @@ using WindowsAudioSession.Components.Sample;
 using WindowsAudioSession.Components.SoundLevel;
 using WindowsAudioSession.UI;
 using WindowsAudioSession.UI.FFT;
+using WindowsAudioSession.UI.SoundLevel;
 using WindowsAudioSession.UI.SoundWave;
 
 using WPFUtilities.CustomBrushes;
@@ -24,7 +25,7 @@ namespace WindowsAudioSession
         public IFFTAnalyzer FFTAnalyser2 { get; protected set; } = new FFTAnalyzer();
         public IFFTPeakAnalyzer FFTPeakAnalyser2 { get; protected set; } = new FFTPeakAnalyzer();
         public IFFTPeakDrawer FFTPeakDrawer { get; protected set; } = new FFTPeakDrawer();
-        public ISoundLevelCapture SoundLevelCapture { get; protected set; }
+        public ISoundLevelCapture SoundLevelCapture { get; protected set; } = new SoundLevelCapture();
         public ISoundSampleProvider SoundSampleProvider { get; protected set; } = new SoundSampleProvider();
         public IFFTDrawer FFTDrawer1 { get; protected set; } = new FFTDrawer();
         public IFFTDrawer FFTDrawer2 { get; protected set; } = new FFTDrawer();
@@ -33,6 +34,7 @@ namespace WindowsAudioSession
         public IFFTViewModel FFTViewModel2 { get; protected set; } = new FFTViewModel();
         public ISoundWaveViewModel SoundWaveViewModel { get; protected set; } = new SoundWaveViewModel();
         public ISoundWaveDrawer SoundWaveDrawer { get; protected set; } = new SoundWaveDrawer();
+        public IVuMeterStereoViewModel VuMeterStereoViewModel { get; protected set; } = new VuMeterStereoViewModel();
 
         /// <summary>
         /// add and setup required components, connect to the view and activate the sound capture engine
@@ -78,10 +80,9 @@ namespace WindowsAudioSession
 
             // Sound Level component
 
-            SoundLevelCapture = new SoundLevelCapture();
-            var vuMeterViewModel = App.WASMainWindow.vuMeterControl1.ViewModel;
-            vuMeterViewModel.VuMeterLeftViewModel.AttachTo(SoundLevelCapture);
-            vuMeterViewModel.VuMeterRightViewModel.AttachTo(SoundLevelCapture);
+            App.WASMainWindow.vuMeterControl1.ViewModel = VuMeterStereoViewModel;
+            VuMeterStereoViewModel.VuMeterLeftViewModel.SoundLevelCapture = SoundLevelCapture;
+            VuMeterStereoViewModel.VuMeterRightViewModel.SoundLevelCapture = SoundLevelCapture;
 
             // sound sample component
 
@@ -106,8 +107,8 @@ namespace WindowsAudioSession
                 .AddAudioPlugHandler(FFTPeakDrawer)
 
                 .AddAudioPlugHandler(SoundLevelCapture)
-                .AddAudioPlugHandler(vuMeterViewModel.VuMeterLeftViewModel)
-                .AddAudioPlugHandler(vuMeterViewModel.VuMeterRightViewModel)
+                .AddAudioPlugHandler(VuMeterStereoViewModel.VuMeterLeftViewModel)
+                .AddAudioPlugHandler(VuMeterStereoViewModel.VuMeterRightViewModel)
 
                 .AddAudioPlugHandler(SoundWaveDrawer);
         }

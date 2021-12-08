@@ -107,6 +107,9 @@
     <Compile Include="UI\FFT\IFFTScaleDrawer.cs" />
     <Compile Include="UI\FFT\IFFTViewModel.cs" />
     <Compile Include="UI\IDrawable.cs" />
+    <Compile Include="UI\SoundLevel\AbstractVuMeterViewModel.cs" />
+    <Compile Include="UI\SoundLevel\IVuMeterControl.cs" />
+    <Compile Include="UI\SoundLevel\IVuMeterStereoControl.cs" />
     <Compile Include="UI\SoundLevel\IVuMeterStereoViewModel.cs" />
     <Compile Include="UI\SoundLevel\IVuMeterViewModel.cs" />
     <Compile Include="UI\SoundLevel\VuMeterControl.xaml.cs">

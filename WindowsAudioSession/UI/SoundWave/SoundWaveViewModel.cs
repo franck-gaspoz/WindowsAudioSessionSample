@@ -4,7 +4,7 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.SoundWave
 {
-    public class SoundWaveViewModel : ModelBase, ISoundWaveViewModel
+    public class SoundWaveViewModel : ModelBase, IModelBase, ISoundWaveViewModel
     {
         Thickness _drawMargin = new Thickness(8);
 

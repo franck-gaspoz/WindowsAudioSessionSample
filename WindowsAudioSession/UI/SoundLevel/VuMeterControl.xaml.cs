@@ -5,15 +5,22 @@ namespace WindowsAudioSession.UI.SoundLevel
     /// <summary>
     /// vu-meter control
     /// </summary>
-    public partial class VuMeterControl : UserControl
+    public partial class VuMeterControl : UserControl, IVuMeterControl
     {
-        public IVuMeterViewModel ViewModel { get; protected set; }
+        IVuMeterViewModel _viewModel;
+        public IVuMeterViewModel ViewModel
+        {
+            get => _viewModel;
+            set
+            {
+                _viewModel = value;
+                DataContext = _viewModel;
+            }
+        }
 
         public VuMeterControl()
         {
             InitializeComponent();
-            ViewModel = new VuMeterLeftViewModel();
-            DataContext = ViewModel;
         }
     }
 }

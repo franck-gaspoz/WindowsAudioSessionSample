@@ -10,7 +10,7 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI
 {
-    public class WASMainViewModel : ModelBase
+    public class WASMainViewModel : ModelBase, IModelBase, IModelDataValidation
     {
         public BindingList<BASS_WASAPI_DEVICEINFO> ListenableDevices { get; protected set; } = new BindingList<BASS_WASAPI_DEVICEINFO>();
 
