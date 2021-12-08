@@ -7,7 +7,7 @@ using WindowsAudioSession.UI;
 
 namespace WindowsAudioSession.Components.SoundLevel
 {
-    public class SoundLevelCapture : ISoundLevelCapture, ISoundCaptureHandler
+    public class SoundLevelCapture : ISoundLevelCapture, IAudioPlugHandler
     {
         public bool IsStarted { get; protected set; }
 

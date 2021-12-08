@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public class BarsCountValidationAttribute : ValidationAttribute
+    public class BarsCountInAllowableRangeAttribute : ValidationAttribute
     {
-        public BarsCountValidationAttribute() { }
+        public BarsCountInAllowableRangeAttribute() { }
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {

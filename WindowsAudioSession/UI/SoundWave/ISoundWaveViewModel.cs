@@ -1,18 +1,11 @@
 ﻿using System.Windows;
 
-using WindowsAudioSession.Components.AudioCapture;
-using WindowsAudioSession.Components.Sample;
+using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.SoundWave
 {
-    public interface ISoundWaveViewModel : ISoundCaptureHandler
+    public interface ISoundWaveViewModel : IModelBase
     {
-        ISoundWaveDrawer SoundWaveDrawer { get; }
-
         Thickness DrawMargin { get; set; }
-
-        bool IsStarted { get; }
-
-        void AttachTo(ISoundSampleProvider soundSampleProvider);
     }
 }

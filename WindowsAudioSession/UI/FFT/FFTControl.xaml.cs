@@ -7,11 +7,20 @@ namespace WindowsAudioSession.UI.FFT
     /// <summary>
     /// fft control
     /// </summary>
-    public partial class FFTControl : UserControl, IDrawable
+    public partial class FFTControl : UserControl, IFFTControl, IDrawable
     {
-        public IFFTViewModel ViewModel { get; protected set; }
+        IFFTViewModel _viewModel;
+        public IFFTViewModel ViewModel
+        {
+            get => _viewModel;
+            set
+            {
+                _viewModel = value;
+                DataContext = _viewModel;
+            }
+        }
 
-        public IFFTScaleDrawer FFScaleDrawer { get; protected set; }
+        public IFFTScaleDrawer FFTScaleDrawer { get; set; }
 
         public Brush DrawBackground
         {
@@ -87,14 +96,16 @@ namespace WindowsAudioSession.UI.FFT
         public FFTControl()
         {
             InitializeComponent();
-            ViewModel = new FFTViewModel(this);
-            DataContext = ViewModel;
-            FFScaleDrawer = new FFTScaleDrawer(this);
-            Loaded += FFTControl_Loaded;
+            FFTScaleDrawer = new FFTScaleDrawer
+            {
+                FFTControl = this
+            };
+            DataContextChanged += FFTControl_DataContextChanged;
         }
 
-        private void FFTControl_Loaded(object sender, RoutedEventArgs e)
+        private void FFTControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            if (ViewModel == null) return;
             ViewModel.BarCount = BarCount;
             ViewModel.BarWidthPercent = BarWidthPercent;
         }

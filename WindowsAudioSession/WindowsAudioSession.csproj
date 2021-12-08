@@ -93,18 +93,23 @@
     <Compile Include="Components\FFT\IFFTProvider.cs" />
     <Compile Include="Components\SoundLevel\ISoundLevelCapture.cs" />
     <Compile Include="Components\SoundLevel\SoundLevelCapture.cs" />
-    <Compile Include="UI\FFT\BarsCountValidationAttribute.cs" />
+    <Compile Include="UI\FFT\BarsCountInAllowableRangeAttribute.cs" />
     <Compile Include="UI\FFT\FFTControl.xaml.cs">
       <DependentUpon>FFTControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\FFT\FFTViewModel.cs" />
     <Compile Include="UI\FFT\FFTPeakDrawer.cs" />
     <Compile Include="UI\FFT\FFTScaleDrawer.cs" />
+    <Compile Include="UI\FFT\FFTViewModelDrawerMediator.cs" />
+    <Compile Include="UI\FFT\IFFTControl.cs" />
     <Compile Include="UI\FFT\IFFTDrawer.cs" />
     <Compile Include="UI\FFT\IFFTPeakDrawer.cs" />
     <Compile Include="UI\FFT\IFFTScaleDrawer.cs" />
     <Compile Include="UI\FFT\IFFTViewModel.cs" />
     <Compile Include="UI\IDrawable.cs" />
+    <Compile Include="UI\SoundLevel\AbstractVuMeterViewModel.cs" />
+    <Compile Include="UI\SoundLevel\IVuMeterControl.cs" />
+    <Compile Include="UI\SoundLevel\IVuMeterStereoControl.cs" />
     <Compile Include="UI\SoundLevel\IVuMeterStereoViewModel.cs" />
     <Compile Include="UI\SoundLevel\IVuMeterViewModel.cs" />
     <Compile Include="UI\SoundLevel\VuMeterControl.xaml.cs">
@@ -116,6 +121,7 @@
       <DependentUpon>VuMeterStereoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\SoundLevel\VuMeterLeftViewModel.cs" />
+    <Compile Include="UI\SoundWave\ISoundWaveControl.cs" />
     <Compile Include="UI\SoundWave\ISoundWaveDrawer.cs" />
     <Compile Include="UI\SoundWave\ISoundWaveViewModel.cs" />
     <Compile Include="UI\SoundWave\SoundWaveControl.xaml.cs">
@@ -134,7 +140,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Components\AudioCapture\ISoundCaptureHandler.cs" />
+    <Compile Include="Components\AudioCapture\IAudioPlugHandler.cs" />
     <Compile Include="Components\AudioCapture\ListenableSoundDevices.cs" />
     <Compile Include="Components\AudioCapture\AudioPlugEngine.cs" />
     <Compile Include="Components\FFT\FFTAnalyzer.cs" />

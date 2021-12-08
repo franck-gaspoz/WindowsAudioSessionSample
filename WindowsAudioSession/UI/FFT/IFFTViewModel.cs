@@ -1,20 +1,15 @@
 ﻿
 using WindowsAudioSession.Components.AudioCapture;
-using WindowsAudioSession.Components.FFT;
+
+using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public interface IFFTViewModel : ISoundCaptureHandler
+    public interface IFFTViewModel : IModelBase, IModelDataValidation, IAudioPlugHandler
     {
-        IFFTDrawer FFTDrawer { get; }
-
         int BarCount { get; set; }
 
         int BarWidthPercent { get; set; }
-
-        bool IsStarted { get; }
-
-        void AttachTo(IFFTAnalyzer fftAnalyzer);
 
     }
 }

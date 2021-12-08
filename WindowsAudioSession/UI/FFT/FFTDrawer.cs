@@ -11,29 +11,21 @@ using WPFUtilities.CustomBrushes;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public class FFTDrawer : IFFTDrawer, ISoundCaptureHandler
+    public class FFTDrawer : IFFTDrawer, IAudioPlugHandler
     {
-        public Canvas _canvas;
+        public IDrawable Drawable { get; set; }
 
-        public IFFTAnalyzer FFTAnalyser { get; protected set; }
+        public IFFTAnalyzer FFTAnalyser { get; set; }
 
         public double Margin { get; set; } = 8;
 
-        public double WidthPercent { get; set; } = 100;
+        public double BarWidthPercent { get; set; } = 100;
 
         Rectangle[] _bars;
 
         public Brush BarBrush { get; set; } = SpectrumBrush.Build();
 
         public bool IsStarted { get; protected set; }
-
-        public FFTDrawer(IDrawable drawable)
-            => _canvas = drawable.GetDrawingSurface();
-
-        public void AttachTo(IFFTAnalyzer fftAnalyzer)
-        {
-            FFTAnalyser = fftAnalyzer;
-        }
 
         public void Draw(
             double x0,
@@ -43,9 +35,10 @@ namespace WindowsAudioSession.UI.FFT
             double[] barSizes
             )
         {
+            var canvas = Drawable.GetDrawingSurface();
             var barCount = barSizes.Length;
             var barMaxWidth = (width - (2d * Margin)) / barCount;
-            var barWidth = barMaxWidth * WidthPercent / 100d;
+            var barWidth = barMaxWidth * BarWidthPercent / 100d;
 
             if (_bars == null)
             {
@@ -57,7 +50,7 @@ namespace WindowsAudioSession.UI.FFT
                         Fill = BarBrush
                     };
                     _bars[i] = bar;
-                    _ = _canvas.Children.Add(bar);
+                    _ = canvas.Children.Add(bar);
                 }
             }
 
@@ -74,7 +67,7 @@ namespace WindowsAudioSession.UI.FFT
                 //Canvas.SetLeft(_bars[i], Math.Ceiling(x));
 
                 //bar.Width = barWidth * WidthPercent / 100d;
-                bar.Width = Math.Ceiling(barWidth * WidthPercent / 100d);
+                bar.Width = Math.Ceiling(barWidth * BarWidthPercent / 100d);
 
                 Canvas.SetTop(bar, y_top);
                 bar.Height = barHeight;
@@ -85,10 +78,11 @@ namespace WindowsAudioSession.UI.FFT
 
         void ResetBars()
         {
+            var canvas = Drawable.GetDrawingSurface();
             if (_bars != null)
             {
                 foreach (var bar in _bars)
-                    _canvas.Children.Remove(bar);
+                    canvas.Children.Remove(bar);
             }
             _bars = null;
         }
@@ -99,10 +93,11 @@ namespace WindowsAudioSession.UI.FFT
 
             try
             {
+                var canvas = Drawable.GetDrawingSurface();
                 var x0 = Margin;
                 var y0 = Margin;
-                var width = _canvas.ActualWidth;
-                var height = _canvas.ActualHeight;
+                var width = canvas.ActualWidth;
+                var height = canvas.ActualHeight;
 
                 Draw(x0, y0, width, height, FFTAnalyser.SpectrumData);
             }

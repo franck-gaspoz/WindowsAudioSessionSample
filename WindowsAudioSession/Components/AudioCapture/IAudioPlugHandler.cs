@@ -3,7 +3,7 @@
     /// <summary>
     /// rename to IAudioPlug
     /// </summary>
-    public interface ISoundCaptureHandler
+    public interface IAudioPlugHandler
     {
         void HandleTick();
 

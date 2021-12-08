@@ -48,6 +48,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComponentModel\IModelBase.cs" />
+    <Compile Include="ComponentModel\IModelDataValidation.cs" />
+    <Compile Include="ComponentModel\ModelToObjectMediator.cs" />
+    <Compile Include="ComponentModel\ValidationAttributes\OfTypeAttribute.cs" />
     <Compile Include="CustomBrushes\SpectrumBrush.cs" />
     <Compile Include="CustomBrushes\HatchRawBrush.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />

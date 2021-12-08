@@ -28,17 +28,17 @@ namespace WindowsAudioSession.Components.AudioCapture
 
         readonly WASAPIPROC _process;
 
-        readonly List<ISoundCaptureHandler> _soundCaptureHandlers = new List<ISoundCaptureHandler>();
+        readonly List<IAudioPlugHandler> _soundCaptureHandlers = new List<IAudioPlugHandler>();
 
         const int _activationDelay = 200;
 
-        public AudioPlugEngine AddSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
+        public AudioPlugEngine AddAudioPlugHandler(IAudioPlugHandler soundCaptureHandler)
         {
             _soundCaptureHandlers.Add(soundCaptureHandler);
             return this;
         }
 
-        public AudioPlugEngine RemoveSoundCaptureHandler(ISoundCaptureHandler soundCaptureHandler)
+        public AudioPlugEngine RemoveAudioPlugHandler(IAudioPlugHandler soundCaptureHandler)
         {
             _ = _soundCaptureHandlers.Remove(soundCaptureHandler);
             return this;
@@ -164,6 +164,13 @@ namespace WindowsAudioSession.Components.AudioCapture
                 ThrowsAudioApiErrorException("Bass.BASS_Free failed");
             if (!Bass.FreeMe())
                 ThrowsAudioApiErrorException("Bass.FreeMe failed");
+        }
+
+        public void Reset()
+        {
+            if (_dispatcherTimer.IsEnabled)
+                Stop();
+            _soundCaptureHandlers.Clear();
         }
     }
 }

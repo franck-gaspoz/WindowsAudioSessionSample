@@ -5,9 +5,11 @@ using WindowsAudioSession.Components.FFT;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public interface IFFTPeakDrawer : ISoundCaptureHandler
+    public interface IFFTPeakDrawer : IAudioPlugHandler
     {
-        IFFTPeakAnalyzer FFTPeakAnalyser { get; }
+        IFFTPeakAnalyzer FFTPeakAnalyser { get; set; }
+
+        IDrawable Drawable { get; set; }
 
         double Margin { get; set; }
 
@@ -18,7 +20,5 @@ namespace WindowsAudioSession.UI.FFT
         Brush BarBrush { get; set; }
 
         bool IsStarted { get; }
-
-        void AttachTo(IFFTPeakAnalyzer fftPeakAnalyzer);
     }
 }

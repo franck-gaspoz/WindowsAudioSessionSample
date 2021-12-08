@@ -5,8 +5,12 @@ using WindowsAudioSession.Components.Sample;
 
 namespace WindowsAudioSession.UI.SoundWave
 {
-    public interface ISoundWaveDrawer : ISoundCaptureHandler
+    public interface ISoundWaveDrawer : IAudioPlugHandler
     {
+        IDrawable Drawable { get; set; }
+
+        ISoundSampleProvider SoundSampleProvider { get; set; }
+
         bool IsStarted { get; }
 
         double Margin { get; set; }
@@ -16,7 +20,5 @@ namespace WindowsAudioSession.UI.SoundWave
         Brush LineBrush { get; set; }
 
         double ScaleFactor { get; set; }
-
-        void AttachTo(ISoundSampleProvider soundSampleProvider);
     }
 }

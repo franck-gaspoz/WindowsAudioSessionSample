@@ -12,7 +12,10 @@ A sample of usage of Windows Audio Session WASAPI using BASS.NET - WPF C# .NET F
 
 Run the project, select your audio device, and this tool will listen to the device internal output and animates some of the sound properties. The library BASS.NET is used to interface C# with the WASAPI Windows library.
 
-Clean architecture approach: complete discoupling between data,data providers,data transformers,ui controls,drawers,view models,application logic. Relying on the patterns MVVM, Command and Chain of responsability. Implements several importants aspects of WPF programming:
+Clean architecture approach: complete discoupling between data,data providers,data transformers,ui controls,drawers,view models,application logic. 
+Relying on the patterns MVVM, Command, Chain of responsability, Dependency injection, Mediator.
+
+Implements several importants aspects of WPF programming:
 - User Controls, Resources/Styles, Converters, View Models, Data annotations, Data validators, Data binding, Commands, Visual Drawings
 
 ## Components dependencies:

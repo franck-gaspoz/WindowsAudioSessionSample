@@ -6,18 +6,24 @@ using WindowsAudioSession.Components.AudioCapture;
 
 namespace WindowsAudioSession.Components.Sample
 {
-    public class SoundSampleProvider : ISoundSampleProvider, ISoundCaptureHandler
+    public class SoundSampleProvider : ISoundSampleProvider, IAudioPlugHandler
     {
+        int _bufferLength;
+        public int BufferLength
+        {
+            get => _bufferLength;
+            set
+            {
+                _bufferLength = value;
+                SoundSampleData = new float[_bufferLength];
+            }
+        }
+
         public float[] SoundSampleData { get; protected set; }
 
         public bool IsDataAvailable { get; protected set; }
 
         public int AvailableLength { get; protected set; }
-
-        public SoundSampleProvider(int bufferLength)
-        {
-            SoundSampleData = new float[bufferLength];
-        }
 
         public void HandleTick()
         {

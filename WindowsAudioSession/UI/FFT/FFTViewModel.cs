@@ -1,21 +1,16 @@
 ﻿
-using WindowsAudioSession.Components.AudioCapture;
-using WindowsAudioSession.Components.FFT;
-
 using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public class FFTViewModel : ModelBase, IFFTViewModel, ISoundCaptureHandler
+    public class FFTViewModel : ModelBase, IFFTViewModel
     {
-        public IFFTDrawer FFTDrawer { get; protected set; }
-
         int _barCount = 512;
 
         /// <summary>
         /// bar count
         /// </summary>
-        [BarsCountValidation]
+        [BarsCountInAllowableRange]
         public int BarCount
         {
             get => _barCount;
@@ -58,32 +53,21 @@ namespace WindowsAudioSession.UI.FFT
             }
         }
 
-        public FFTViewModel(IDrawable drawable)
-            => FFTDrawer = new FFTDrawer(drawable);
-
-        public void AttachTo(IFFTAnalyzer fftAnalyzer)
-            => FFTDrawer.AttachTo(fftAnalyzer);
-
-        public void HandleTick()
-        {
-            FFTDrawer.WidthPercent = BarWidthPercent;
-            FFTDrawer.HandleTick();
-        }
+        public void HandleTick() { }
 
         public void Start()
         {
             if (IsStarted) return;
             Validate();
             if (!IsValid) return;
-            FFTDrawer.Start();
             IsStarted = true;
         }
 
         public void Stop()
         {
             if (!IsStarted) return;
-            FFTDrawer.Stop();
             IsStarted = false;
         }
+
     }
 }
