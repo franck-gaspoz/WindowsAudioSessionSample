@@ -82,6 +82,8 @@
     <Compile Include="Commands\Commands.cs" />
     <Compile Include="Commands\StopCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
+    <Compile Include="Components\AudioCapture\IWASApi.cs" />
+    <Compile Include="Components\AudioCapture\WASApi.cs" />
     <Compile Include="Components\Sample\ISoundSampleProvider.cs" />
     <Compile Include="Components\Sample\SoundSampleProvider.cs" />
     <Compile Include="Components\ExceptionHelper.cs" />

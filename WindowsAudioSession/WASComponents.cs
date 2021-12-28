@@ -20,6 +20,7 @@ namespace WindowsAudioSession
     public class WASComponents
     {
         public AudioPlugEngine AudioPlugEngine { get; protected set; } = new AudioPlugEngine();
+        public IWASApi WASApi { get; protected set; } = new WASApi();
         public IFFTProvider FFTProvider { get; protected set; } = new FFTProvider();
         public IFFTAnalyzer FFTAnalyser1 { get; protected set; } = new FFTAnalyzer();
         public IFFTAnalyzer FFTAnalyser2 { get; protected set; } = new FFTAnalyzer();
@@ -44,6 +45,10 @@ namespace WindowsAudioSession
         {
             var fftLength = viewModel.FFTResolution.ToSampleLength();
             var sampleLength = viewModel.SampleLength;
+
+            // WASApi facade
+
+            AudioPlugEngine.WASApi = WASApi;
 
             // chain manager
 
