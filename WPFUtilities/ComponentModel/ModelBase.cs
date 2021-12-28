@@ -10,14 +10,14 @@ namespace WPFUtilities.ComponentModel
     {
         public bool IsDataValidationEnabled = true;
 
-        bool _isDirty = false;
-        public bool IsDirty
+        bool _hasChanged = false;
+        public bool HasChanged
         {
-            get => _isDirty;
+            get => _hasChanged;
 
             set
             {
-                _isDirty = value;
+                _hasChanged = value;
                 NotifyPropertyChanged();
             }
         }
@@ -31,12 +31,12 @@ namespace WPFUtilities.ComponentModel
 
         private void ModelBase_ErrorsChanged(object sender, DataErrorsChangedEventArgs e)
         {
-            NotifyPropertyChanged("IsValid");
+            NotifyPropertyChanged(nameof(IsValid));
         }
 
         protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            if (!IsDirty) IsDirty = true;
+            if (!HasChanged) HasChanged = true;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             if (IsDataValidationEnabled && propertyName != nameof(IsValid))
             {

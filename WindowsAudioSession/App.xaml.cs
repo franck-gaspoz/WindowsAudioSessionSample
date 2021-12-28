@@ -7,15 +7,24 @@ using WindowsAudioSession.UI;
 namespace WindowsAudioSession
 {
     /// <summary>
-    /// App
+    /// App - facade pattern that encapsulates the main components
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// main window view
+        /// </summary>
         public static WASMainWindow WASMainWindow { get; set; }
 
-        public static WASMainViewModel WASMainViewModel { get; set; }
+        /// <summary>
+        /// main window view model
+        /// </summary>
+        public static IWASMainViewModel WASMainViewModel { get; set; }
 
-        public static WASComponents WASComponents { get; set; }
+        /// <summary>
+        /// application components
+        /// </summary>
+        public static IAppComponents AppComponents { get; set; }
 
         public App()
         {
@@ -31,7 +40,7 @@ namespace WindowsAudioSession
                     DataContext = WASMainViewModel
                 };
 
-                WASComponents = new WASComponents();
+                AppComponents = new AppComponents();
 
                 _ = WASMainWindow.ShowDialog();
             }

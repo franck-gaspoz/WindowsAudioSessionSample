@@ -82,6 +82,7 @@
     <Compile Include="Commands\Commands.cs" />
     <Compile Include="Commands\StopCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
+    <Compile Include="Components\AudioCapture\IAudioPlugEngine.cs" />
     <Compile Include="Components\AudioCapture\IWASApi.cs" />
     <Compile Include="Components\AudioCapture\WASApi.cs" />
     <Compile Include="Components\Sample\ISoundSampleProvider.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Components\FFT\IFFTProvider.cs" />
     <Compile Include="Components\SoundLevel\ISoundLevelCapture.cs" />
     <Compile Include="Components\SoundLevel\SoundLevelCapture.cs" />
+    <Compile Include="IAppComponents.cs" />
     <Compile Include="UI\FFT\BarsCountInAllowableRangeAttribute.cs" />
     <Compile Include="UI\FFT\FFTControl.xaml.cs">
       <DependentUpon>FFTControl.xaml</DependentUpon>
@@ -109,6 +111,7 @@
     <Compile Include="UI\FFT\IFFTScaleDrawer.cs" />
     <Compile Include="UI\FFT\IFFTViewModel.cs" />
     <Compile Include="UI\IDrawable.cs" />
+    <Compile Include="UI\IWASMainViewModel.cs" />
     <Compile Include="UI\SoundLevel\AbstractVuMeterViewModel.cs" />
     <Compile Include="UI\SoundLevel\IVuMeterControl.cs" />
     <Compile Include="UI\SoundLevel\IVuMeterStereoControl.cs" />
@@ -132,7 +135,7 @@
     <Compile Include="UI\SoundWave\SoundWaveViewModel.cs" />
     <Compile Include="UI\SoundWave\SoundWaveDrawer.cs" />
     <Compile Include="UI\UIHelper.cs" />
-    <Compile Include="WASComponents.cs" />
+    <Compile Include="AppComponents.cs" />
     <Compile Include="UI\FFT\FFTDrawer.cs" />
     <Compile Include="UI\WASMainWindow.xaml.cs">
       <DependentUpon>WASMainWindow.xaml</DependentUpon>

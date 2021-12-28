@@ -4,6 +4,9 @@ using Un4seen.BassWasapi;
 
 namespace WindowsAudioSession.Components.AudioCapture
 {
+    /// <summary>
+    /// listenables sound devices model
+    /// </summary>
     public class ListenableSoundDevices
     {
         public List<BASS_WASAPI_DEVICEINFO> DevicesList { get; }

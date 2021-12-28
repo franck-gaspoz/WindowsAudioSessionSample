@@ -10,8 +10,11 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI
 {
-    public class WASMainViewModel : ModelBase, IModelBase, IModelDataValidation
+    public class WASMainViewModel : ModelBase, IModelBase, IModelDataValidation, IWASMainViewModel
     {
+        /// <summary>
+        /// listenables devices
+        /// </summary>
         public BindingList<BASS_WASAPI_DEVICEINFO> ListenableDevices { get; protected set; } = new BindingList<BASS_WASAPI_DEVICEINFO>();
 
         BASS_WASAPI_DEVICEINFO _selectedDevice = null;
@@ -64,7 +67,7 @@ namespace WindowsAudioSession.UI
 
         bool _isTopmost = true;
         /// <summary>
-        /// window is topmost
+        /// main window is topmost
         /// </summary>
         public bool IsTopmost
         {
@@ -95,6 +98,9 @@ namespace WindowsAudioSession.UI
             }
         }
 
+        /// <summary>
+        /// available fft resolutions
+        /// </summary>
         public List<int> FFTResolutions { get; protected set; } = new List<int>
         {
             1024,2048,4096,8192,16384
@@ -115,6 +121,9 @@ namespace WindowsAudioSession.UI
             }
         }
 
+        /// <summary>
+        /// available sample frequencies
+        /// </summary>
         public List<int> SampleFrequencies { get; protected set; } = new List<int>
         {
             41000,
@@ -137,6 +146,9 @@ namespace WindowsAudioSession.UI
             }
         }
 
+        /// <summary>
+        /// available sample lengths
+        /// </summary>
         public List<int> SampleLengths { get; protected set; } = new List<int>
         {
             128,
@@ -151,6 +163,9 @@ namespace WindowsAudioSession.UI
             65536
         };
 
+        /// <summary>
+        /// constructor
+        /// </summary>
         public WASMainViewModel()
         {
             var devices = new ListenableSoundDevices().DevicesList;

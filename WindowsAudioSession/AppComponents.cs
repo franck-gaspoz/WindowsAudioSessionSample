@@ -15,11 +15,11 @@ using WPFUtilities.CustomBrushes;
 namespace WindowsAudioSession
 {
     /// <summary>
-    /// audio capture components: add and setup data providers, data transformers, drawers and connect them to controls
+    /// audio capture components: add and setup views models and models: data providers, data transformers, drawers and connect them to controls
     /// </summary>
-    public class WASComponents
+    public class AppComponents : IAppComponents
     {
-        public AudioPlugEngine AudioPlugEngine { get; protected set; } = new AudioPlugEngine();
+        public IAudioPlugEngine AudioPlugEngine { get; protected set; } = new AudioPlugEngine();
         public IWASApi WASApi { get; protected set; } = new WASApi();
         public IFFTProvider FFTProvider { get; protected set; } = new FFTProvider();
         public IFFTAnalyzer FFTAnalyser1 { get; protected set; } = new FFTAnalyzer();
@@ -38,10 +38,10 @@ namespace WindowsAudioSession
         public IVuMeterStereoViewModel VuMeterStereoViewModel { get; protected set; } = new VuMeterStereoViewModel();
 
         /// <summary>
-        /// add and setup required components, connect to the view and activate the sound capture engine
+        /// add and setup required components, connect them together and activate the sound capture engine
         /// </summary>
         /// <param name="viewModel">main window view model</param>
-        public void BuildComponents(WASMainViewModel viewModel)
+        public void BuildComponents(IWASMainViewModel viewModel)
         {
             var fftLength = viewModel.FFTResolution.ToSampleLength();
             var sampleLength = viewModel.SampleLength;

@@ -13,7 +13,7 @@ namespace WindowsAudioSession.Commands
         {
             try
             {
-                var components = App.WASComponents;
+                var components = App.AppComponents;
                 var viewModel = App.WASMainViewModel;
 
                 components.BuildComponents(viewModel);

@@ -6,6 +6,6 @@ namespace WPFUtilities.ComponentModel
     {
         event PropertyChangedEventHandler PropertyChanged;
 
-        bool IsDirty { get; }
+        bool HasChanged { get; }
     }
 }

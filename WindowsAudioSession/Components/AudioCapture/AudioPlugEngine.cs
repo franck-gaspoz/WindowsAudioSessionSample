@@ -17,7 +17,7 @@ namespace WindowsAudioSession.Components.AudioCapture
     /// <para>the audio plug engine should be separated from the sound apis initializer.
     /// that would allow to runs several engine parrallely</para>
     /// </summary>
-    public class AudioPlugEngine
+    public class AudioPlugEngine : IAudioPlugEngine
     {
         public IWASApi WASApi { get; set; }
 
