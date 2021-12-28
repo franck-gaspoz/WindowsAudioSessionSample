@@ -9,6 +9,11 @@ namespace WindowsAudioSession.Commands
         public override bool CanExecute(object parameter)
             => App.WASMainViewModel != null && App.WASMainViewModel.CanStart;
 
+        /// <summary>
+        /// build and setup app components, starts audio engine, update app state
+        /// </summary>
+        /// <param name="parameter"></param>
+
         public override void Execute(object parameter)
         {
             try
