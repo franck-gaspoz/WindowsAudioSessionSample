@@ -18,7 +18,7 @@ namespace WPFUtilities.ComponentModel.ValidationAttributes
             => _expectedType = expectedType;
 
         /// <summary>
-        /// check attribute validity
+        /// check attribute has expected type
         /// </summary>
         /// <param name="value">attribute value</param>
         /// <param name="validationContext">validation context</param>
