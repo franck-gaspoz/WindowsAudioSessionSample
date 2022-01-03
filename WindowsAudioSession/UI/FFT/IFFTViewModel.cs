@@ -5,7 +5,7 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public interface IFFTViewModel : IModelBase, IModelDataValidation, IAudioPlugHandler
+    public interface IFFTViewModel : IModelBase, IValidableModel, IAudioPlugHandler
     {
         int BarCount { get; set; }
 

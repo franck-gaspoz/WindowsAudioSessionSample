@@ -49,14 +49,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComponentModel\IModelBase.cs" />
-    <Compile Include="ComponentModel\IModelDataValidation.cs" />
+    <Compile Include="ComponentModel\IValidableModel.cs" />
     <Compile Include="ComponentModel\ModelToObjectMediator.cs" />
     <Compile Include="ComponentModel\ValidationAttributes\OfTypeAttribute.cs" />
     <Compile Include="CustomBrushes\SpectrumBrush.cs" />
     <Compile Include="CustomBrushes\HatchRawBrush.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="ComponentModel\ModelBase.cs" />
-    <Compile Include="ComponentModel\ModelDataValidation.cs" />
+    <Compile Include="ComponentModel\ValidableModel.cs" />
     <Compile Include="Converters\NotBooleanConverter.cs" />
     <Compile Include="Converters\SizePercentRectConverter.cs" />
     <Compile Include="Converters\SizePercentConverter.cs" />

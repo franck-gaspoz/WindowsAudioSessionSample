@@ -10,7 +10,7 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI
 {
-    public class WASMainViewModel : ModelBase, IModelBase, IModelDataValidation, IWASMainViewModel
+    public class WASMainViewModel : ModelBase, IModelBase, IValidableModel, IWASMainViewModel
     {
         /// <summary>
         /// listenables devices
