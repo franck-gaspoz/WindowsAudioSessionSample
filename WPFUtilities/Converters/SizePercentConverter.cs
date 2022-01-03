@@ -2,20 +2,17 @@
 using System.Globalization;
 using System.Windows.Data;
 
+using WPFUtilities.ComponentModel;
+
 namespace WPFUtilities.Converters
 {
     /// <summary>
     /// convert a size to a double according a percent ratio (0 to 1)
     /// </summary>
-    public class SizePercentConverter : IMultiValueConverter
+    public class SizePercentConverter :
+        Singleton<SizePercentConverter>,
+        IMultiValueConverter
     {
-        static SizePercentConverter _instance;
-        /// <summary>
-        /// shared instance
-        /// </summary>
-        public static SizePercentConverter Instance
-            => _instance ?? (_instance = new SizePercentConverter());
-
         /// <summary>
         /// convert a size to a double according a percent ratio (0 to 1)
         /// </summary>

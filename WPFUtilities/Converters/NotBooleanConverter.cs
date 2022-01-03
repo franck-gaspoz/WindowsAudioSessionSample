@@ -2,21 +2,17 @@
 using System.Globalization;
 using System.Windows.Data;
 
+using WPFUtilities.ComponentModel;
+
 namespace WPFUtilities.Converters
 {
     /// <summary>
     /// converts a boolean to its negated value
     /// </summary>
-    public class NotBooleanConverter
-        : IValueConverter
+    public class NotBooleanConverter :
+        Singleton<NotBooleanConverter>,
+        IValueConverter
     {
-        static NotBooleanConverter _instance;
-        /// <summary>
-        /// shared instance
-        /// </summary>
-        public static NotBooleanConverter Instance
-            => _instance ?? (_instance = new NotBooleanConverter());
-
         /// <summary>
         /// convert from bool to !bool
         /// </summary>

@@ -3,20 +3,17 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
+using WPFUtilities.ComponentModel;
+
 namespace WPFUtilities.Converters
 {
     /// <summary>
     /// converts Rect sizes to a new Rect according a percent ratio (0 to 1). new rect height is int.MaxValue
     /// </summary>
-    public class SizePercentRectConverter : IMultiValueConverter
+    public class SizePercentRectConverter :
+        Singleton<SizePercentRectConverter>,
+        IMultiValueConverter
     {
-        static SizePercentRectConverter _instance;
-        /// <summary>
-        /// shared instance
-        /// </summary>
-        public static SizePercentRectConverter Instance
-            => _instance ?? (_instance = new SizePercentRectConverter());
-
         /// <summary>
         /// convert a size to a double according a percent ratio (0 to 1). new rect height is int.MaxValue
         /// </summary>

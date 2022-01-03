@@ -2,10 +2,19 @@
 
 namespace WindowsAudioSession.Commands
 {
+    /// <summary>
+    /// commands
+    /// </summary>
     public static class Commands
     {
-        public static ICommand Start { get; } = new StartCommand();
+        /// <summary>
+        /// start autio engine
+        /// </summary>
+        public static ICommand Start => StartCommand.Instance;
 
-        public static ICommand Stop { get; } = new StopCommand();
+        /// <summary>
+        /// stop audio engine
+        /// </summary>
+        public static ICommand Stop => StopCommand.Instance;
     }
 }

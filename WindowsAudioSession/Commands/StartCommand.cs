@@ -4,16 +4,16 @@ using WindowsAudioSession.UI;
 
 namespace WindowsAudioSession.Commands
 {
-    public class StartCommand : AbstractCommand
+    /// <summary>
+    /// build and setup app components, starts audio engine, update app state
+    /// </summary>
+    public class StartCommand : AbstractCommand<StartCommand>
     {
+        ///<inheritdoc/>
         public override bool CanExecute(object parameter)
             => App.WASMainViewModel != null && App.WASMainViewModel.CanStart;
 
-        /// <summary>
-        /// build and setup app components, starts audio engine, update app state
-        /// </summary>
-        /// <param name="parameter"></param>
-
+        ///<inheritdoc/>
         public override void Execute(object parameter)
         {
             try

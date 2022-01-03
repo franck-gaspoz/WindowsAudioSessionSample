@@ -5,9 +5,10 @@ using System.Windows.Threading;
 
 using Un4seen.BassWasapi;
 
+using WindowsAudioSession.Commands;
 using WindowsAudioSession.UI;
 
-using commands = WindowsAudioSession.Commands.Commands;
+//using commands = WindowsAudioSession.Commands.Commands;
 
 namespace WindowsAudioSession.Components.AudioCapture
 {
@@ -94,7 +95,7 @@ namespace WindowsAudioSession.Components.AudioCapture
             catch (Exception ex)
             {
                 UIHelper.ShowError(ex);
-                commands.Stop.Execute(null);
+                StopCommand.Instance.Execute(null);
             }
         }
 

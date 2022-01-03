@@ -1,14 +1,15 @@
 ﻿namespace WindowsAudioSession.Commands
 {
-    public class StopCommand : AbstractCommand
+    /// <summary>
+    /// stops audio engine, update app state
+    /// </summary>
+    public class StopCommand : AbstractCommand<StopCommand>
     {
+        ///<inheritdoc/>
         public override bool CanExecute(object parameter)
             => App.WASMainViewModel != null && App.WASMainViewModel.IsStarted;
 
-        /// <summary>
-        /// stops audio engine, update app state
-        /// </summary>
-        /// <param name="parameter"></param>
+        ///<inheritdoc/>
         public override void Execute(object parameter)
         {
             App.AppComponents.AudioPlugEngine.Stop();

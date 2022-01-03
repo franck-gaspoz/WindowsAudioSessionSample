@@ -3,21 +3,17 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
+using WPFUtilities.ComponentModel;
+
 namespace WPFUtilities.Converters
 {
     /// <summary>
     /// converts a boolean to a visibility value
     /// </summary>
-    public class BooleanToVisibilityConverter
-        : IValueConverter
+    public class BooleanToVisibilityConverter :
+        Singleton<BooleanToVisibilityConverter>,
+        IValueConverter
     {
-        static BooleanToVisibilityConverter _instance;
-        /// <summary>
-        /// shared instance
-        /// </summary>
-        public static BooleanToVisibilityConverter Instance
-            => _instance ?? (_instance = new BooleanToVisibilityConverter());
-
         /// <summary>
         /// convert from bool to Visibility
         /// </summary>

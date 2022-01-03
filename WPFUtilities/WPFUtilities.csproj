@@ -52,6 +52,7 @@
     <Compile Include="ComponentModel\IValidableModel.cs" />
     <Compile Include="ComponentModel\ModelToObjectMediator.cs" />
     <Compile Include="ComponentModel\ValidationAttributes\OfTypeAttribute.cs" />
+    <Compile Include="ComponentModel\Singleton.cs" />
     <Compile Include="CustomBrushes\SpectrumBrush.cs" />
     <Compile Include="CustomBrushes\HatchRawBrush.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
