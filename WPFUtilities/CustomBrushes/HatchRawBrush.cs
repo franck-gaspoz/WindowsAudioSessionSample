@@ -3,9 +3,20 @@ using System.Windows.Media;
 
 namespace WPFUtilities.CustomBrushes
 {
+    /// <summary>
+    /// a hatch raw brush
+    /// </summary>
     public class HatchRawBrush
     {
-        public static Brush Build(
+        /// <summary>
+        /// build a new hatch raw brutch
+        /// </summary>
+        /// <param name="fill">fill brush</param>
+        /// <param name="filledRawHeight">height of the filled part</param>
+        /// <param name="emptyRawHeight">height of the empty part</param>
+        /// <param name="freeze">if true, the result brush is freezed</param>
+        /// <returns>a new hatch raw brush</returns>
+        public static Brush Create(
             Brush fill,
             double filledRawHeight = 2,
             double emptyRawHeight = 1,

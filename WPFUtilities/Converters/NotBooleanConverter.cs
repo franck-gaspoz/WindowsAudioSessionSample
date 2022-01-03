@@ -4,13 +4,27 @@ using System.Windows.Data;
 
 namespace WPFUtilities.Converters
 {
+    /// <summary>
+    /// converts a boolean to its negated value
+    /// </summary>
     public class NotBooleanConverter
         : IValueConverter
     {
         static NotBooleanConverter _instance;
+        /// <summary>
+        /// shared instance
+        /// </summary>
         public static NotBooleanConverter Instance
             => _instance ?? (_instance = new NotBooleanConverter());
 
+        /// <summary>
+        /// convert from bool to !bool
+        /// </summary>
+        /// <param name="value">value, expects a boolean</param>
+        /// <param name="targetType">target type</param>
+        /// <param name="parameter">parameter</param>
+        /// <param name="culture">culture</param>
+        /// <returns>!value. returns false if not a boolean</returns>
         public object Convert(
             object value,
             Type targetType,
@@ -28,13 +42,19 @@ namespace WPFUtilities.Converters
             }
         }
 
+        /// <summary>
+        /// convert from bool to !bool
+        /// </summary>
+        /// <param name="value">value, expects a boolean</param>
+        /// <param name="targetType">expect </param>
+        /// <param name="parameter">parameter</param>
+        /// <param name="culture">culture</param>
+        /// <returns>!value. returns false if not a boolean</returns>
         public object ConvertBack(
             object value,
             Type targetType,
             object parameter,
             CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
+            => Convert(value, targetType, parameter, culture);
     }
 }

@@ -3,9 +3,17 @@ using System.Windows.Media;
 
 namespace WPFUtilities.CustomBrushes
 {
+    /// <summary>
+    /// a spectrum brush
+    /// </summary>
     public class SpectrumBrush
     {
-        public static Brush Build(
+        /// <summary>
+        /// builds a new spectrum brush
+        /// </summary>
+        /// <param name="freeze">if true, the result brush is freezed</param>
+        /// <returns>a new spectrum brush</returns>
+        public static Brush Create(
             bool freeze = true)
         {
             var brush = new LinearGradientBrush(
