@@ -14,6 +14,9 @@ namespace WindowsAudioSession.Components.AudioCapture
     {
         readonly WASAPIPROC _process;
 
+        /// <summary>
+        /// build a new instance that holds a wasapi buffer
+        /// </summary>
         public WASApi()
         {
             _process = new WASAPIPROC(WASAPICaptureCallback);

@@ -12,26 +12,46 @@ using commands = WindowsAudioSession.Commands.Commands;
 namespace WindowsAudioSession.Components.AudioCapture
 {
     /// <summary>
-    /// Audio Plug Engine - audio chain controler
+    /// Audio Plug Engine - audio chain interactor
     /// </summary>
     public class AudioPlugEngine : IAudioPlugEngine
     {
+        /// <summary>
+        /// wasapi facade
+        /// </summary>
         public IWASApi WASApi { get; set; }
 
-        public ListenableSoundDevices ListenabledSoundDevices { get; protected set; }
-
+        /// <summary>
+        /// timer which trigger the audio plugins tick event
+        /// </summary>
         DispatcherTimer _dispatcherTimer;
 
+        /// <summary>
+        /// sound capture audio plugins, that will be called sequencially
+        /// </summary>
         readonly List<IAudioPlugHandler> _soundCaptureHandlers = new List<IAudioPlugHandler>();
 
+        /// <summary>
+        /// a delay to be applied when before starting and after stoping the audio plugins
+        /// </summary>
         const int _activationDelay = 200;
 
+        /// <summary>
+        /// adds a sound capture plugin
+        /// </summary>
+        /// <param name="soundCaptureHandler"></param>
+        /// <returns></returns>
         public AudioPlugEngine AddAudioPlugHandler(IAudioPlugHandler soundCaptureHandler)
         {
             _soundCaptureHandlers.Add(soundCaptureHandler);
             return this;
         }
 
+        /// <summary>
+        /// remove a sound capture plugin
+        /// </summary>
+        /// <param name="soundCaptureHandler"></param>
+        /// <returns></returns>
         public AudioPlugEngine RemoveAudioPlugHandler(IAudioPlugHandler soundCaptureHandler)
         {
             _ = _soundCaptureHandlers.Remove(soundCaptureHandler);
@@ -62,8 +82,8 @@ namespace WindowsAudioSession.Components.AudioCapture
         /// the dispatcher timer that runs the audio plug chain
         /// <para>it is stoped if an exception occurs in audio chain treatments</para>
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event args</param>
         void DispatcherTimerEventHandler(object sender, EventArgs e)
         {
             try

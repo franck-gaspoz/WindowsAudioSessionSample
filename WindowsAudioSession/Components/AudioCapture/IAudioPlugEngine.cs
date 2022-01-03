@@ -2,7 +2,6 @@
 {
     public interface IAudioPlugEngine
     {
-        ListenableSoundDevices ListenabledSoundDevices { get; }
         IWASApi WASApi { get; set; }
 
         AudioPlugEngine AddAudioPlugHandler(IAudioPlugHandler soundCaptureHandler);
