@@ -47,12 +47,15 @@
     <PackageOutputPath>WASApiBassNet.nupkg</PackageOutputPath>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <IncludeSource>true</IncludeSource>
-    <IncludeSymbols>false</IncludeSymbols>
+    <IncludeSymbols>true</IncludeSymbols>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\Codicons-SymbolClass.ico</ApplicationIcon>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.2.0"/>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Bass.Net, Version=2.4.10.3, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
