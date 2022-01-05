@@ -1,17 +1,16 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("WASApiBassNet")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Windows Audio Session Api BASS.Net")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyCompany("Franck Gaspoz")]
 [assembly: AssemblyProduct("WASApiBassNet")]
-[assembly: AssemblyCopyright("Copyright © HP Inc. 2022")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © Franck Gaspoz | License MIT 2021")]
+[assembly: AssemblyTrademark("Franck Gaspoz")]
 [assembly: AssemblyCulture("")]
 
 // L'affectation de la valeur false à ComVisible rend les types invisibles dans cet assembly
