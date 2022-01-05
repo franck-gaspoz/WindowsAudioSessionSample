@@ -2,31 +2,39 @@
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-using WindowsAudioSession.Components;
-using WindowsAudioSession.Components.AudioCapture;
-using WindowsAudioSession.Components.Sample;
+using WASApiBassNet;
+using WASApiBassNet.Components.AudioCapture;
+using WASApiBassNet.Components.Sample;
 
 namespace WindowsAudioSession.UI.SoundWave
 {
-    public class SoundWaveDrawer : ISoundWaveDrawer, IAudioPlugHandler
+    public class SoundWaveDrawer : ISoundWaveDrawer, IAudioPlugin
     {
+        /// <inheritdoc/>
         public IDrawable Drawable { get; set; }
 
+        /// <inheritdoc/>
         public ISoundSampleProvider SoundSampleProvider { get; set; }
 
+        /// <inheritdoc/>
         public bool IsStarted { get; protected set; }
 
+        /// <inheritdoc/>
         public double Margin { get; set; } = 8;
 
+        /// <inheritdoc/>
         public double Resolution { get; set; } = 2;
 
+        /// <inheritdoc/>
         public Brush LineBrush { get; set; } = Brushes.White;
 
+        /// <inheritdoc/>
         public double ScaleFactor { get; set; } = 1.8d;
 
         Line[] _lines;
         int _lastLinesCount = -1;
 
+        /// <inheritdoc/>
         public void HandleTick()
         {
             if (SoundSampleProvider == null || !IsStarted) return;
@@ -119,6 +127,7 @@ namespace WindowsAudioSession.UI.SoundWave
             _lines = null;
         }
 
+        /// <inheritdoc/>
         public void Start()
         {
             if (IsStarted) return;
@@ -126,6 +135,7 @@ namespace WindowsAudioSession.UI.SoundWave
             IsStarted = true;
         }
 
+        /// <inheritdoc/>
         public void Stop()
         {
             if (!IsStarted) return;

@@ -4,8 +4,14 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.SoundWave
 {
+    /// <summary>
+    /// sound wave view mdoel
+    /// </summary>
     public class SoundWaveViewModel : ModelBase, IModelBase, ISoundWaveViewModel
     {
+        /// <summary>
+        /// draw margin backing field
+        /// </summary>
         Thickness _drawMargin = new Thickness(8);
 
         /// <summary>

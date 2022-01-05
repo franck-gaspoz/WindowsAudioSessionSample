@@ -10,6 +10,11 @@ namespace WindowsAudioSession.UI.FFT
         IFFTViewModel _fftViewModel;
         IFFTDrawer _fftDrawer;
 
+        /// <summary>
+        /// intialize mediate, starts observation
+        /// </summary>
+        /// <param name="fftViewModel">fft view model</param>
+        /// <param name="fftDrawer">fft drawer</param>
         public void InitializeMediate(IFFTViewModel fftViewModel, IFFTDrawer fftDrawer)
         {
             ClearMediate();
@@ -18,6 +23,9 @@ namespace WindowsAudioSession.UI.FFT
             _fftViewModel.PropertyChanged += FFTViewModel_PropertyChanged;
         }
 
+        /// <summary>
+        /// clear mediate, stops observation
+        /// </summary>
         public void ClearMediate()
         {
             if (_fftViewModel != null)

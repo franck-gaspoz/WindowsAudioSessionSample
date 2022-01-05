@@ -3,6 +3,9 @@ using WPFUtilities.ComponentModel;
 
 namespace WindowsAudioSession.UI.FFT
 {
+    /// <summary>
+    /// fft view model
+    /// </summary>
     public class FFTViewModel : ModelBase, IFFTViewModel
     {
         int _barCount = 512;
@@ -53,8 +56,10 @@ namespace WindowsAudioSession.UI.FFT
             }
         }
 
+        /// <inheritdoc/>
         public void HandleTick() { }
 
+        /// <inheritdoc/>
         public void Start()
         {
             if (IsStarted) return;
@@ -63,6 +68,7 @@ namespace WindowsAudioSession.UI.FFT
             IsStarted = true;
         }
 
+        /// <inheritdoc/>
         public void Stop()
         {
             if (!IsStarted) return;

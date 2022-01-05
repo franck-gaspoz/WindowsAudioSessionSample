@@ -14,6 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -82,20 +82,6 @@
     <Compile Include="Commands\Commands.cs" />
     <Compile Include="Commands\StopCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
-    <Compile Include="Components\AudioCapture\IAudioPlugEngine.cs" />
-    <Compile Include="Components\AudioCapture\IWASApi.cs" />
-    <Compile Include="Components\AudioCapture\WASApi.cs" />
-    <Compile Include="Components\Sample\ISoundSampleProvider.cs" />
-    <Compile Include="Components\Sample\SoundSampleProvider.cs" />
-    <Compile Include="Components\ExceptionHelper.cs" />
-    <Compile Include="Components\FFT\FFTPeakAnalyzer.cs" />
-    <Compile Include="Components\FFT\FFTProvider.cs" />
-    <Compile Include="Components\FFT\FFTLengthExt.cs" />
-    <Compile Include="Components\FFT\IFFTAnalyzer.cs" />
-    <Compile Include="Components\FFT\IFFTPeakAnalyzer.cs" />
-    <Compile Include="Components\FFT\IFFTProvider.cs" />
-    <Compile Include="Components\SoundLevel\ISoundLevelCapture.cs" />
-    <Compile Include="Components\SoundLevel\SoundLevelCapture.cs" />
     <Compile Include="IAppComponents.cs" />
     <Compile Include="UI\FFT\BarsCountInAllowableRangeAttribute.cs" />
     <Compile Include="UI\FFT\FFTControl.xaml.cs">
@@ -145,12 +131,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Components\AudioCapture\IAudioPlugHandler.cs" />
-    <Compile Include="Components\AudioCapture\ListenableSoundDevices.cs" />
-    <Compile Include="Components\AudioCapture\AudioPlugEngine.cs" />
-    <Compile Include="Components\FFT\FFTAnalyzer.cs" />
-    <Compile Include="Components\FFT\FFTLength.cs" />
-    <Compile Include="Components\WindowsAudioSessionHelper.cs" />
     <Page Include="UI\FFT\FFTControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,10 +173,18 @@
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <Content Include="LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -204,13 +192,6 @@
   <ItemGroup>
     <Resource Include="Resources\appicon.ico" />
     <Resource Include="appicon.ico" />
-    <Content Include="bass.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Bass.Net.dll" />
-    <Content Include="basswasapi.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
@@ -225,6 +206,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WASApiBassNet\WASApiBassNet.csproj">
+      <Project>{501babf3-a832-4a3b-9d81-45afb9153e9f}</Project>
+      <Name>WASApiBassNet</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WPFUtilities\WPFUtilities.csproj">
       <Project>{c9664583-0898-4fed-a1a3-d6beb7f61036}</Project>
       <Name>WPFUtilities</Name>

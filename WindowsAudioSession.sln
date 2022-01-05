@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{BC20D436-EE2
 		Doc\windows-audio-session-sample3.gif = Doc\windows-audio-session-sample3.gif
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WASApiBassNet", "WASApiBassNet\WASApiBassNet.csproj", "{501BABF3-A832-4A3B-9D81-45AFB9153E9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{C9664583-0898-4FED-A1A3-D6BEB7F61036}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9664583-0898-4FED-A1A3-D6BEB7F61036}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9664583-0898-4FED-A1A3-D6BEB7F61036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{501BABF3-A832-4A3B-9D81-45AFB9153E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{501BABF3-A832-4A3B-9D81-45AFB9153E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{501BABF3-A832-4A3B-9D81-45AFB9153E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{501BABF3-A832-4A3B-9D81-45AFB9153E9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

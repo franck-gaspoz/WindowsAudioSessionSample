@@ -4,7 +4,7 @@ using System.Windows;
 
 using Un4seen.BassWasapi;
 
-using WindowsAudioSession.Components.AudioCapture;
+using WASApiBassNet.Components.AudioCapture;
 
 using WPFUtilities.ComponentModel;
 

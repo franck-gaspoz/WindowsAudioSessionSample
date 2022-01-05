@@ -8,6 +8,7 @@ namespace WindowsAudioSession.UI.SoundLevel
     public partial class VuMeterStereoControl : UserControl, IVuMeterStereoControl
     {
         IVuMeterStereoViewModel _viewModel;
+        /// <inheritdoc/>
         public IVuMeterStereoViewModel ViewModel
         {
             get => _viewModel;
@@ -18,6 +19,9 @@ namespace WindowsAudioSession.UI.SoundLevel
             }
         }
 
+        /// <summary>
+        /// creates a new instance of the control
+        /// </summary>
         public VuMeterStereoControl()
         {
             InitializeComponent();

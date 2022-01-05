@@ -3,10 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WindowsAudioSession.UI.FFT
 {
+    /// <summary>
+    /// validates that bars count is contained in the allowable range
+    /// </summary>
     public class BarsCountInAllowableRangeAttribute : ValidationAttribute
     {
-        public BarsCountInAllowableRangeAttribute() { }
-
+        /// <inheritdoc/>
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             if (!(validationContext.ObjectInstance is FFTViewModel))

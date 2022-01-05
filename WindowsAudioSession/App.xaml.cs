@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows;
 
+using WindowsAudioSession.Commands;
 using WindowsAudioSession.UI;
 
 namespace WindowsAudioSession
@@ -26,6 +27,9 @@ namespace WindowsAudioSession
         /// </summary>
         public static IAppComponents AppComponents { get; set; }
 
+        /// <summary>
+        /// create instance of the application
+        /// </summary>
         public App()
         {
             try
@@ -41,6 +45,12 @@ namespace WindowsAudioSession
                 };
 
                 AppComponents = new AppComponents();
+                AppComponents.AudioPluginEngine.DispatcherTimerEventHandlerError +=
+                    (sender, eventArgs) =>
+                    {
+                        UIHelper.ShowError(eventArgs.Exception);
+                        StopCommand.Instance.Execute(null);
+                    };
 
                 _ = WASMainWindow.ShowDialog();
             }

@@ -3,31 +3,41 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-using WindowsAudioSession.Components.AudioCapture;
-using WindowsAudioSession.Components.FFT;
+using WASApiBassNet.Components.AudioCapture;
+using WASApiBassNet.Components.FFT;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public class FFTPeakDrawer : IFFTPeakDrawer, IAudioPlugHandler
+    /// <summary>
+    /// fft peak drawer
+    /// </summary>
+    public class FFTPeakDrawer : IFFTPeakDrawer, IAudioPlugin
     {
+        /// <inheritdoc/>
         public IFFTPeakAnalyzer FFTPeakAnalyser { get; set; }
 
+        /// <inheritdoc/>
         public IDrawable Drawable { get; set; }
 
+        /// <inheritdoc/>
         public double Margin { get; set; } = 8;
 
+        /// <inheritdoc/>
         public double WidthPercent { get; set; } = 100;
 
         Rectangle[] _bars;
 
+        /// <inheritdoc/>
         public Brush BarBrush { get; set; }
             = Brushes.White;
 
+        /// <inheritdoc/>
         public double PeakBarHeight { get; set; } = 1d;
 
+        /// <inheritdoc/>
         public bool IsStarted { get; protected set; }
 
-        public void Draw(
+        void Draw(
             double x0,
             double y0,
             double width,
@@ -78,6 +88,7 @@ namespace WindowsAudioSession.UI.FFT
             _bars = null;
         }
 
+        /// <inheritdoc/>
         public void HandleTick()
         {
             if (FFTPeakAnalyser == null || !IsStarted) return;
@@ -99,12 +110,14 @@ namespace WindowsAudioSession.UI.FFT
             }
         }
 
+        /// <inheritdoc/>
         public void Start()
         {
             ResetBars();
             IsStarted = true;
         }
 
+        /// <inheritdoc/>
         public void Stop()
         {
             ResetBars();

@@ -3,31 +3,40 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-using WindowsAudioSession.Components;
-using WindowsAudioSession.Components.AudioCapture;
-using WindowsAudioSession.Components.FFT;
+using WASApiBassNet;
+using WASApiBassNet.Components.AudioCapture;
+using WASApiBassNet.Components.FFT;
 
 using WPFUtilities.CustomBrushes;
 
 namespace WindowsAudioSession.UI.FFT
 {
-    public class FFTDrawer : IFFTDrawer, IAudioPlugHandler
+    /// <summary>
+    /// fft drawer
+    /// </summary>
+    public class FFTDrawer : IFFTDrawer, IAudioPlugin
     {
+        /// <inheritdoc/>
         public IDrawable Drawable { get; set; }
 
+        /// <inheritdoc/>
         public IFFTAnalyzer FFTAnalyser { get; set; }
 
+        /// <inheritdoc/>
         public double Margin { get; set; } = 8;
 
+        /// <inheritdoc/>
         public double BarWidthPercent { get; set; } = 100;
 
         Rectangle[] _bars;
 
+        /// <inheritdoc/>
         public Brush BarBrush { get; set; } = SpectrumBrush.Create();
 
+        /// <inheritdoc/>
         public bool IsStarted { get; protected set; }
 
-        public void Draw(
+        void Draw(
             double x0,
             double y0,
             double width,
@@ -87,6 +96,7 @@ namespace WindowsAudioSession.UI.FFT
             _bars = null;
         }
 
+        /// <inheritdoc/>
         public void HandleTick()
         {
             if (FFTAnalyser == null || !IsStarted) return;
@@ -109,12 +119,14 @@ namespace WindowsAudioSession.UI.FFT
             }
         }
 
+        /// <inheritdoc/>
         public void Start()
         {
             ResetBars();
             IsStarted = true;
         }
 
+        /// <inheritdoc/>
         public void Stop()
         {
             ResetBars();

@@ -7,6 +7,9 @@ namespace WindowsAudioSession.UI
     /// </summary>
     public partial class WASMainWindow : Window
     {
+        /// <summary>
+        /// creates a new instance
+        /// </summary>
         public WASMainWindow()
         {
             InitializeComponent();

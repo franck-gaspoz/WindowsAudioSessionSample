@@ -12,7 +12,7 @@
         ///<inheritdoc/>
         public override void Execute(object parameter)
         {
-            App.AppComponents.AudioPlugEngine.Stop();
+            App.AppComponents.AudioPluginEngine.Stop();
 
             App.WASMainViewModel.IsStarted = false;
             App.WASMainViewModel.CanStart = true;

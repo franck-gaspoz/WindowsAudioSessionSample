@@ -4,12 +4,19 @@ using System.Windows;
 
 namespace WindowsAudioSession.UI
 {
+    /// <summary>
+    /// ui helpers methods
+    /// </summary>
     public class UIHelper
     {
-        public static void ShowError(Exception ex)
+        /// <summary>
+        /// show an error for an exception
+        /// </summary>
+        /// <param name="exception">exception</param>
+        public static void ShowError(Exception exception)
         {
-            var messages = new List<string>() { ex.Message };
-            var innerException = ex;
+            var messages = new List<string>() { exception.Message };
+            var innerException = exception;
             while ((innerException = innerException.InnerException) != null)
             {
                 messages.Add(innerException.Message);

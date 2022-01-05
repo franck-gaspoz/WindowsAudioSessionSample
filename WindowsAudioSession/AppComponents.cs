@@ -1,10 +1,11 @@
 ﻿
 using System.Windows.Media;
 
-using WindowsAudioSession.Components.AudioCapture;
-using WindowsAudioSession.Components.FFT;
-using WindowsAudioSession.Components.Sample;
-using WindowsAudioSession.Components.SoundLevel;
+using WASApiBassNet.Components.AudioCapture;
+using WASApiBassNet.Components.FFT;
+using WASApiBassNet.Components.Sample;
+using WASApiBassNet.Components.SoundLevel;
+
 using WindowsAudioSession.UI;
 using WindowsAudioSession.UI.FFT;
 using WindowsAudioSession.UI.SoundLevel;
@@ -19,23 +20,94 @@ namespace WindowsAudioSession
     /// </summary>
     public class AppComponents : IAppComponents
     {
-        public IAudioPlugEngine AudioPlugEngine { get; protected set; } = new AudioPlugEngine();
+        #region properties
+
+        /// <summary>
+        /// audio plugin interactor
+        /// </summary>
+        public IAudioPluginEngine AudioPluginEngine { get; protected set; } = new AudioPluginEngine();
+
+        /// <summary>
+        /// wasapi facade
+        /// </summary>
         public IWASApi WASApi { get; protected set; } = new WASApi();
+
+        /// <summary>
+        /// fft data provider
+        /// </summary>
         public IFFTProvider FFTProvider { get; protected set; } = new FFTProvider();
+
+        /// <summary>
+        /// fft analyzer 1
+        /// </summary>
         public IFFTAnalyzer FFTAnalyser1 { get; protected set; } = new FFTAnalyzer();
+
+        /// <summary>
+        /// fft analyzer 2
+        /// </summary>
         public IFFTAnalyzer FFTAnalyser2 { get; protected set; } = new FFTAnalyzer();
+
+        /// <summary>
+        /// fft peak analyzer
+        /// </summary>
         public IFFTPeakAnalyzer FFTPeakAnalyser2 { get; protected set; } = new FFTPeakAnalyzer();
+
+        /// <summary>
+        /// fft peak drawer
+        /// </summary>
         public IFFTPeakDrawer FFTPeakDrawer { get; protected set; } = new FFTPeakDrawer();
+
+        /// <summary>
+        /// sound level capture data provider
+        /// </summary>
         public ISoundLevelCapture SoundLevelCapture { get; protected set; } = new SoundLevelCapture();
+
+        /// <summary>
+        /// sound capture sample data provider
+        /// </summary>
         public ISoundSampleProvider SoundSampleProvider { get; protected set; } = new SoundSampleProvider();
+
+        /// <summary>
+        /// fft drawer 1
+        /// </summary>
         public IFFTDrawer FFTDrawer1 { get; protected set; } = new FFTDrawer();
+
+        /// <summary>
+        /// fft drawer 2
+        /// </summary>
         public IFFTDrawer FFTDrawer2 { get; protected set; } = new FFTDrawer();
+
+        /// <summary>
+        /// fft view model drawer mediator
+        /// </summary>
         public FFTViewModelDrawerMediator FFTViewModelDrawerMediator { get; protected set; } = new FFTViewModelDrawerMediator();
+
+        /// <summary>
+        /// fft vie model 1
+        /// </summary>
         public IFFTViewModel FFTViewModel1 { get; protected set; } = new FFTViewModel();
+
+        /// <summary>
+        /// fft view model 2
+        /// </summary>
         public IFFTViewModel FFTViewModel2 { get; protected set; } = new FFTViewModel();
+
+        /// <summary>
+        /// sound wave view model
+        /// </summary>
         public ISoundWaveViewModel SoundWaveViewModel { get; protected set; } = new SoundWaveViewModel();
+
+        /// <summary>
+        /// sound wave drawer
+        /// </summary>
         public ISoundWaveDrawer SoundWaveDrawer { get; protected set; } = new SoundWaveDrawer();
+
+        /// <summary>
+        /// vumeter stereo view model
+        /// </summary>
         public IVuMeterStereoViewModel VuMeterStereoViewModel { get; protected set; } = new VuMeterStereoViewModel();
+
+        #endregion
 
         /// <summary>
         /// add and setup required components, connect them together and activate the sound capture engine
@@ -48,11 +120,11 @@ namespace WindowsAudioSession
 
             // WASApi facade
 
-            AudioPlugEngine.WASApi = WASApi;
+            AudioPluginEngine.WASApi = WASApi;
 
             // chain manager
 
-            AudioPlugEngine.Reset();
+            AudioPluginEngine.Reset();
 
             // FFT
 
@@ -98,7 +170,7 @@ namespace WindowsAudioSession
 
             // audio capture handlers components chain
 
-            _ = AudioPlugEngine
+            _ = AudioPluginEngine
                 .AddAudioPlugHandler(SoundSampleProvider)
                 .AddAudioPlugHandler(FFTProvider)
 

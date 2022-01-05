@@ -13,14 +13,18 @@ namespace WindowsAudioSession.UI.FFT
     /// </summary>
     public class FFTScaleDrawer : IFFTScaleDrawer
     {
+        /// <inheritdoc/>
         public Brush LineBrush { get; set; } = Brushes.DarkGray;
 
+        /// <inheritdoc/>
         public double LineOpacity { get; set; } = 0.5d;
 
+        /// <inheritdoc/>
         public double Margin { get; set; } = 8d;
 
         IFFTControl _fftControl;
 
+        /// <inheritdoc/>
         [OfType(typeof(FrameworkElement))]
         public IFFTControl FFTControl
         {
