@@ -31,6 +31,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
+    <PackageId>WASApiBassNet</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Franck Gaspoz</Authors>
+    <Company>WASApiBassNet</Company>
+    <Description>C# clean architectured components that can handle sound capture from loop audio devices using Windows Audio Session Api and Bass.Net (fft,vumeter,sound wave)</Description>
+    <ProjectUrl>https://github.com/franck-gaspoz/WindowsAudioSessionSample/tree/main/WASApiBassNet</ProjectUrl>
+    <License>MIT</License>
+    <ReleaseNotes>1.0.0</ReleaseNotes>
+    <Copyright>(c) 2021 Licence MIT</Copyright>
+    <PackageTags>wpf csharp c# windows audio session api wasapi bass.net sound capture loop fft vumeter sound wave .net framework 4.8</PackageTags>
+    <Title>WASApiBassNet 1.0.0</Title>
+    <PackageIcon>Codicons-SymbolClass.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageOutputPath>WASApiBassNet.nupkg</PackageOutputPath>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <IncludeSource>true</IncludeSource>
+    <IncludeSymbols>false</IncludeSymbols>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <PropertyGroup>
     <ApplicationIcon>Resources\Codicons-SymbolClass.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
@@ -83,15 +103,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\Codicons-SymbolClass.ico" />
-    <Resource Include="Resources\Codicons-SymbolClass.png" />
+    <Resource Include="Resources\Codicons-SymbolClass.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LICENSE">
+    <Content Include="LICENSE" Pack="true" PackagePath="\">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="README.md">
+    <Content Include="README.md" Pack="true" PackagePath="\">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
