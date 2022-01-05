@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsAudioSession", "WindowsAudioSession\WindowsAudioSession.csproj", "{0C65E34F-FCFA-479B-AB05-AB5CE34B2CA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsAudioSessionSample", "WindowsAudioSession\WindowsAudioSessionSample.csproj", "{0C65E34F-FCFA-479B-AB05-AB5CE34B2CA4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFUtilities", "WPFUtilities\WPFUtilities.csproj", "{C9664583-0898-4FED-A1A3-D6BEB7F61036}"
 EndProject

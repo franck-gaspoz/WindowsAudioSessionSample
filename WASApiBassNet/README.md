@@ -1,4 +1,19 @@
-# Windows Audio Session (WASAPI) samples
+# WASApi BASS.Net
 
-a sample of usage of Windows Audio Session WASAPI using BASS.NET
-colored bars (vu-meters) showing captured device sound FFT and Volume
+C# clean architectured components that can handle sound capture from loop audio devices using Windows Audio Session Api and Bass.Net:
+
+- Fast Fourier Transform (FFT)
+- stereo and mono vumeter (sound level)
+- sound wave
+- sound level peak detector / tracker
+
+## dependencies:
+
+- .Net Framework 4.8
+- C# last version
+- Bass.Net
+
+<hr>
+
+Authors: Franck Gaspoz | License MIT 2021
+
