@@ -13,7 +13,7 @@
         Topmost="True"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
-        Title="Windows Audio Session Sample" 
+        Title="Windows Audio Session Api Bass.Net Sample" 
 		Height="414" 
 		Width="891"	        
 		>
