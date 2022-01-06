@@ -40,7 +40,7 @@
     <License>MIT</License>
     <ReleaseNotes>1.0.0</ReleaseNotes>
     <Copyright>(c) 2021 Licence MIT</Copyright>
-    <PackageTags>wpf csharp c# windows audio session api wasapi bass.net sound capture loop fft vumeter sound wave .net framework 4.8</PackageTags>
+    <PackageTags>csharp c# windows audio session api wasapi bass.net sound capture loop fft vumeter sound wave .net framework 4.8</PackageTags>
     <Title>WASApiBassNet 1.0.0</Title>
     <PackageIcon>Codicons-SymbolClass.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -49,18 +49,20 @@
     <IncludeSource>true</IncludeSource>
     <IncludeSymbols>true</IncludeSymbols>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Dependencies>
+      <Dependency id="Bass.Net" />
+    </Dependencies>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\Codicons-SymbolClass.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.2.0"/>
+    <PackageReference Include="Bass.NetWrapper">
+      <Version>2.4.12.5</Version>
+    </PackageReference>
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Bass.Net, Version=2.4.10.3, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\Bass.Net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -96,17 +98,8 @@
     <Compile Include="WASApiBassNetHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bass.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Bass.Net.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="basswasapi.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Resources\Codicons-SymbolClass.ico" />
-    <Resource Include="Resources\Codicons-SymbolClass.png" Pack="true" PackagePath="\"/>
+    <Resource Include="Resources\Codicons-SymbolClass.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE" Pack="true" PackagePath="\">
