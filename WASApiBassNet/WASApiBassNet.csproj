@@ -50,7 +50,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Dependencies>
-      <Dependency id="Bass.Net" />
+      <Dependency id="Bass.NetWrapper" version="2.4.12.5"/>
     </Dependencies>
   </PropertyGroup>
   <PropertyGroup>
