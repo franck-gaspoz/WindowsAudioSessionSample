@@ -60,7 +60,10 @@
     <PackageReference Include="Bass.NetWrapper">
       <Version>2.4.12.5</Version>
     </PackageReference>
-    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.2.0" />
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -102,10 +105,10 @@
     <Resource Include="Resources\Codicons-SymbolClass.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bass.dll">
+    <Content Include="bass.dll" Pack="true" PackagePath="\lib\net48">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="basswasapi.dll">
+    <Content Include="basswasapi.dll" Pack="true" PackagePath="\lib\net48">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="LICENSE" Pack="true" PackagePath="\">
