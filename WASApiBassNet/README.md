@@ -11,7 +11,7 @@ C# clean architectured components that can handle sound capture from loop audio 
 
 - .Net Framework 4.8
 - C# last version
-- Bass.Net (included in nuget)
+- Bass.Net wrapper
 
 <hr>
 
