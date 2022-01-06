@@ -50,7 +50,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Dependencies>
-      <Dependency id="Bass.NetWrapper" version="2.4.12.5"/>
+      <Dependency id="Bass.NetWrapper" version="2.4.12.5" />
     </Dependencies>
   </PropertyGroup>
   <PropertyGroup>
@@ -102,6 +102,12 @@
     <Resource Include="Resources\Codicons-SymbolClass.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="basswasapi.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="LICENSE" Pack="true" PackagePath="\">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
