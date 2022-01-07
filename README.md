@@ -1,4 +1,4 @@
-# Windows Audio Session (WASAPI) sample
+# Windows Audio Session (WASAPI) BASS.Net sample
 
 A sample of usage of Windows Audio Session WASAPI using BASS.NET - WPF C# .NET Framework 4.8
 
